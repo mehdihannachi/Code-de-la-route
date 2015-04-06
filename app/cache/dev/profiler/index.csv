@@ -39,3 +39,12 @@ cdb963,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/css/switcher.css,1
 e55ba8,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/css/switcher.css,1428351810,
 76e721,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/images/logo.png,1428351810,08bf14
 08bf14,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/images/logo.png,1428351810,
+d9d98c,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/,1428357987,
+044fc7,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/home/candidat,1428357989,
+f706a0,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/home/candidat,1428357995,
+e12ac9,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/candidat,1428358006,2c5968
+2c5968,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/candidat,1428358006,
+d6d15c,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/register,1428358331,
+c7fe60,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/register/,1428358342,
+63c9f5,127.0.0.1,POST,http://localhost/CDLRweb/web/app_dev.php/register/,1428359719,
+25d09b,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/register/check-email,1428359724,
