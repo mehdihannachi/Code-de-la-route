@@ -1,0 +1,54 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    &nbsp;
+    <div class="container">
+        <div class="sixteen columns">
+            <!-- Headline -->
+            <h3 class="margin-reset">Candidat</h3><br />
+
+            <table class="standard-table">
+                <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ entity.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prénom</th>
+                        <td>{{ entity.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th>CIN</th>
+                        <td>{{ entity.cin }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de naissance</th>
+                        <td>{{ entity.dateNaissance|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tel</th>
+                        <td>{{ entity.tel }}</td>
+                    </tr>
+                    <tr>
+                        <th>Région</th>
+                        <td>{{ entity.region }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ entity.mail }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div align="center">
+                <ul>
+                    <li>
+                        <a href="{{ path('candidat') }}" class="button color">retour</a>&nbsp;
+                        <a href="{{ path('candidat_edit', { 'id': entity.id }) }}" class="button color">Modifier</a>&nbsp;
+                        <a>{{ form(delete_form) }} </a> 
+                    </li>
+                </ul>
+            </div>       
+        </div>
+    </div>&nbsp;
+    
+{% endblock %}

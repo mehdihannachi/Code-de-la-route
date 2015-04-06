@@ -1,0 +1,49 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+    <div align="center">
+    <h1>VenteVoiture</h1>
+
+    <table class="record_properties" border="1">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ entity.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ entity.prix }}</td>
+            </tr>
+            <tr>
+                <th>Kilometrage</th>
+                <td>{{ entity.kilometrage }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ entity.marque }}</td>
+            </tr>
+            <tr>
+                <th>Annonceid</th>
+                <td>{{ entity.annonceId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ventevoiture') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('ventevoiture_edit', { 'id': entity.annonceId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+    <div align="center">
+    <h1>Regions</h1>
+
+    <table class="record_properties" border="1">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ entity.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Laltitude</th>
+                <td>{{ entity.laltitude }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('regions') }}">
+            Back to the list
+        </a>
+    </li>
+   
+    <li>{{ form(delete_form) }}</li>
+        </ul></div>
+{% endblock %}

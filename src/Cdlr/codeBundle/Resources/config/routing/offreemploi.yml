@@ -1,0 +1,30 @@
+offreemploi:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:OffreEmploi:index" }
+
+offreemploi_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:OffreEmploi:show" }
+
+offreemploi_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:OffreEmploi:new" }
+
+offreemploi_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:OffreEmploi:create" }
+    requirements: { _method: post }
+
+offreemploi_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:OffreEmploi:edit" }
+
+offreemploi_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:OffreEmploi:update" }
+    requirements: { _method: post|put }
+
+offreemploi_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:OffreEmploi:delete" }
+    requirements: { _method: post|delete }

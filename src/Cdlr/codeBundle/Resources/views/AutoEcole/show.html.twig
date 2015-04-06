@@ -1,0 +1,41 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    &nbsp;
+    <div class="container">
+        <div class="sixteen columns">
+            <!-- Headline -->
+            <h3 class="margin-reset">Auto-école</h3><br />
+
+            <table class="standard-table">
+        <tbody>
+            <tr>
+                <th>Nomauto</th>
+                <td>{{ entity.nomAuto }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ entity.region }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ entity.tel }}</td>
+            </tr>
+        </tbody>
+    </table>
+<div align="center">
+                <ul>
+                    <li>
+                        <a href="{{ path('autoecole') }}" class="button color">retour</a>&nbsp;
+                        <a href="{{ path('autoecole_edit', { 'id': entity.autoecoleId }) }}" class="button color">Modifier</a>&nbsp;
+                        <a>{{ form(delete_form) }} </a> 
+                    </li>
+                </ul>
+            </div>       
+        </div>
+    </div>&nbsp;
+{% endblock %}

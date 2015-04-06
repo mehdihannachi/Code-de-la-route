@@ -1,0 +1,30 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+    <div align="center">
+    <h1>Test</h1>
+
+    <table class="record_properties" border="1">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ entity.type }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('test') }}">
+            Back to the list
+        </a>
+    </li>
+    
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+{% endblock %}

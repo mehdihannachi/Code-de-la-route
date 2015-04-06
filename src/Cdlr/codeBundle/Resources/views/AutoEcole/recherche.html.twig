@@ -1,0 +1,40 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    <div align="center">
+<h1>Recherche Autoecole par Région</h1>
+{{form(Form)}}
+
+<h2>Liste des autoecoles</h2>
+<table  class="records_list" border="1">
+    <tr>
+                <th>Nomauto</th>
+                <th>Region</th>
+                <th>Adresse</th>
+                <th>Tel</th>
+               <th>Actions</th>
+
+    </tr>
+    {% for entity in  autoecoles %}
+    <tr>
+                        <td><a href="{{ path('autoecole_show', { 'id': entity.autoecoleId }) }}">{{ entity.nomAuto }}</a></td>
+
+                 <td>{{ entity.region }}</td>
+                <td>{{ entity.adresse }}</td>
+                <td>{{ entity.tel }}</td>
+                 <td>
+                <ul  >
+                    <li>
+                        <a href="{{ path('autoecole_show', { 'id': entity.autoecoleId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('autoecole_edit', { 'id': entity.autoecoleId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+    </tr>
+    {% endfor %}
+    
+</table>
+{% endblock %}
+    

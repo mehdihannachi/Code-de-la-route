@@ -1,0 +1,34 @@
+autoecole:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:index" }
+
+autoecole_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:show" }
+
+autoecole_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:new" }
+
+autoecole_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:create" }
+    requirements: { _method: post }
+
+autoecole_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:edit" }
+
+autoecole_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:update" }
+    requirements: { _method: post|put }
+
+autoecole_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:delete" }
+    requirements: { _method: post|delete }
+    
+autoecole_recherche:
+    path: /recherche
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:rechercheRegion" }

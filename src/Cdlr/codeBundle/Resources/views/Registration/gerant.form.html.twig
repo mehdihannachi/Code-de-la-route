@@ -1,0 +1,12 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    {% trans_default_domain 'CdlrcodeBundle' %}
+
+    <form action="{{ path('gerant_registration') }}" {{ form_enctype(form) }} method="POST">
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        </div>
+    </form>
+{% endblock content %}

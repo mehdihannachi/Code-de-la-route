@@ -1,0 +1,42 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+    <div align="center">
+    <h1>OffreEmploi list</h1>
+
+    <table class="records_list" border="1">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('offreemploi_show', { 'id': entity.annonceId }) }}">{{ entity.titre }}</a></td>
+                <td>{{ entity.description }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('offreemploi_show', { 'id': entity.annonceId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('offreemploi_edit', { 'id': entity.annonceId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('offreemploi_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    </div>
+    {% endblock %}

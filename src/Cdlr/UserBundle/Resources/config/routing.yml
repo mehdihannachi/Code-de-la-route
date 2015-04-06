@@ -1,0 +1,54 @@
+cdlr_user_user:
+    resource: "@CdlrUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+admin_homepage:
+    path:     /home/admin
+    defaults: { _controller: CdlrcodeBundle:Default:admin }
+    
+candidat_homepage:
+    path:     /home/candidat
+    defaults: { _controller: CdlrcodeBundle:Default:candidat }
+    
+gerant_homepage:
+    path:     /home/gerant
+    defaults: { _controller: CdlrcodeBundle:Default:gerant }
+    
+moniteur_homepage:
+    path:     /home/moniteur
+    defaults: { _controller: CdlrcodeBundle:Default:moniteur }
+
+cdlr_user_homepage:
+    path:     /home
+    defaults: { _controller: CdlrUserBundle:Default:index }
+    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /login
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+    
+_security_check_facebook:
+    pattern:   /facebook/login_check
+    defaults:  { _controller: CdlrUserBundle:User:loginFb }
+
+_security_facebook_logout:
+  pattern:  /facebook/logout
+
+user_couple_fb_with_account:
+    pattern: /user/couple/facebook
+    defaults: { _controller: CdlrUserBundle:User:connectFacebookWithAccount }

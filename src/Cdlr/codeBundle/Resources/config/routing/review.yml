@@ -1,0 +1,30 @@
+review:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:Review:index" }
+
+review_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:Review:show" }
+
+review_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:Review:new" }
+
+review_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:Review:create" }
+    requirements: { _method: post }
+
+review_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:Review:edit" }
+
+review_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:Review:update" }
+    requirements: { _method: post|put }
+
+review_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:Review:delete" }
+    requirements: { _method: post|delete }

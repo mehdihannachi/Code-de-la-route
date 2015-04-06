@@ -1,0 +1,4 @@
+services:
+#    cdlrmail.example:
+#        class: Cdlr\mailBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

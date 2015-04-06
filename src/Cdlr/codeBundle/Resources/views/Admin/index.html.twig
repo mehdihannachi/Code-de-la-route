@@ -1,0 +1,60 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    &nbsp;
+    <div class="container">
+        <div class="sixteen columns">
+            <!-- Headline -->
+            <h3 class="margin-reset">Liste des administrateurs</h3><br />
+
+            <table class="standard-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Cin</th>
+                        <th>Datenaissance</th>
+                        <th>Tel</th>
+                        <th>Region</th>
+                        <th>Mail</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('admin_show', { 'id': entity.id }) }}">{{ entity.nom }}</a></td>
+                            <td>{{ entity.prenom }}</td>
+                            <td>{{ entity.cin }}</td>
+                            <td>{% if entity.dateNaissance %}{{ entity.dateNaissance|date('Y-m-d ') }}{% endif %}</td>
+                            <td>{{ entity.tel }}</td>
+                            <td>{{ entity.region }}</td>
+                            <td>{{ entity.mail }}</td>
+
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('admin_show', { 'id': entity.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('admin_edit', { 'id': entity.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div align="center">
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_new') }}" class="button color">Ajouter administrateur</a>
+                        </a>
+                    </li>
+                </ul>
+            </div>       
+        </div>
+    </div>&nbsp;
+{% endblock %}

@@ -1,0 +1,36 @@
+cdlr_user:
+    resource: "@CdlrUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cdlr_calendar:
+    resource: "@CdlrCalendarBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cdlrmail:
+    resource: "@CdlrmailBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cdlrcode:
+    resource: "@CdlrcodeBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+BladeTesterCalendarBundle:
+    resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
+    prefix:   / /
+    
+index:
+    resource: "@CdlrcodeBundle/Resources/config/routing.yml"
+    prefix:   /home
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
+
+_security_check:
+    pattern:  /fb/login_check
+    
+_security_logout:
+    pattern:  /fb/logout
+    
+_facebook_secured:
+    pattern: /secured/

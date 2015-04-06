@@ -1,0 +1,30 @@
+candidat:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:Candidat:index" }
+
+candidat_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:Candidat:show" }
+
+candidat_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:Candidat:new" }
+
+candidat_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:Candidat:create" }
+    requirements: { _method: post }
+
+candidat_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:Candidat:edit" }
+
+candidat_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:Candidat:update" }
+    requirements: { _method: post|put }
+
+candidat_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:Candidat:delete" }
+    requirements: { _method: post|delete }

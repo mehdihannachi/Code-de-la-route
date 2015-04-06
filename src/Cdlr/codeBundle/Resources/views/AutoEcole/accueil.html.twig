@@ -1,0 +1,77 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block sign %}
+    <div>
+        <ul>
+            <!-- inser more links here -->
+            <li class="button gray">Sign out</li>                
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <!-- FlexSlider  -->
+
+        <section class="flexslider home">
+            <ul class="slides">
+                <li><img src="{{ asset('images/test-code-de-la-route-gratuit.jpg') }}" alt="" />
+                    <article class="slide-caption">
+                        <h3>Tests et cours gratuits</h3>
+                        <p>Accédez gratuitement à une diversité de cours et des tests de type examen. </p>
+                    </article>
+                </li>
+
+            </ul>
+        </section>
+    </div>
+    <!-- FlexSlider / End -->
+    <div class="page-content">
+        <div class="container">
+            <div class="eight column">
+                <div class="large-notice">
+                    <h2>Cours gratuits</h2>
+                    <p class="one-third column">This is example of style component for calling extra attention to featured content or information.</p>
+                    <br>
+                    <a href="#" class="button medium color">Accéder aux cours</a>
+                </div>
+
+            </div>
+            <div class="eight column">
+                <div class="large-notice">
+                    <h2>Tests gratuits</h2>
+                    <p class="one-third column">This is example of style component for calling extra attention to featured content or information.</p>
+                    <br>
+                    <a href="#" class="button medium color">Passer un test</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block navigation %}
+
+    <li><a href=".html"><i class="halflings white calendar"></i> Calendrier</a></li>
+    <li><a href="#"><i class="halflings white road"></i>Mon auto-école</a>
+        <ul class="cols3">
+        <li class="col2">
+            <h5>Mes candidats</h5>
+            <ol>
+                <li><a href="">Ma liste d'attente</a></li>
+                <li><a href="">Modifier mes candidats</a></li>
+                <li><a href="">Supprimer mes candidats</a></li>
+            </ol>
+        </li>
+        <li class="col2">
+            <h5>Mes moniteurs</h5>
+            <ol>
+                <li><a href="">Ajouter un moniteur</a></li>
+                <li><a href="">Modifier mes moniteurs</a></li>
+                <li><a href="">Supprimer mes moniteurs</a></li>
+            </ol>
+        </li>
+    </ul>
+    </li>
+    {{ parent() }}
+{% endblock %}

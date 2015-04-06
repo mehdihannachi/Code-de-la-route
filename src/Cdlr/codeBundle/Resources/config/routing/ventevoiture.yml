@@ -1,0 +1,30 @@
+ventevoiture:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:VenteVoiture:index" }
+
+ventevoiture_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:VenteVoiture:show" }
+
+ventevoiture_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:VenteVoiture:new" }
+
+ventevoiture_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:VenteVoiture:create" }
+    requirements: { _method: post }
+
+ventevoiture_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:VenteVoiture:edit" }
+
+ventevoiture_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:VenteVoiture:update" }
+    requirements: { _method: post|put }
+
+ventevoiture_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:VenteVoiture:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,35 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+        <div align="center">
+
+    <h1>CoursView</h1>
+
+    <table class="record_properties" border="1">
+        <tbody>
+            <tr>
+                <th>Note</th>
+                <td>{{ entity.note }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('coursview') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('coursview_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+        </div>
+
+{% endblock %}

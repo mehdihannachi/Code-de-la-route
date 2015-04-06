@@ -1,0 +1,30 @@
+examen:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:Examen:index" }
+
+examen_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:Examen:show" }
+
+examen_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:Examen:new" }
+
+examen_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:Examen:create" }
+    requirements: { _method: post }
+
+examen_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:Examen:edit" }
+
+examen_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:Examen:update" }
+    requirements: { _method: post|put }
+
+examen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:Examen:delete" }
+    requirements: { _method: post|delete }

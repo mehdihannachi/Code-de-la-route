@@ -1,0 +1,18 @@
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+web/uploads/*
+web/bundles/*
+composer.lock
+composer.phar
+
+# Configuration files
+src/BladeTester/CalendarBundle/Tests/App/cache
+src/BladeTester/CalendarBundle/Tests/App/logs
+
+# Editors
+*.swp

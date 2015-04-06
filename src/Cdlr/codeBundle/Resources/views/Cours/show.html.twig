@@ -1,0 +1,38 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+    <div align="center">
+    <h1>Cours</h1>
+
+    <table class="record_properties" border="1">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ entity.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ entity.url }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('cours') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cours_edit', { 'id': entity.coursId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+{% endblock %}

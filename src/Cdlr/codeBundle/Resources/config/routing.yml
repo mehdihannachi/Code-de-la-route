@@ -1,0 +1,77 @@
+
+cdlrcode_review:
+    resource: "@CdlrcodeBundle/Resources/config/routing/review.yml"
+    prefix:   /review
+
+cdlrcode_offreemploi:
+    resource: "@CdlrcodeBundle/Resources/config/routing/offreemploi.yml"
+    prefix:   /offreemploi
+
+cdlrcode_notification:
+    resource: "@CdlrcodeBundle/Resources/config/routing/notification.yml"
+    prefix:   /notification
+
+cdlrcode_listeattente:
+    resource: "@CdlrcodeBundle/Resources/config/routing/listeattente.yml"
+    prefix:   /listeattente
+
+cdlrcode_coursview:
+    resource: "@CdlrcodeBundle/Resources/config/routing/coursview.yml"
+    prefix:   /coursview
+
+cdlrcode_coursvideo:
+    resource: "@CdlrcodeBundle/Resources/config/routing/coursvideo.yml"
+    prefix:   /coursvideo
+
+cdlrcode_ventevoiture:
+    resource: "@CdlrcodeBundle/Resources/config/routing/ventevoiture.yml"
+    prefix:   /ventevoiture
+
+cdlrcode_test:
+    resource: "@CdlrcodeBundle/Resources/config/routing/test.yml"
+    prefix:   /test
+
+cdlrcode_rendezvous:
+    resource: "@CdlrcodeBundle/Resources/config/routing/rendezvous.yml"
+    prefix:   /rendezvous
+
+cdlrcode_regions:
+    resource: "@CdlrcodeBundle/Resources/config/routing/regions.yml"
+    prefix:   /regions
+
+cdlrcode_examen:
+    resource: "@CdlrcodeBundle/Resources/config/routing/examen.yml"
+    prefix:   /examen
+
+cdlrcode_cours:
+    resource: "@CdlrcodeBundle/Resources/config/routing/cours.yml"
+    prefix:   /cours
+
+cdlrcode_admin:
+    resource: "@CdlrcodeBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin
+
+cdlrcode_gerant:
+    resource: "@CdlrcodeBundle/Resources/config/routing/gerant.yml"
+    prefix:   /gerant
+
+cdlrcode_autoecole:
+    resource: "@CdlrcodeBundle/Resources/config/routing/autoecole.yml"
+    prefix:   /autoecole
+
+cdlrcode_moniteur:
+    resource: "@CdlrcodeBundle/Resources/config/routing/moniteur.yml"
+    prefix:   /moniteur
+
+cdlrcode_candidat:
+    resource: "@CdlrcodeBundle/Resources/config/routing/candidat.yml"
+    prefix:   /candidat
+
+cdlrcode_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CdlrcodeBundle:Default:index }
+
+cdlrcode_accueil:
+    path:     /home
+    defaults: { _controller: CdlrcodeBundle:Ecole:accueil }
+    

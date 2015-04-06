@@ -1,0 +1,30 @@
+listeattente:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:ListeAttente:index" }
+
+listeattente_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:ListeAttente:show" }
+
+listeattente_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:ListeAttente:new" }
+
+listeattente_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:ListeAttente:create" }
+    requirements: { _method: post }
+
+listeattente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:ListeAttente:edit" }
+
+listeattente_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:ListeAttente:update" }
+    requirements: { _method: post|put }
+
+listeattente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:ListeAttente:delete" }
+    requirements: { _method: post|delete }

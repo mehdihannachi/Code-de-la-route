@@ -1,0 +1,14 @@
+{%extends "CdlrmailBundle::contact.html.twig" %}
+
+{% block X %}
+
+<body>
+<h3><p> Contacter nous </p></h3>
+<p>{{form_errors(form)}}</p>
+<hr>
+<form role="form" id="fr" method="POST" action='{{path('my_app_mail_sendpage')}}' {{form_enctype(form)}}>
+{{form_widget(form)}}
+<input type="submit" />
+</form>
+</body>
+{% endblock %}

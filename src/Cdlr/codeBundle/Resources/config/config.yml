@@ -1,0 +1,60 @@
+# Acme/UserBundle/Resources/config/config.yml
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Cdlr\codeBundle\Entity\User
+    service:
+        user_manager: pugx_user_manager
+        
+pugx_multi_user:
+  users:
+    user_one:
+        entity: 
+          class: Cdlr\codeBundle\Entity\Admin
+#          factory: 
+        registration:
+          form: 
+            type: Cdlr\codeBundle\Form\Type\RegistrationAdminFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: CdlrcodeBundle:Registration:Admin.form.html.twig
+        profile:
+          form:
+            type: Cdlr\codeBundle\Form\Type\ProfileAdminFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default] 
+    user_two:
+        entity: 
+          class: Cdlr\codeBundle\Entity\Candidat
+        registration:
+          form: 
+            type: Cdlr\codeBundle\Form\Type\RegistrationCandidatFormType
+          template: CdlrcodeBundle:Registration:Candidat.form.html.twig
+        profile:
+          form: 
+            type: Cdlr\codeBundle\Form\Type\ProfileCandidatFormType
+    user_three:
+        entity: 
+          class: Cdlr\codeBundle\Entity\Gerant
+#          factory: 
+        registration:
+          form: 
+            type: Cdlr\codeBundle\Form\Type\RegistrationGerantFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: CdlrcodeBundle:Registration:Gerant.form.html.twig
+        profile:
+          form:
+            type: Cdlr\codeBundle\Form\Type\ProfileGerantFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default] 
+    user_four:
+        entity: 
+          class: Cdlr\codeBundle\Entity\Moniteur
+        registration:
+          form: 
+            type: Cdlr\codeBundle\Form\Type\RegistrationMoniteurFormType
+          template: CdlrcodeBundle:Registration:Moniteur.form.html.twig
+        profile:
+          form: 
+            type: Cdlr\codeBundle\Form\Type\ProfileMoniteurFormType

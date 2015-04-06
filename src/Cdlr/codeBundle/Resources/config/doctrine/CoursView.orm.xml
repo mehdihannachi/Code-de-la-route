@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Cdlr\codeBundle\Entity\CoursView" table="cours_view">
+    <indexes>
+      <index name="IDX_2D8B94617ECF78B0" columns="cours_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="note" type="float" column="note" precision="10" scale="0" nullable="false"/>
+    <many-to-one field="cours" target-entity="Cours">
+      <join-columns>
+        <join-column name="cours_id" referenced-column-name="cours_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

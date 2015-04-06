@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Cdlr\codeBundle\Entity\RendezVous" table="rendez_vous">
+    <indexes>
+      <index name="IDX_65E8AA0AE337622F" columns="id_moniteur"/>
+      <index name="IDX_65E8AA0A3A6E58E4" columns="id_candidat"/>
+    </indexes>
+    <id name="rdvId" type="integer" column="rdv_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="date" type="string" column="date" length="20" nullable="false"/>
+    <field name="time" type="string" column="Time" length="20" nullable="false"/>
+    <many-to-one field="idMoniteur" target-entity="Moniteur">
+      <join-columns>
+        <join-column name="id_moniteur" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCandidat" target-entity="Candidat">
+      <join-columns>
+        <join-column name="id_candidat" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

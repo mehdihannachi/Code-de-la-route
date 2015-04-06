@@ -1,0 +1,55 @@
+
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    &nbsp;
+    <div class="container">
+        <div class="sixteen columns">
+            <!-- Headline -->
+            <h3 class="margin-reset">Liste des administrateurs</h3><br />
+
+            <table class="standard-table">
+                <thead>
+                    <tr>
+                        <th>Nomauto</th>
+                        <th>Region</th>
+                        <th>Adresse</th>
+                        <th>Tel</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('autoecole_show', { 'id': entity.autoecoleId }) }}">{{ entity.nomAuto }}</a></td>
+                            <td>{{ entity.region }}</td>
+                            <td>{{ entity.adresse }}</td>
+                            <td>{{ entity.tel }}</td>
+                            <td>
+                                <ul >
+                                    <li>
+                                        <a href="{{ path('autoecole_show', { 'id': entity.autoecoleId }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('autoecole_edit', { 'id': entity.autoecoleId }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div align="center">
+                <ul>
+                    <li>
+                        <a href="{{ path('autoecole_new') }}" class="button color">Ajouter auto-école</a>&nbsp;
+                        <a href="{{ path('autoecole_recherche') }}" class="button color">Recherche par région</a>
+
+                        </a>
+                    </li>
+                </ul>
+            </div>       
+        </div>
+    </div>&nbsp;
+{% endblock %}

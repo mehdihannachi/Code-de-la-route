@@ -1,0 +1,30 @@
+gerant:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:Gerant:index" }
+
+gerant_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:Gerant:show" }
+
+gerant_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:Gerant:new" }
+
+gerant_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:Gerant:create" }
+    requirements: { _method: post }
+
+gerant_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:Gerant:edit" }
+
+gerant_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:Gerant:update" }
+    requirements: { _method: post|put }
+
+gerant_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:Gerant:delete" }
+    requirements: { _method: post|delete }

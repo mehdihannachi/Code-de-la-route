@@ -1,0 +1,42 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    <div id="content">
+        <!-- FlexSlider  -->
+
+        <section class="flexslider home">
+            <ul class="slides">
+                <li><img src="{{ asset('images/test-code-de-la-route-gratuit.jpg') }}" alt="" />
+                    <article class="slide-caption">
+                        <h3>Tests et cours gratuits</h3>
+                        <p>Accédez gratuitement à une diversité de cours et des tests de type examen. </p>
+                    </article>
+                </li>
+
+            </ul>
+        </section>
+    </div>
+    <!-- FlexSlider / End -->
+    <div class="page-content">
+        <div class="container">
+            <div class="eight column">
+                <div class="large-notice">
+                    <h2>Cours gratuits</h2>
+                    <p class="one-third column">This is example of style component for calling extra attention to featured content or information.</p>
+                    <br>
+                    <a href="#" class="button medium color">Accéder aux cours</a>
+                </div>
+
+            </div>
+            <div class="eight column">
+                <div class="large-notice">
+                    <h2>Tests gratuits</h2>
+                    <p class="one-third column">This is example of style component for calling extra attention to featured content or information.</p>
+                    <br>
+                    <a href="#" class="button medium color">Passer un test</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

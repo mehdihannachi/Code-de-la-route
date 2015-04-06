@@ -1,0 +1,71 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+
+{% block content %}
+    <h1>Admin edit</h1>
+
+
+    <form id="contactform" class="well" action="{{ path('admin_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <input type="hidden" name="_method" value="PUT" />
+    &nbsp;
+    <div class="container">
+        <div class="sixteen columns">
+            <!-- Headline -->
+            <h3 class="margin-reset">Liste des administrateurs</h3><br />
+
+            <table class="standard-table" border="1">
+                <tbody>
+    <tr>
+        <th>{{ form_label(edit_form.nom, 'Nom') }}</th>
+        <td>{{ form_errors(edit_form.nom) }}
+            {{ form_widget(edit_form.nom) }}</td>
+    </tr>
+    <tr>
+        <th>{{ form_label(edit_form.prenom, 'Prénom') }}</th>
+        <td>{{ form_errors(edit_form.prenom) }}
+            {{ form_widget(edit_form.prenom) }}</td>
+    </tr>
+    <tr>
+        <th>{{ form_label(edit_form.cin, 'CIN') }}</th>
+        <td>{{ form_errors(edit_form.cin) }}
+            {{ form_widget(edit_form.cin) }}</td>
+    </tr>
+    <tr>
+        <th>{{ form_label(edit_form.dateNaissance, 'Date de Naissance') }}</th>
+        <td>{{ form_errors(edit_form.dateNaissance) }}
+            {{ form_widget(edit_form.dateNaissance) }}</td>
+    </tr>
+    <tr>
+        <th>{{ form_label(edit_form.tel, 'Téléphone') }}</th>
+        <td>{{ form_errors(edit_form.tel) }}
+            {{ form_widget(edit_form.tel) }}</td>
+    </tr>
+    <tr>
+        <th>{{ form_label(edit_form.region, 'Région') }}</th>
+        <td>{{ form_errors(edit_form.region) }}
+            {{ form_widget(edit_form.region) }}</td>
+    </tr>
+    <tr>
+        <th>{{ form_label(edit_form.mail, 'Email') }}</th>
+        <td>{{ form_errors(edit_form.mail) }}
+            {{ form_widget(edit_form.mail) }}</td>
+    </tr>
+       </tbody>
+            </table>
+
+           <div display="hidden"> {{ form_widget(edit_form) }}</div>
+
+                    <button type="submit" class="button color">Modifier</button>
+
+                  
+        </div>
+    </div>&nbsp;
+</form>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+moniteur:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:Moniteur:index" }
+
+moniteur_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:Moniteur:show" }
+
+moniteur_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:Moniteur:new" }
+
+moniteur_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:Moniteur:create" }
+    requirements: { _method: post }
+
+moniteur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:Moniteur:edit" }
+
+moniteur_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:Moniteur:update" }
+    requirements: { _method: post|put }
+
+moniteur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:Moniteur:delete" }
+    requirements: { _method: post|delete }

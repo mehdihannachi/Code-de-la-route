@@ -1,0 +1,30 @@
+coursview:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:CoursView:index" }
+
+coursview_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:CoursView:show" }
+
+coursview_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:CoursView:new" }
+
+coursview_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:CoursView:create" }
+    requirements: { _method: post }
+
+coursview_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:CoursView:edit" }
+
+coursview_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:CoursView:update" }
+    requirements: { _method: post|put }
+
+coursview_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:CoursView:delete" }
+    requirements: { _method: post|delete }

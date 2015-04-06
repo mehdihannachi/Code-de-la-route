@@ -1,0 +1,4 @@
+services:
+#    cdlrcode.example:
+#        class: Cdlr\codeBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

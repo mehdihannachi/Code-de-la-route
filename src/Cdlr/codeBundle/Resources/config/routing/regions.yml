@@ -1,0 +1,30 @@
+regions:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:Regions:index" }
+
+regions_show:
+    path:     /{id}/show
+    defaults: { _controller: "CdlrcodeBundle:Regions:show" }
+
+regions_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:Regions:new" }
+
+regions_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:Regions:create" }
+    requirements: { _method: post }
+
+regions_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:Regions:edit" }
+
+regions_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:Regions:update" }
+    requirements: { _method: post|put }
+
+regions_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:Regions:delete" }
+    requirements: { _method: post|delete }

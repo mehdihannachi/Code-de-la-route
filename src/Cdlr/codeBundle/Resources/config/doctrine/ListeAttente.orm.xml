@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Cdlr\codeBundle\Entity\ListeAttente" table="liste_attente">
+    <indexes>
+      <index name="IDX_A54CC1983A6E58E4" columns="id_candidat"/>
+      <index name="IDX_A54CC198ED9A39F8" columns="id_auto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idCandidat" target-entity="Candidat">
+      <join-columns>
+        <join-column name="id_candidat" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAuto" target-entity="AutoEcole">
+      <join-columns>
+        <join-column name="id_auto" referenced-column-name="autoecole_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

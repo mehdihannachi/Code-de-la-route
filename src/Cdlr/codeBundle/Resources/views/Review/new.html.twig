@@ -1,0 +1,17 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+        <div align="center">
+
+    <h1>Review creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('review') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+        </div>
+{% endblock %}
