@@ -1,42 +1,31 @@
 {%extends "CdlrcodeBundle::layout.html.twig" %}
 {% block content %}
     <div align="center">
-    <h1>Cours list</h1>
+    <h1>La liste des cours</h1>
 
-    <table class="records_list" border="1">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Categorie</th>
-                <th>Url</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+  
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('cours_show', { 'id': entity.coursId }) }}">{{ entity.nom }}</a></td>
-                <td>{{ entity.categorie }}</td>
-                <td>{{ entity.url }}</td>
-                <td>
+            <h1><a href="{{ path('cours_show', { 'id': entity.coursId }) }}">{{ entity.nom }}</h1>
+               {{ entity.categorie }}
+               {{ entity.path }}
+              
                 <ul>
                     <li>
-                        <a href="{{ path('cours_show', { 'id': entity.coursId }) }}">show</a>
+                        <a href="{{ path('cours_show', { 'id': entity.coursId }) }}">Afficher</a>
                     </li>
                     <li>
-                        <a href="{{ path('cours_edit', { 'id': entity.coursId }) }}">edit</a>
+                        <a href="{{ path('cours_edit', { 'id': entity.coursId }) }}">Modifier</a>
                     </li>
                 </ul>
-                </td>
-            </tr>
+     
+         
         {% endfor %}
-        </tbody>
-    </table>
+     
 
         <ul>
         <li>
-            <a href="{{ path('cours_new') }}">
-                Create a new entry
+            <a href="{{ path('cours_create') }}">
+                Ajouter un cours
             </a>
         </li>
     </ul>
