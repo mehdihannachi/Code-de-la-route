@@ -37,72 +37,60 @@ class __TwigTemplate_8c9bae64b6c570b21b9019f1f31e5230b6a21f270f6db3680f1769cdee9
     {
         // line 3
         echo "    <div align=\"center\">
-    <h1>Cours list</h1>
+    <h1>La liste des cours</h1>
 
-    <table class=\"records_list\" border=\"1\">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Categorie</th>
-                <th>Url</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+  
         ";
-        // line 16
+        // line 7
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 17
-            echo "            <tr>
-                <td><a href=\"";
-            // line 18
+            // line 8
+            echo "            <h1><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cours_show", array("id" => $this->getAttribute($context["entity"], "coursId", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "nom", array()), "html", null, true);
-            echo "</a></td>
-                <td>";
-            // line 19
+            echo "</h1>
+               ";
+            // line 9
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "categorie", array()), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 20
-            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "url", array()), "html", null, true);
-            echo "</td>
-                <td>
+            echo "
+               ";
+            // line 10
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "path", array()), "html", null, true);
+            echo "
+              
                 <ul>
                     <li>
                         <a href=\"";
-            // line 24
+            // line 14
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cours_show", array("id" => $this->getAttribute($context["entity"], "coursId", array()))), "html", null, true);
-            echo "\">show</a>
+            echo "\">Afficher</a>
                     </li>
                     <li>
                         <a href=\"";
-            // line 27
+            // line 17
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cours_edit", array("id" => $this->getAttribute($context["entity"], "coursId", array()))), "html", null, true);
-            echo "\">edit</a>
+            echo "\">Modifier</a>
                     </li>
                 </ul>
-                </td>
-            </tr>
+     
+         
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
-        echo "        </tbody>
-    </table>
+        // line 23
+        echo "     
 
         <ul>
         <li>
             <a href=\"";
-        // line 38
-        echo $this->env->getExtension('routing')->getPath("cours_new");
+        // line 27
+        echo $this->env->getExtension('routing')->getPath("cours_create");
         echo "\">
-                Create a new entry
+                Ajouter un cours
             </a>
         </li>
     </ul>
@@ -122,6 +110,6 @@ class __TwigTemplate_8c9bae64b6c570b21b9019f1f31e5230b6a21f270f6db3680f1769cdee9
 
     public function getDebugInfo()
     {
-        return array (  103 => 38,  96 => 33,  84 => 27,  78 => 24,  71 => 20,  67 => 19,  61 => 18,  58 => 17,  54 => 16,  39 => 3,  36 => 2,  11 => 1,);
+        return array (  91 => 27,  85 => 23,  73 => 17,  67 => 14,  60 => 10,  56 => 9,  49 => 8,  45 => 7,  39 => 3,  36 => 2,  11 => 1,);
     }
 }

@@ -37,50 +37,31 @@ class __TwigTemplate_86ce9da537d44ea4599edeb9749d3fb6b651e961ff449dec76cffd89179
     {
         // line 3
         echo "    <div align=\"center\">
-    <h1>CoursVideo</h1>
+        <h1>CoursVideo</h1>
 
-    <table class=\"record_properties\" border=\"1\">
-        <tbody>
-            <tr>
-                <th>Nom</th>
-                <td>";
-        // line 10
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "nom", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>";
-        // line 14
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "url", array()), "html", null, true);
-        echo "</td>
-            </tr>
-          
-        </tbody>
-    </table>
 
-        <ul class=\"record_actions\">
-    <li>
-        <a href=\"";
-        // line 22
+
+        <video src=\"";
+        // line 8
+        echo twig_escape_filter($this->env, ($this->env->getExtension('assets')->getAssetUrl("uploads/videos/") . $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "path", array())), "html", null, true);
+        echo "\" controls>     </video>     
+
+
+            <ul class=\"record_actions\">
+                <li>
+                    <a href=\"";
+        // line 13
         echo $this->env->getExtension('routing')->getPath("coursvideo");
         echo "\">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href=\"";
-        // line 27
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("coursvideo_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id", array()))), "html", null, true);
-        echo "\">
-            Edit
-        </a>
-    </li>
-    <li>";
-        // line 31
+                        Back to the list
+                    </a>
+                </li>
+              
+                <li>";
+        // line 18
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form');
         echo "</li>
-</ul>
+            </ul>
     </div>
 ";
     }
@@ -97,6 +78,6 @@ class __TwigTemplate_86ce9da537d44ea4599edeb9749d3fb6b651e961ff449dec76cffd89179
 
     public function getDebugInfo()
     {
-        return array (  81 => 31,  74 => 27,  66 => 22,  55 => 14,  48 => 10,  39 => 3,  36 => 2,  11 => 1,);
+        return array (  62 => 18,  54 => 13,  46 => 8,  39 => 3,  36 => 2,  11 => 1,);
     }
 }
