@@ -25,7 +25,8 @@
         "carlescliment/calendar-bundle": "dev-master",
         "happyr/google-api-bundle": "~2.1",
         "ob/highcharts-bundle":"dev-master",
-        "nomaya/social-bundle": "dev-master"
+        "nomaya/social-bundle": "dev-master",
+        "debril/rss-atom-bundle": "1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
