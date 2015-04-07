@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Cdlr\codeBundle\Entity\AutoEcole;
+use Cdlr\codeBundle\Entity\Regions;
 use Cdlr\codeBundle\Form\AutoEcoleType;
 
 use Cdlr\codeBundle\Form\rechercheAutoEcoleForm;
@@ -26,9 +27,17 @@ class AutoEcoleController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('CdlrcodeBundle:AutoEcole')->findAll();
+       // $allregs=$em->getRepository('CdlrcodeBundle:Regions')->findAll();
+        $regions=array();
+        foreach ($entities as $ent)
+            {   
+                $a=$em->getRepository('CdlrcodeBundle:Regions')->find($ent->getRegion());
+                $regions[$ent->getAutoecoleId()]=$a->getNom();
+            }
+        
 
         return $this->render('CdlrcodeBundle:AutoEcole:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $entities, 'reg'=>$regions
         ));
     }
     /**
@@ -46,7 +55,7 @@ class AutoEcoleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('autoecole_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('autoecole', array('id' => $entity->getId())));
         }
 
         return $this->render('CdlrcodeBundle:AutoEcole:new.html.twig', array(
@@ -102,13 +111,30 @@ class AutoEcoleController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find AutoEcole entity.');
         }
+        
+        $a=$em->getRepository('CdlrcodeBundle:Regions')->find($entity->getRegion());
+        $region=$a->getNom();
+                
+            
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CdlrcodeBundle:AutoEcole:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'reg'=>$region
         ));
+    }
+    
+    public function showMapAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+//        $even = new AutoEcole();
+        $even = $em->getRepository('CdlrcodeBundle:AutoEcole')->find($id);
+//        $region= new Regions();
+        $region= $em->getRepository('CdlrcodeBundle:Regions')->find($even->getRegion());
+        return $this->render('CdlrcodeBundle:Default:index.html.twig', array('long'=>$region->getLongitude(),'lat'=>$region->getLaltitude()));
     }
 
     /**
@@ -145,7 +171,7 @@ class AutoEcoleController extends Controller
     private function createEditForm(AutoEcole $entity)
     {
         $form = $this->createForm(new AutoEcoleType(), $entity, array(
-            'action' => $this->generateUrl('autoecole_update', array('id' => $entity->getAutoecoleId())),
+            'action' => $this->generateUrl('autoecole_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -223,20 +249,4 @@ class AutoEcoleController extends Controller
             ->getForm()
         ;
     }
-    /** methode recherche autoecole  par region **/
-    public function rechercheRegionAction(){
-       $AutoEcole=new AutoEcole();
-       $em=$this->getDoctrine()->getManager();
-       $au=$em->getRepository("CdlrcodeBundle:AutoEcole")->findAll();
-       $Form=$this->createForm(new rechercheAutoEcoleForm(),$AutoEcole);
-       $request= $this->get('request_stack')->getCurrentRequest();
-       $Form->handleRequest($request);
-       if($Form->isValid()){
-       
-       $au=$em->
-               getRepository("CdlrcodeBundle:AutoEcole")->findBy(array('region'=>$AutoEcole->getRegion()));
-       }
-       return $this->render("CdlrcodeBundle:AutoEcole:recherche.html.twig", array('Form'=>$Form->createView(),'autoecoles'=>$au));
-       
-   }
 }

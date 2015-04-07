@@ -6,53 +6,80 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Question
+ *
+ * @ORM\Table(name="question", indexes={@ORM\Index(name="IDX_B6F7494E1E5D0459", columns={"test_id"})})
+ * @ORM\Entity
  */
 class Question
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="question_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $questionId;
+
+    /**
      * @var string
+     *
+     * @ORM\Column(name="contenu", type="text", length=65535, nullable=false)
      */
     private $contenu;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="reponse1", type="string", length=30, nullable=false)
      */
     private $reponse1;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="reponse2", type="string", length=30, nullable=false)
      */
     private $reponse2;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="reponse3", type="string", length=30, nullable=true)
      */
     private $reponse3;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="bonne_reponse", type="string", length=30, nullable=false)
      */
     private $bonneReponse;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="image", type="text", length=65535, nullable=false)
      */
     private $image;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=50, nullable=false)
      */
     private $type;
 
     /**
-     * @var integer
-     */
-    private $questionId;
-
-    /**
-     * @var \Cdlr\codeBundle\Entity\Test
+     * @var \Test
+     *
+     * @ORM\ManyToOne(targetEntity="Test")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="test_id", referencedColumnName="test_id")
+     * })
      */
     private $test;
+
 
 
     /**

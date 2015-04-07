@@ -16,9 +16,9 @@ class AutoEcoleType extends AbstractType
     {
         $builder
             ->add('nomAuto')
-            ->add('region')
             ->add('adresse')
             ->add('tel')
+            ->add('Region','entity',array('class'=>'CdlrcodeBundle:Regions','property'=>'nom'))
         ;
     }
     

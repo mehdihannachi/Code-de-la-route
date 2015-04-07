@@ -1,0 +1,7 @@
+
+{% extends "CdlrcodeBundle::base.html.twig" %}
+{% block container %}
+    <input id="lat" type="hidden" value="{{lat}}" />
+    <input id="long" type="hidden" value="{{long}}" />
+    <div id="map-canvas" style="widhth: 400px; height:400px"></div>
+{% endblock %}

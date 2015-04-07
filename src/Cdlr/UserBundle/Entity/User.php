@@ -18,7 +18,7 @@ class User extends BaseUser {
       4
      */
     protected $id;
-    
+
     /**
      * @var string
      */
@@ -48,12 +48,17 @@ class User extends BaseUser {
      * @var string
      */
     private $region;
-    
+
     /**
      * @var integer
      */
     private $type;
-    
+
+    /**
+     * @var \Cdlr\codeBundle\Entity\AutoEcole
+     */
+    private $autoecole;
+
     /**
      * @var string
      *
@@ -75,13 +80,11 @@ class User extends BaseUser {
      */
     protected $facebookId;
 
-    public function serialize()
-    {
+    public function serialize() {
         return serialize(array($this->facebookId, parent::serialize()));
     }
 
-    public function unserialize($data)
-    {
+    public function unserialize($data) {
         list($this->facebookId, $parentData) = unserialize($data);
         parent::unserialize($parentData);
     }
@@ -89,32 +92,28 @@ class User extends BaseUser {
     /**
      * @return string
      */
-    public function getFirstname()
-    {
+    public function getFirstname() {
         return $this->firstname;
     }
 
     /**
      * @param string $firstname
      */
-    public function setFirstname($firstname)
-    {
+    public function setFirstname($firstname) {
         $this->firstname = $firstname;
     }
 
     /**
      * @return string
      */
-    public function getLastname()
-    {
+    public function getLastname() {
         return $this->lastname;
     }
 
     /**
      * @param string $lastname
      */
-    public function setLastname($lastname)
-    {
+    public function setLastname($lastname) {
         $this->lastname = $lastname;
     }
 
@@ -122,8 +121,7 @@ class User extends BaseUser {
      * Get the full name of the user (first + last name)
      * @return string
      */
-    public function getFullName()
-    {
+    public function getFullName() {
         return $this->getFirstname() . ' ' . $this->getLastname();
     }
 
@@ -131,8 +129,7 @@ class User extends BaseUser {
      * @param string $facebookId
      * @return void
      */
-    public function setFacebookId($facebookId)
-    {
+    public function setFacebookId($facebookId) {
         $this->facebookId = $facebookId;
         $this->setUsername($facebookId);
     }
@@ -140,16 +137,14 @@ class User extends BaseUser {
     /**
      * @return string
      */
-    public function getFacebookId()
-    {
+    public function getFacebookId() {
         return $this->facebookId;
     }
 
     /**
      * @param Array
      */
-    public function setFBData($fbdata)
-    {
+    public function setFBData($fbdata) {
         if (isset($fbdata['id'])) {
             $this->setFacebookId($fbdata['id']);
             $this->addRole('ROLE_FACEBOOK');
@@ -164,15 +159,14 @@ class User extends BaseUser {
             $this->setEmail($fbdata['email']);
         }
     }
-    
+
     /**
      * Set nom
      *
      * @param string $nom
      * @return Admin
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -183,8 +177,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -194,8 +187,7 @@ class User extends BaseUser {
      * @param string $prenom
      * @return Admin
      */
-    public function setPrenom($prenom)
-    {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
 
         return $this;
@@ -206,8 +198,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getPrenom()
-    {
+    public function getPrenom() {
         return $this->prenom;
     }
 
@@ -217,8 +208,7 @@ class User extends BaseUser {
      * @param integer $cin
      * @return Admin
      */
-    public function setCin($cin)
-    {
+    public function setCin($cin) {
         $this->cin = $cin;
 
         return $this;
@@ -229,8 +219,7 @@ class User extends BaseUser {
      *
      * @return integer 
      */
-    public function getCin()
-    {
+    public function getCin() {
         return $this->cin;
     }
 
@@ -240,8 +229,7 @@ class User extends BaseUser {
      * @param \DateTime $dateNaissance
      * @return Admin
      */
-    public function setDateNaissance($dateNaissance)
-    {
+    public function setDateNaissance($dateNaissance) {
         $this->dateNaissance = $dateNaissance;
 
         return $this;
@@ -252,8 +240,7 @@ class User extends BaseUser {
      *
      * @return \DateTime 
      */
-    public function getDateNaissance()
-    {
+    public function getDateNaissance() {
         return $this->dateNaissance;
     }
 
@@ -263,8 +250,7 @@ class User extends BaseUser {
      * @param integer $tel
      * @return Admin
      */
-    public function setTel($tel)
-    {
+    public function setTel($tel) {
         $this->tel = $tel;
 
         return $this;
@@ -275,8 +261,7 @@ class User extends BaseUser {
      *
      * @return integer 
      */
-    public function getTel()
-    {
+    public function getTel() {
         return $this->tel;
     }
 
@@ -286,8 +271,7 @@ class User extends BaseUser {
      * @param string $region
      * @return Admin
      */
-    public function setRegion($region)
-    {
+    public function setRegion($region) {
         $this->region = $region;
 
         return $this;
@@ -298,8 +282,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getRegion()
-    {
+    public function getRegion() {
         return $this->region;
     }
 
@@ -308,8 +291,7 @@ class User extends BaseUser {
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -317,16 +299,14 @@ class User extends BaseUser {
         parent::__construct();
 // your own logic
     }
-    
-    public function setEmail($email)
-{
-    $email = is_null($email) ? '' : $email;
-    parent::setEmail($email);
-    $this->setUsername($email);
-}
 
-public function setType ($type)
-    {
+    public function setEmail($email) {
+        $email = is_null($email) ? '' : $email;
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -337,10 +317,19 @@ public function setType ($type)
      *
      * @return integer 
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
+
+    public function getAutoecole() {
+        return $this->autoecole;
+    }
+
+    public function setAutoecole(\Cdlr\codeBundle\Entity\AutoEcole $autoecole) {
+        $this->autoecole = $autoecole;
+    }
+
+
 }
 
 ?>

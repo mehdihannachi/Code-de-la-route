@@ -11,6 +11,12 @@
         <service id="cdlr_user.registration.form.type" class="Cdlr\UserBundle\Form\Type\RegistrationFormType">
             <tag name="form.type" alias="cdlr_user_registration" />
         </service>
+        <service id="cdlr_admin_user.registration.form.type" class="Cdlr\UserBundle\Form\Type\AdminCreationFormType">
+            <tag name="form.type.admin" alias="cdlr_admin_registration" />
+        </service>
+        <service id="cdlr_gerant_user.registration.form.type" class="Cdlr\UserBundle\Form\Type\GerantMoniteurCreationFormType">
+            <tag name="form.type.gerant" alias="cdlr_gerant_user_registration" />
+        </service>
 
     </services>
 

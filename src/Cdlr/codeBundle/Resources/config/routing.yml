@@ -75,3 +75,6 @@ cdlrcode_accueil:
     path:     /home
     defaults: { _controller: CdlrcodeBundle:Ecole:accueil }
     
+cdlrcode_question:
+    resource: "@CdlrcodeBundle/Resources/config/routing/question.yml"
+    prefix:   /question

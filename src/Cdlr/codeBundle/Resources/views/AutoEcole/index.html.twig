@@ -1,20 +1,18 @@
-
 {%extends "CdlrcodeBundle::layout.html.twig" %}
-
 {% block content %}
     &nbsp;
     <div class="container">
         <div class="sixteen columns">
             <!-- Headline -->
-            <h3 class="margin-reset">Liste des administrateurs</h3><br />
+            <h3 class="margin-reset"> Nos Auto-écoles </h3><br />
 
             <table class="standard-table">
                 <thead>
                     <tr>
-                        <th>Nomauto</th>
-                        <th>Region</th>
+                        <th>Nom de l'auto-école</th>
                         <th>Adresse</th>
-                        <th>Tel</th>
+                        <th>Telephone</th>
+                        <th>Region</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -22,16 +20,19 @@
                     {% for entity in entities %}
                         <tr>
                             <td><a href="{{ path('autoecole_show', { 'id': entity.autoecoleId }) }}">{{ entity.nomAuto }}</a></td>
-                            <td>{{ entity.region }}</td>
                             <td>{{ entity.adresse }}</td>
                             <td>{{ entity.tel }}</td>
+                            <td>{{ reg[entity.autoecoleId] }}</td>
                             <td>
-                                <ul >
+                                <ul>
                                     <li>
-                                        <a href="{{ path('autoecole_show', { 'id': entity.autoecoleId }) }}">show</a>
+                                        <a href="{{ path('autoecole_show', { 'id': entity.autoecoleId }) }}">Afficher détails</a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('autoecole_edit', { 'id': entity.autoecoleId }) }}">edit</a>
+                                        <a href="{{ path('autoecole_edit', { 'id': entity.autoecoleId }) }}">Modifier</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('autoecole_showmap', { 'id': entity.autoecoleId }) }}">Afficher sur la carte</a>
                                     </li>
                                 </ul>
                             </td>
@@ -39,17 +40,14 @@
                     {% endfor %}
                 </tbody>
             </table>
-
-            <div align="center">
-                <ul>
-                    <li>
-                        <a href="{{ path('autoecole_new') }}" class="button color">Ajouter auto-école</a>&nbsp;
-                        <a href="{{ path('autoecole_recherche') }}" class="button color">Recherche par région</a>
-
-                        </a>
-                    </li>
-                </ul>
-            </div>       
-        </div>
+                
+                <div style="margin-bottom: 50px">
+                    <a class="button medium color" href="{{ path('autoecole_new') }}">
+                        Ajouter une auto-école
+                    </a>
+                        <a class="button medium color" href="{{ path('cdlrcode_accueil') }}">
+                        Quitter
+                        </a> </div>
+          </div>
     </div>&nbsp;
 {% endblock %}

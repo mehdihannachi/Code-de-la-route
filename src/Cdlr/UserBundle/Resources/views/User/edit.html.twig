@@ -1,16 +1,81 @@
-{% extends '::base.html.twig' %}
+{%extends "CdlrcodeBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>User edit</h1>
+{% block content %}
+    <h1>Modifier Utilisateur</h1>
 
-    {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('user') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <form id="contactform" class="well" action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        &nbsp;
+        <div class="container">
+            <div class="sixteen columns">
+                <!-- Headline -->
+                <h3 class="margin-reset">Liste des administrateurs</h3><br />
+
+                <table class="standard-table" border="1">
+                    <tbody>
+                        <tr>
+                            <th>{{ form_label(edit_form.nom, 'Nom') }}</th>
+                            <td>{{ form_errors(edit_form.nom) }}
+                                {{ form_widget(edit_form.nom) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.prenom, 'Prénom') }}</th>
+                            <td>{{ form_errors(edit_form.prenom) }}
+                                {{ form_widget(edit_form.prenom) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.cin, 'CIN') }}</th>
+                            <td>{{ form_errors(edit_form.cin) }}
+                                {{ form_widget(edit_form.cin) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.dateNaissance, 'Date de Naissance') }}</th>
+                            <td>{{ form_errors(edit_form.dateNaissance) }}
+                                {{ form_widget(edit_form.dateNaissance) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.tel, 'Téléphone') }}</th>
+                            <td>{{ form_errors(edit_form.tel) }}
+                                {{ form_widget(edit_form.tel) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.region, 'Région') }}</th>
+                            <td>{{ form_errors(edit_form.region) }}
+                                {{ form_widget(edit_form.region) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.email, 'Email') }}</th>
+                            <td>{{ form_errors(edit_form.email) }}
+                                {{ form_widget(edit_form.email) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form_label(edit_form.autoecole, 'Auto-école') }}</th>
+                            <td>{{ form_errors(edit_form.autoecole) }}
+                                {{ form_widget(edit_form.autoecole) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style = "display:none"> {{ form_widget(edit_form.type) }}</div>
+                <div style = "display:none"> {{ form_label(edit_form.type) }}</div>
+                {{ form_widget(edit_form) }}
+
+            </div>
+        </div>&nbsp;
+    </form>
+    <ul class="record_actions">
+        <li>
+            {% if entity.type==1 %}
+                <a href="{{ path('liste_admin') }}">Retour à la liste des administrateurs</a>
+            {% elseif entity.type==2 %}
+                <a href="{{ path('liste_candidat') }}">Retour à la liste des candidats</a>
+            {% elseif entity.type==3 %}
+                <a href="{{ path('liste_gerant') }}">Retour à la liste des gérants</a>
+            {% elseif entity.type==4 %}
+                <a href="{{ path('liste_moniteur') }}">Retour à la liste des moniteurs</a>
+            {% endif %}
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

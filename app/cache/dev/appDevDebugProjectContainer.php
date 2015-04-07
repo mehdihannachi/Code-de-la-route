@@ -55,6 +55,8 @@ class appDevDebugProjectContainer extends Container
             'blade_tester_calendar.forms.event' => 'getBladeTesterCalendar_Forms_EventService',
             'cache_clearer' => 'getCacheClearerService',
             'cache_warmer' => 'getCacheWarmerService',
+            'cdlr_admin_user.registration.form.type' => 'getCdlrAdminUser_Registration_Form_TypeService',
+            'cdlr_gerant_user.registration.form.type' => 'getCdlrGerantUser_Registration_Form_TypeService',
             'cdlr_user.registration.form.type' => 'getCdlrUser_Registration_Form_TypeService',
             'controller_name_converter' => 'getControllerNameConverterService',
             'data_collector.dump' => 'getDataCollector_DumpService',
@@ -514,6 +516,32 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'cdlr_admin_user.registration.form.type' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Cdlr\UserBundle\Form\Type\AdminCreationFormType A Cdlr\UserBundle\Form\Type\AdminCreationFormType instance.
+     */
+    protected function getCdlrAdminUser_Registration_Form_TypeService()
+    {
+        return $this->services['cdlr_admin_user.registration.form.type'] = new \Cdlr\UserBundle\Form\Type\AdminCreationFormType();
+    }
+
+    /**
+     * Gets the 'cdlr_gerant_user.registration.form.type' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Cdlr\UserBundle\Form\Type\gerantmoniteurCreationFormType A Cdlr\UserBundle\Form\Type\gerantmoniteurCreationFormType instance.
+     */
+    protected function getCdlrGerantUser_Registration_Form_TypeService()
+    {
+        return $this->services['cdlr_gerant_user.registration.form.type'] = new \Cdlr\UserBundle\Form\Type\gerantmoniteurCreationFormType();
+    }
+
+    /**
      * Gets the 'cdlr_user.registration.form.type' service.
      *
      * This service is shared.
@@ -783,21 +811,21 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('annotation_reader');
 
-        $b = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\src\\Cdlr\\codeBundle\\Resources\\config\\doctrine') => 'Cdlr\\codeBundle\\Entity', ($this->targetDirs[3].'\\src\\Cdlr\\UserBundle\\Resources\\config\\doctrine') => 'Cdlr\\UserBundle\\Entity', ($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle\\Resources\\config\\doctrine') => 'BladeTester\\CalendarBundle\\Entity'));
+        $b = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle\\Resources\\config\\doctrine') => 'BladeTester\\CalendarBundle\\Entity', ($this->targetDirs[3].'\\src\\Cdlr\\codeBundle\\Resources\\config\\doctrine') => 'Cdlr\\codeBundle\\Entity', ($this->targetDirs[3].'\\src\\Cdlr\\UserBundle\\Resources\\config\\doctrine') => 'Cdlr\\UserBundle\\Entity'));
         $b->setGlobalBasename('mapping');
 
         $c = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\Cdlr\\CalendarBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\Cdlr\\mailBundle\\Entity')));
 
         $d = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
+        $d->addDriver($b, 'BladeTester\\CalendarBundle\\Entity');
         $d->addDriver($b, 'Cdlr\\codeBundle\\Entity');
         $d->addDriver($b, 'Cdlr\\UserBundle\\Entity');
-        $d->addDriver($b, 'BladeTester\\CalendarBundle\\Entity');
         $d->addDriver($c, 'Cdlr\\CalendarBundle\\Entity');
         $d->addDriver($c, 'Cdlr\\mailBundle\\Entity');
         $d->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array(($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle\\Resources\\config\\doctrine\\model') => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
         $e = new \Doctrine\ORM\Configuration();
-        $e->setEntityNamespaces(array('CdlrcodeBundle' => 'Cdlr\\codeBundle\\Entity', 'CdlrUserBundle' => 'Cdlr\\UserBundle\\Entity', 'CdlrCalendarBundle' => 'Cdlr\\CalendarBundle\\Entity', 'CdlrmailBundle' => 'Cdlr\\mailBundle\\Entity', 'BladeTesterCalendarBundle' => 'BladeTester\\CalendarBundle\\Entity'));
+        $e->setEntityNamespaces(array('BladeTesterCalendarBundle' => 'BladeTester\\CalendarBundle\\Entity', 'CdlrcodeBundle' => 'Cdlr\\codeBundle\\Entity', 'CdlrUserBundle' => 'Cdlr\\UserBundle\\Entity', 'CdlrCalendarBundle' => 'Cdlr\\CalendarBundle\\Entity', 'CdlrmailBundle' => 'Cdlr\\mailBundle\\Entity'));
         $e->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
         $e->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
         $e->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
@@ -969,7 +997,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getForm_RegistryService()
     {
-        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('form' => 'form.type.form', 'birthday' => 'form.type.birthday', 'checkbox' => 'form.type.checkbox', 'choice' => 'form.type.choice', 'collection' => 'form.type.collection', 'country' => 'form.type.country', 'date' => 'form.type.date', 'datetime' => 'form.type.datetime', 'email' => 'form.type.email', 'file' => 'form.type.file', 'hidden' => 'form.type.hidden', 'integer' => 'form.type.integer', 'language' => 'form.type.language', 'locale' => 'form.type.locale', 'money' => 'form.type.money', 'number' => 'form.type.number', 'password' => 'form.type.password', 'percent' => 'form.type.percent', 'radio' => 'form.type.radio', 'repeated' => 'form.type.repeated', 'search' => 'form.type.search', 'textarea' => 'form.type.textarea', 'text' => 'form.type.text', 'time' => 'form.type.time', 'timezone' => 'form.type.timezone', 'url' => 'form.type.url', 'button' => 'form.type.button', 'submit' => 'form.type.submit', 'reset' => 'form.type.reset', 'currency' => 'form.type.currency', 'entity' => 'form.type.entity', 'fos_user_username' => 'fos_user.username_form_type', 'fos_user_profile' => 'fos_user.profile.form.type', 'fos_user_registration' => 'fos_user.registration.form.type', 'fos_user_change_password' => 'fos_user.change_password.form.type', 'fos_user_resetting' => 'fos_user.resetting.form.type', 'cdlr_user_registration' => 'cdlr_user.registration.form.type', 'calendar_event_category_type' => 'form.type.bladetester_calendar_category'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector'), 'repeated' => array(0 => 'form.type_extension.repeated.validator'), 'submit' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
+        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('form' => 'form.type.form', 'birthday' => 'form.type.birthday', 'checkbox' => 'form.type.checkbox', 'choice' => 'form.type.choice', 'collection' => 'form.type.collection', 'country' => 'form.type.country', 'date' => 'form.type.date', 'datetime' => 'form.type.datetime', 'email' => 'form.type.email', 'file' => 'form.type.file', 'hidden' => 'form.type.hidden', 'integer' => 'form.type.integer', 'language' => 'form.type.language', 'locale' => 'form.type.locale', 'money' => 'form.type.money', 'number' => 'form.type.number', 'password' => 'form.type.password', 'percent' => 'form.type.percent', 'radio' => 'form.type.radio', 'repeated' => 'form.type.repeated', 'search' => 'form.type.search', 'textarea' => 'form.type.textarea', 'text' => 'form.type.text', 'time' => 'form.type.time', 'timezone' => 'form.type.timezone', 'url' => 'form.type.url', 'button' => 'form.type.button', 'submit' => 'form.type.submit', 'reset' => 'form.type.reset', 'currency' => 'form.type.currency', 'entity' => 'form.type.entity', 'fos_user_username' => 'fos_user.username_form_type', 'fos_user_profile' => 'fos_user.profile.form.type', 'fos_user_registration' => 'fos_user.registration.form.type', 'fos_user_change_password' => 'fos_user.change_password.form.type', 'fos_user_resetting' => 'fos_user.resetting.form.type', 'calendar_event_category_type' => 'form.type.bladetester_calendar_category', 'cdlr_user_registration' => 'cdlr_user.registration.form.type'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector'), 'repeated' => array(0 => 'form.type_extension.repeated.validator'), 'submit' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
     }
 
     /**
@@ -1593,7 +1621,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_MailerService()
     {
-        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer($this->get('swiftmailer.mailer.default'), $this->get('router'), $this->get('templating'), array('confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig', 'resetting.template' => 'FOSUserBundle:Resetting:email.txt.twig', 'from_email' => array('confirmation' => array('noreply@Cdlr.com' => 'noreply'), 'resetting' => array('webmaster@example.com' => 'webmaster'))));
+        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer($this->get('swiftmailer.mailer.default'), $this->get('router'), $this->get('templating'), array('confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig', 'resetting.template' => 'FOSUserBundle:Resetting:email.txt.twig', 'from_email' => array('confirmation' => array('page.jim2@gmail.com' => 'noreply'), 'resetting' => array('webmaster@example.com' => 'webmaster'))));
     }
 
     /**
@@ -2519,7 +2547,7 @@ class appDevDebugProjectContainer extends Container
         $t = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $r, array(), $a);
         $t->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $s, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $r, 'main', new \Symfony\Component\Security\Http\Authentication\CustomAuthenticationSuccessHandler($this->get('redirect.after.login'), array('login_path' => 'fos_user_security_login', 'default_target_path' => '/home', 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false), 'main'), $t, array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5522ea6638498', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $q, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $r, 'fos_user_security_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $s, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $r, 'main', new \Symfony\Component\Security\Http\Authentication\CustomAuthenticationSuccessHandler($this->get('redirect.after.login'), array('login_path' => 'fos_user_security_login', 'default_target_path' => '/home', 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false), 'main'), $t, array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '55246b2b8bdf8', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $q, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $r, 'fos_user_security_login', false), NULL, NULL, $a));
     }
 
     /**
@@ -3777,10 +3805,6 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.uk.yml'), 'uk', 'validators');
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.vi.yml'), 'vi', 'validators');
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\validators.zh_CN.yml'), 'zh_CN', 'validators');
-        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\codeBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
-        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\UserBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
-        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\CalendarBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
-        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\mailBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/translations\\messages.ca.yml'), 'ca', 'messages');
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/translations\\messages.en.yml'), 'en', 'messages');
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/translations\\messages.es.yml'), 'es', 'messages');
@@ -3791,6 +3815,10 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/translations\\validators.es.yml'), 'es', 'validators');
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/translations\\validators.eu.yml'), 'eu', 'validators');
         $instance->addResource('yml', ($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/translations\\validators.fr.yml'), 'fr', 'validators');
+        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\codeBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
+        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\UserBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
+        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\CalendarBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
+        $instance->addResource('xlf', ($this->targetDirs[3].'\\src\\Cdlr\\mailBundle/Resources/translations\\messages.fr.xlf'), 'fr', 'messages');
 
         return $instance;
     }
@@ -3900,11 +3928,11 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\swiftmailer-bundle/Resources/views'), 'Swiftmailer');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle/Resources/views'), 'FOSUser');
+        $instance->addPath(($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/views'), 'BladeTesterCalendar');
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\codeBundle/Resources/views'), 'Cdlrcode');
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\UserBundle/Resources/views'), 'CdlrUser');
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\CalendarBundle/Resources/views'), 'CdlrCalendar');
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\mailBundle/Resources/views'), 'Cdlrmail');
-        $instance->addPath(($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/views'), 'BladeTesterCalendar');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\src\\Acme\\DemoBundle/Resources/views'), 'AcmeDemo');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
@@ -4216,7 +4244,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5522ea6638498')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('55246b2b8bdf8')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4428,12 +4456,12 @@ class appDevDebugProjectContainer extends Container
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'AppBundle' => 'AppBundle\\AppBundle',
                 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle',
+                'HappyRGoogleApiBundle' => 'HappyR\\Google\\ApiBundle\\HappyRGoogleApiBundle',
+                'BladeTesterCalendarBundle' => 'BladeTester\\CalendarBundle\\BladeTesterCalendarBundle',
                 'CdlrcodeBundle' => 'Cdlr\\codeBundle\\CdlrcodeBundle',
                 'CdlrUserBundle' => 'Cdlr\\UserBundle\\CdlrUserBundle',
                 'CdlrCalendarBundle' => 'Cdlr\\CalendarBundle\\CdlrCalendarBundle',
-                'HappyRGoogleApiBundle' => 'HappyR\\Google\\ApiBundle\\HappyRGoogleApiBundle',
                 'CdlrmailBundle' => 'Cdlr\\mailBundle\\CdlrmailBundle',
-                'BladeTesterCalendarBundle' => 'BladeTester\\CalendarBundle\\BladeTesterCalendarBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
@@ -4899,7 +4927,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.variables' => array(
 
             ),
-            'assetic.java.bin' => 'c:\\programdata\\oracle\\java\\javapath\\java.EXE',
+            'assetic.java.bin' => 'C:\\Windows\\system32\\java.EXE',
             'assetic.node.bin' => '/usr/bin/node',
             'assetic.ruby.bin' => '/usr/bin/ruby',
             'assetic.sass.bin' => '/usr/bin/sass',
@@ -5038,7 +5066,7 @@ class appDevDebugProjectContainer extends Container
                 1 => 'Default',
             ),
             'fos_user.registration.confirmation.from_email' => array(
-                'noreply@Cdlr.com' => 'noreply',
+                'page.jim2@gmail.com' => 'noreply',
             ),
             'fos_user.registration.confirmation.enabled' => true,
             'fos_user.registration.form.type' => 'cdlr_user_registration',

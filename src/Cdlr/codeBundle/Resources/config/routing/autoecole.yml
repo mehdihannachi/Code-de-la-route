@@ -32,3 +32,7 @@ autoecole_delete:
 autoecole_recherche:
     path: /recherche
     defaults: { _controller: "CdlrcodeBundle:AutoEcole:rechercheRegion" }
+    
+autoecole_showmap:
+    path:     /{id}/showmap
+    defaults: { _controller: "CdlrcodeBundle:AutoEcole:showMap" }

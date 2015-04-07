@@ -18,12 +18,12 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="HappyRGoogleApiBundle">HappyR\Google\ApiBundle\HappyRGoogleApiBundle</parameter>
+      <parameter key="BladeTesterCalendarBundle">BladeTester\CalendarBundle\BladeTesterCalendarBundle</parameter>
       <parameter key="CdlrcodeBundle">Cdlr\codeBundle\CdlrcodeBundle</parameter>
       <parameter key="CdlrUserBundle">Cdlr\UserBundle\CdlrUserBundle</parameter>
       <parameter key="CdlrCalendarBundle">Cdlr\CalendarBundle\CdlrCalendarBundle</parameter>
-      <parameter key="HappyRGoogleApiBundle">HappyR\Google\ApiBundle\HappyRGoogleApiBundle</parameter>
       <parameter key="CdlrmailBundle">Cdlr\mailBundle\CdlrmailBundle</parameter>
-      <parameter key="BladeTesterCalendarBundle">BladeTester\CalendarBundle\BladeTesterCalendarBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -475,7 +475,7 @@
     <parameter key="assetic.read_from">C:\wamp\www\CDLRweb\app/../web</parameter>
     <parameter key="assetic.write_to">C:\wamp\www\CDLRweb\app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
-    <parameter key="assetic.java.bin">c:\programdata\oracle\java\javapath\java.EXE</parameter>
+    <parameter key="assetic.java.bin">C:\Windows\system32\java.EXE</parameter>
     <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
@@ -610,7 +610,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
-      <parameter key="noreply@Cdlr.com">noreply</parameter>
+      <parameter key="page.jim2@gmail.com">noreply</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">true</parameter>
     <parameter key="fos_user.registration.form.type">cdlr_user_registration</parameter>
@@ -2087,30 +2087,6 @@
         <argument>validators</argument>
       </call>
       <call method="addResource">
-        <argument>xlf</argument>
-        <argument>C:\wamp\www\CDLRweb\src\Cdlr\codeBundle/Resources/translations\messages.fr.xlf</argument>
-        <argument>fr</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>xlf</argument>
-        <argument>C:\wamp\www\CDLRweb\src\Cdlr\UserBundle/Resources/translations\messages.fr.xlf</argument>
-        <argument>fr</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>xlf</argument>
-        <argument>C:\wamp\www\CDLRweb\src\Cdlr\CalendarBundle/Resources/translations\messages.fr.xlf</argument>
-        <argument>fr</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>xlf</argument>
-        <argument>C:\wamp\www\CDLRweb\src\Cdlr\mailBundle/Resources/translations\messages.fr.xlf</argument>
-        <argument>fr</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
         <argument>yml</argument>
         <argument>C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle/Resources/translations\messages.ca.yml</argument>
         <argument>ca</argument>
@@ -2169,6 +2145,30 @@
         <argument>C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle/Resources/translations\validators.fr.yml</argument>
         <argument>fr</argument>
         <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\wamp\www\CDLRweb\src\Cdlr\codeBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\wamp\www\CDLRweb\src\Cdlr\UserBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\wamp\www\CDLRweb\src\Cdlr\CalendarBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\wamp\www\CDLRweb\src\Cdlr\mailBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
       </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
@@ -2427,8 +2427,8 @@
               <argument key="fos_user_registration">fos_user.registration.form.type</argument>
               <argument key="fos_user_change_password">fos_user.change_password.form.type</argument>
               <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
-              <argument key="cdlr_user_registration">cdlr_user.registration.form.type</argument>
               <argument key="calendar_event_category_type">form.type.bladetester_calendar_category</argument>
+              <argument key="cdlr_user_registration">cdlr_user.registration.form.type</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
@@ -3161,7 +3161,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5522ea6638498</argument>
+            <argument>55246b2b8bdf8</argument>
           </service>
         </argument>
       </argument>
@@ -3505,7 +3505,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5522ea6638498</argument>
+            <argument>55246b2b8bdf8</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4086,11 +4086,11 @@
         <service class="Doctrine\ORM\Configuration" public="false">
           <call method="setEntityNamespaces">
             <argument type="collection">
+              <argument key="BladeTesterCalendarBundle">BladeTester\CalendarBundle\Entity</argument>
               <argument key="CdlrcodeBundle">Cdlr\codeBundle\Entity</argument>
               <argument key="CdlrUserBundle">Cdlr\UserBundle\Entity</argument>
               <argument key="CdlrCalendarBundle">Cdlr\CalendarBundle\Entity</argument>
               <argument key="CdlrmailBundle">Cdlr\mailBundle\Entity</argument>
-              <argument key="BladeTesterCalendarBundle">BladeTester\CalendarBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -4109,9 +4109,24 @@
                   <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
                       <argument type="collection">
+                        <argument key="C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle\Resources\config\doctrine">BladeTester\CalendarBundle\Entity</argument>
                         <argument key="C:\wamp\www\CDLRweb\src\Cdlr\codeBundle\Resources\config\doctrine">Cdlr\codeBundle\Entity</argument>
                         <argument key="C:\wamp\www\CDLRweb\src\Cdlr\UserBundle\Resources\config\doctrine">Cdlr\UserBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>BladeTester\CalendarBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
                         <argument key="C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle\Resources\config\doctrine">BladeTester\CalendarBundle\Entity</argument>
+                        <argument key="C:\wamp\www\CDLRweb\src\Cdlr\codeBundle\Resources\config\doctrine">Cdlr\codeBundle\Entity</argument>
+                        <argument key="C:\wamp\www\CDLRweb\src\Cdlr\UserBundle\Resources\config\doctrine">Cdlr\UserBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
@@ -4124,9 +4139,9 @@
                   <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
                       <argument type="collection">
+                        <argument key="C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle\Resources\config\doctrine">BladeTester\CalendarBundle\Entity</argument>
                         <argument key="C:\wamp\www\CDLRweb\src\Cdlr\codeBundle\Resources\config\doctrine">Cdlr\codeBundle\Entity</argument>
                         <argument key="C:\wamp\www\CDLRweb\src\Cdlr\UserBundle\Resources\config\doctrine">Cdlr\UserBundle\Entity</argument>
-                        <argument key="C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle\Resources\config\doctrine">BladeTester\CalendarBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
@@ -4134,21 +4149,6 @@
                     </service>
                   </argument>
                   <argument>Cdlr\UserBundle\Entity</argument>
-                </call>
-                <call method="addDriver">
-                  <argument type="service">
-                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
-                      <argument type="collection">
-                        <argument key="C:\wamp\www\CDLRweb\src\Cdlr\codeBundle\Resources\config\doctrine">Cdlr\codeBundle\Entity</argument>
-                        <argument key="C:\wamp\www\CDLRweb\src\Cdlr\UserBundle\Resources\config\doctrine">Cdlr\UserBundle\Entity</argument>
-                        <argument key="C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle\Resources\config\doctrine">BladeTester\CalendarBundle\Entity</argument>
-                      </argument>
-                      <call method="setGlobalBasename">
-                        <argument>mapping</argument>
-                      </call>
-                    </service>
-                  </argument>
-                  <argument>BladeTester\CalendarBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -4367,12 +4367,6 @@
       <argument type="service" id="router"/>
       <argument>86400</argument>
     </service>
-    <service id="cdlr_user.registration.form.type" class="Cdlr\UserBundle\Form\Type\RegistrationFormType">
-      <tag name="form.type" alias="cdlr_user_registration"/>
-    </service>
-    <service id="redirect.after.login" class="Cdlr\UserBundle\Redirection\AfterLoginRedirection">
-      <argument type="service" id="router"/>
-    </service>
     <service id="happyr.google.api.client" class="HappyR\Google\ApiBundle\Services\GoogleClient">
       <argument type="collection">
         <argument key="application_name">Cdlr</argument>
@@ -4411,6 +4405,18 @@
       <tag name="form.type" alias="calendar_event_category_type"/>
       <argument type="service" id="blade_tester_calendar.event_category_manager"/>
       <argument type="service" id="blade_tester_calendar.forms.category_transformer"/>
+    </service>
+    <service id="cdlr_user.registration.form.type" class="Cdlr\UserBundle\Form\Type\RegistrationFormType">
+      <tag name="form.type" alias="cdlr_user_registration"/>
+    </service>
+    <service id="cdlr_admin_user.registration.form.type" class="Cdlr\UserBundle\Form\Type\AdminCreationFormType">
+      <tag name="form.type.admin" alias="cdlr_admin_user_registration"/>
+    </service>
+    <service id="cdlr_gerant_user.registration.form.type" class="Cdlr\UserBundle\Form\Type\gerantmoniteurCreationFormType">
+      <tag name="form.type.gerant" alias="cdlr_gerant_user_registration"/>
+    </service>
+    <service id="redirect.after.login" class="Cdlr\UserBundle\Redirection\AfterLoginRedirection">
+      <argument type="service" id="router"/>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig"/>
@@ -4788,6 +4794,10 @@
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
+        <argument>C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle/Resources/views</argument>
+        <argument>BladeTesterCalendar</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\wamp\www\CDLRweb\src\Cdlr\codeBundle/Resources/views</argument>
         <argument>Cdlrcode</argument>
       </call>
@@ -4802,10 +4812,6 @@
       <call method="addPath">
         <argument>C:\wamp\www\CDLRweb\src\Cdlr\mailBundle/Resources/views</argument>
         <argument>Cdlrmail</argument>
-      </call>
-      <call method="addPath">
-        <argument>C:\wamp\www\CDLRweb\vendor\carlescliment\calendar-bundle\src\BladeTester\CalendarBundle/Resources/views</argument>
-        <argument>BladeTesterCalendar</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\CDLRweb\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
@@ -4910,7 +4916,7 @@
         <argument key="resetting.template">FOSUserBundle:Resetting:email.txt.twig</argument>
         <argument key="from_email" type="collection">
           <argument key="confirmation" type="collection">
-            <argument key="noreply@Cdlr.com">noreply</argument>
+            <argument key="page.jim2@gmail.com">noreply</argument>
           </argument>
           <argument key="resetting" type="collection">
             <argument key="webmaster@example.com">webmaster</argument>

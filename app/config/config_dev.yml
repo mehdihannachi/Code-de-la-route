@@ -45,18 +45,11 @@ assetic:
     use_controller: true
 
 #swiftmailer:
-#    delivery_address: me@example.com
-
-web_profiler_extra:
-    routing:
-        enabled:        true
-        display_in_wdt: true
-    container:
-        enabled:        true
-        display_in_wdt: true
-    assetic:
-        enabled:        true
-        display_in_wdt: true
-    twig:
-        enabled:        true
-        display_in_wdt: true
+#    transport: "%mailer_transport%"
+#    host:      "%mailer_host%"
+#    spool:     { type: memory }
+#    encryption: ssl
+#    auth_mode:  login
+#    host:       smtp.gmail.com
+#    username:   CodeDeLaRoute.fahm@gmail.com
+#    password:   cdlr0000

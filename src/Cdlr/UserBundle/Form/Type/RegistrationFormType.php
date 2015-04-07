@@ -5,8 +5,8 @@ namespace Cdlr\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class RegistrationFormType extends AbstractType
-{
+class RegistrationFormType extends AbstractType {
+
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('nom')
@@ -15,7 +15,10 @@ class RegistrationFormType extends AbstractType
                 ->add('dateNaissance')
                 ->add('tel')
                 ->add('region')
-                ->add('type');
+                ->add('type', 'integer', array(
+                    'label' => 'typev',
+                    'data' => '2'
+                ))
         ;
     }
 

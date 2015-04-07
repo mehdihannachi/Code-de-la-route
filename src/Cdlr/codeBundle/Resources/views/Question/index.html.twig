@@ -1,0 +1,55 @@
+{%extends "CdlrcodeBundle::layout.html.twig" %}
+{% block content %}
+     &nbsp;
+    <div class="container">
+    <h1>Question list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Contenu</th>
+                <th>Reponse1</th>
+                <th>Reponse2</th>
+                <th>Reponse3</th>
+                <th>Bonnereponse</th>
+                <th>Image</th>
+                <th>Type</th>
+                <th>Questionid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('question_show', { 'id': entity.questionId, 'note':0, 'reponses': 0 }) }}">{{ entity.contenu }}</a></td>
+                <td>{{ entity.reponse1 }}</td>
+                <td>{{ entity.reponse2 }}</td>
+                <td>{{ entity.reponse3 }}</td>
+                <td>{{ entity.bonneReponse }}</td>
+                <td>{{ entity.image }}</td>
+                <td>{{ entity.type }}</td>
+                <td>{{ entity.questionId }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('question_show', { 'id': entity.questionId, 'note': 0, 'reponses':0}) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('question_edit', { 'id': entity.questionId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('question_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    </div>&nbsp
+    {% endblock %}

@@ -1,0 +1,38 @@
+question:
+    path:     /
+    defaults: { _controller: "CdlrcodeBundle:Question:index" }
+
+question_show:
+    path:     /{id}/{note}/show
+    defaults: { _controller: "CdlrcodeBundle:Question:show" }
+
+question_new:
+    path:     /new
+    defaults: { _controller: "CdlrcodeBundle:Question:new" }
+
+question_create:
+    path:     /create
+    defaults: { _controller: "CdlrcodeBundle:Question:create" }
+    requirements: { _method: post }
+
+question_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CdlrcodeBundle:Question:edit" }
+
+question_rep:
+    path:     /reponse
+    defaults: { _controller: "CdlrcodeBundle:Question:questionSuivante" }
+    
+question_upl:
+    path:     /upload/{id}
+    defaults: { _controller: "CdlrcodeBundle:Question:upload" }
+
+question_update:
+    path:     /{id}/update
+    defaults: { _controller: "CdlrcodeBundle:Question:update" }
+    requirements: { _method: post|put }
+
+question_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CdlrcodeBundle:Question:delete" }
+    requirements: { _method: post|delete }

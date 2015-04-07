@@ -149,14 +149,36 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // user_create
             if ($pathinfo === '/user/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_user_create;
                 }
 
                 return array (  '_controller' => 'Cdlr\\UserBundle\\Controller\\UserController::createAction',  '_route' => 'user_create',);
             }
             not_user_create:
+
+            // gerant_user_create
+            if ($pathinfo === '/user/gerant_create') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_gerant_user_create;
+                }
+
+                return array (  '_controller' => 'Cdlr\\UserBundle\\Controller\\AdminSideController::gerantcreateAction',  '_route' => 'gerant_user_create',);
+            }
+            not_gerant_user_create:
+
+            // admin_user_create
+            if ($pathinfo === '/user/admin_create') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_admin_user_create;
+                }
+
+                return array (  '_controller' => 'Cdlr\\UserBundle\\Controller\\AdminSideController::admincreateAction',  '_route' => 'admin_user_create',);
+            }
+            not_admin_user_create:
 
             // user_edit
             if (preg_match('#^/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
@@ -187,17 +209,38 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/home')) {
+        if (0 === strpos($pathinfo, '/admin')) {
             // admin_homepage
-            if ($pathinfo === '/home/admin') {
+            if ($pathinfo === '/admin') {
                 return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\DefaultController::adminAction',  '_route' => 'admin_homepage',);
             }
 
-            // candidat_homepage
-            if ($pathinfo === '/home/candidat') {
-                return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\DefaultController::candidatAction',  '_route' => 'candidat_homepage',);
+            if (0 === strpos($pathinfo, '/admin/liste_')) {
+                // liste_admin
+                if ($pathinfo === '/admin/liste_admin') {
+                    return array (  '_controller' => 'Cdlr\\UserBundle\\Controller\\UserController::adminAction',  '_route' => 'liste_admin',);
+                }
+
+                // liste_candidat
+                if ($pathinfo === '/admin/liste_candidat') {
+                    return array (  '_controller' => 'Cdlr\\UserBundle\\Controller\\UserController::candidatAction',  '_route' => 'liste_candidat',);
+                }
+
+                // liste_gerant
+                if ($pathinfo === '/admin/liste_gerant') {
+                    return array (  '_controller' => 'Cdlr\\UserBundle\\Controller\\UserController::gerantAction',  '_route' => 'liste_gerant',);
+                }
+
+                // liste_moniteur
+                if ($pathinfo === '/admin/liste_moniteur') {
+                    return array (  '_controller' => 'Cdlr\\UserBundle\\Controller\\UserController::moniteurAction',  '_route' => 'liste_moniteur',);
+                }
+
             }
 
+        }
+
+        if (0 === strpos($pathinfo, '/home')) {
             // gerant_homepage
             if ($pathinfo === '/home/gerant') {
                 return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\DefaultController::gerantAction',  '_route' => 'gerant_homepage',);
@@ -410,76 +453,76 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Cdlr\\mailBundle\\Controller\\MailController::sendMailAction',  '_route' => 'my_app_mail_sendpage',);
         }
 
-        if (0 === strpos($pathinfo, '/ /calendar')) {
+        if (0 === strpos($pathinfo, '/calendar')) {
             // calendar_index
-            if ($pathinfo === '/ /calendar') {
+            if ($pathinfo === '/calendar') {
                 return array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::indexAction',  '_route' => 'calendar_index',);
             }
 
             // calendar_event_list
-            if ($pathinfo === '/ /calendar/list') {
+            if ($pathinfo === '/calendar/list') {
                 return array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::listAction',  '_route' => 'calendar_event_list',);
             }
 
-            if (0 === strpos($pathinfo, '/ /calendar/by_')) {
+            if (0 === strpos($pathinfo, '/calendar/by_')) {
                 // calendar_event_list_by_day
-                if (0 === strpos($pathinfo, '/ /calendar/by_day') && preg_match('#^/ /calendar/by_day/(?P<year>[^/]++)/(?P<month>[^/]++)/(?P<day>[^/]++)$#s', $pathinfo, $matches)) {
+                if (0 === strpos($pathinfo, '/calendar/by_day') && preg_match('#^/calendar/by_day/(?P<year>[^/]++)/(?P<month>[^/]++)/(?P<day>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_event_list_by_day')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::listByDayAction',));
                 }
 
                 // calendar_event_list_by_week
-                if (0 === strpos($pathinfo, '/ /calendar/by_week') && preg_match('#^/ /calendar/by_week/(?P<year>[^/]++)/(?P<month>[^/]++)/(?P<day>[^/]++)$#s', $pathinfo, $matches)) {
+                if (0 === strpos($pathinfo, '/calendar/by_week') && preg_match('#^/calendar/by_week/(?P<year>[^/]++)/(?P<month>[^/]++)/(?P<day>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_event_list_by_week')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::listByWeekAction',));
                 }
 
                 // calendar_event_list_by_month
-                if (0 === strpos($pathinfo, '/ /calendar/by_month') && preg_match('#^/ /calendar/by_month/(?P<year>[^/]++)/(?P<month>[^/]++)$#s', $pathinfo, $matches)) {
+                if (0 === strpos($pathinfo, '/calendar/by_month') && preg_match('#^/calendar/by_month/(?P<year>[^/]++)/(?P<month>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_event_list_by_month')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::listByMonthAction',));
                 }
 
             }
 
             // calendar_event_add
-            if ($pathinfo === '/ /calendar/add') {
+            if ($pathinfo === '/calendar/add') {
                 return array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::addAction',  '_route' => 'calendar_event_add',);
             }
 
             // calendar_event_edit
-            if (preg_match('#^/ /calendar/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/calendar/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_event_edit')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::editAction',));
             }
 
             // calendar_event_delete
-            if (preg_match('#^/ /calendar/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/calendar/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_event_delete')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\EventController::deleteAction',));
             }
 
             // calendar_mini_calendar
-            if (0 === strpos($pathinfo, '/ /calendar/mini') && preg_match('#^/ /calendar/mini/(?P<year>[^/]++)/(?P<month>[^/]++)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/calendar/mini') && preg_match('#^/calendar/mini/(?P<year>[^/]++)/(?P<month>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_mini_calendar')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\CalendarController::showMiniAction',));
             }
 
-            if (0 === strpos($pathinfo, '/ /calendar/category')) {
+            if (0 === strpos($pathinfo, '/calendar/category')) {
                 // calendar_category_edit
-                if (preg_match('#^/ /calendar/category/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/calendar/category/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_category_edit')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\CategoryController::editAction',));
                 }
 
                 // calendar_category_delete
-                if (preg_match('#^/ /calendar/category/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/calendar/category/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'calendar_category_delete')), array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\CategoryController::deleteAction',));
                 }
 
                 // calendar_category_add
-                if ($pathinfo === '/ /calendar/category/add') {
+                if ($pathinfo === '/calendar/category/add') {
                     return array (  '_controller' => 'BladeTester\\CalendarBundle\\Controller\\CategoryController::addAction',  '_route' => 'calendar_category_add',);
                 }
 
             }
 
-            if (0 === strpos($pathinfo, '/ /calendar/settings')) {
+            if (0 === strpos($pathinfo, '/calendar/settings')) {
                 // calendar_settings_update
-                if ($pathinfo === '/ /calendar/settings/update') {
+                if ($pathinfo === '/calendar/settings/update') {
                     if ($this->context->getMethod() != 'POST') {
                         $allow[] = 'POST';
                         goto not_calendar_settings_update;
@@ -490,7 +533,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_calendar_settings_update:
 
                 // calendar_settings
-                if ($pathinfo === '/ /calendar/settings') {
+                if ($pathinfo === '/calendar/settings') {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
                         goto not_calendar_settings;
@@ -1414,6 +1457,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\AutoEcoleController::rechercheRegionAction',  '_route' => 'autoecole_recherche',);
                 }
 
+                // autoecole_showmap
+                if (preg_match('#^/home/autoecole/(?P<id>[^/]++)/showmap$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'autoecole_showmap')), array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\AutoEcoleController::showMapAction',));
+                }
+
             }
 
             if (0 === strpos($pathinfo, '/home/moniteur')) {
@@ -1546,6 +1594,76 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 if ($pathinfo === '/home/home') {
                     return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\EcoleController::accueilAction',  '_route' => 'cdlrcode_accueil',);
                 }
+
+            }
+
+            if (0 === strpos($pathinfo, '/home/question')) {
+                // question
+                if (rtrim($pathinfo, '/') === '/home/question') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'question');
+                    }
+
+                    return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::indexAction',  '_route' => 'question',);
+                }
+
+                // question_show
+                if (preg_match('#^/home/question/(?P<id>[^/]++)/(?P<note>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_show')), array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::showAction',));
+                }
+
+                // question_new
+                if ($pathinfo === '/home/question/new') {
+                    return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::newAction',  '_route' => 'question_new',);
+                }
+
+                // question_create
+                if ($pathinfo === '/home/question/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_question_create;
+                    }
+
+                    return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::createAction',  '_route' => 'question_create',);
+                }
+                not_question_create:
+
+                // question_edit
+                if (preg_match('#^/home/question/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_edit')), array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::editAction',));
+                }
+
+                // question_rep
+                if ($pathinfo === '/home/question/reponse') {
+                    return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::questionSuivanteAction',  '_route' => 'question_rep',);
+                }
+
+                // question_upl
+                if (0 === strpos($pathinfo, '/home/question/upload') && preg_match('#^/home/question/upload/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_upl')), array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::uploadAction',));
+                }
+
+                // question_update
+                if (preg_match('#^/home/question/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_question_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_update')), array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::updateAction',));
+                }
+                not_question_update:
+
+                // question_delete
+                if (preg_match('#^/home/question/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_question_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_delete')), array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\QuestionController::deleteAction',));
+                }
+                not_question_delete:
 
             }
 

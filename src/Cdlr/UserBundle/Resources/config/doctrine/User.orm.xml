@@ -11,5 +11,11 @@
         <field name="tel" type="integer" column="tel" nullable="false"/>
         <field name="region" type="string" column="region" length="20" nullable="false"/>
         <field name="type" type="integer" column="type" nullable="false"/>
+        <many-to-one field="autoecole" target-entity="Cdlr\codeBundle\Entity\AutoEcole">
+            <join-columns>
+                <join-column name="autoecole" referenced-column-name="autoecole_id"/>
+            </join-columns>
+        </many-to-one>
+
     </entity>
 </doctrine-mapping>

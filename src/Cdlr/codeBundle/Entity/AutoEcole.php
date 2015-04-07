@@ -3,37 +3,62 @@
 namespace Cdlr\codeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Cdlr\codeBundle\Entity\Regions;
 
 /**
  * AutoEcole
+ *
+ * @ORM\Table(name="auto_ecole", indexes={@ORM\Index(name="region_id", columns={"region_id"})})
+ * @ORM\Entity
  */
 class AutoEcole
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="autoecole_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $autoecoleId;
+
+    /**
      * @var string
+     *
+     * @ORM\Column(name="nom_auto", type="string", length=30, nullable=false)
      */
     private $nomAuto;
 
     /**
      * @var string
-     */
-    private $region;
-
-    /**
-     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=50, nullable=false)
      */
     private $adresse;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="tel", type="integer", nullable=false)
      */
     private $tel;
 
     /**
-     * @var integer
+     * @var \Regions
+     *
+     * @ORM\ManyToOne(targetEntity="Regions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     * })
      */
-    private $autoecoleId;
+    private $region;
 
+
+//    /**
+//     * @var \Cdlr\codeBundle\Entity\Regions
+//     */
+//    private $region2;
+//
 
     /**
      * Set nomAuto
@@ -56,29 +81,6 @@ class AutoEcole
     public function getNomAuto()
     {
         return $this->nomAuto;
-    }
-
-    /**
-     * Set region
-     *
-     * @param string $region
-     * @return AutoEcole
-     */
-    public function setRegion($region)
-    {
-        $this->region = $region;
-
-        return $this;
-    }
-
-    /**
-     * Get region
-     *
-     * @return string 
-     */
-    public function getRegion()
-    {
-        return $this->region;
     }
 
     /**
@@ -132,13 +134,23 @@ class AutoEcole
      *
      * @return integer 
      */
+    public function getId()
+    {
+        return $this->autoecoleId;
+    }
+    
     public function getAutoecoleId()
     {
         return $this->autoecoleId;
     }
-    public function __toString() {
-                    return (string) $this->getAutoecoleId();
 
+    public function getRegion() {
+        return $this->region;
     }
+
+    public function setRegion(Regions $region) {
+        $this->region = $region;
+    }
+
 
 }

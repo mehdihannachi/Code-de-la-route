@@ -3,12 +3,24 @@ cdlr_user_user:
     prefix:   /user
 
 admin_homepage:
-    path:     /home/admin
+    path:     /admin
     defaults: { _controller: CdlrcodeBundle:Default:admin }
     
-candidat_homepage:
-    path:     /home/candidat
-    defaults: { _controller: CdlrcodeBundle:Default:candidat }
+liste_admin:
+    path:     /admin/liste_admin
+    defaults: { _controller: CdlrUserBundle:User:admin }
+    
+liste_candidat:
+    path:     /admin/liste_candidat
+    defaults: { _controller: CdlrUserBundle:User:candidat }
+
+liste_gerant:
+    path:     /admin/liste_gerant
+    defaults: { _controller: CdlrUserBundle:User:gerant }
+
+liste_moniteur:
+    path:     /admin/liste_moniteur
+    defaults: { _controller: CdlrUserBundle:User:moniteur }
     
 gerant_homepage:
     path:     /home/gerant
@@ -52,3 +64,7 @@ _security_facebook_logout:
 user_couple_fb_with_account:
     pattern: /user/couple/facebook
     defaults: { _controller: CdlrUserBundle:User:connectFacebookWithAccount }
+    
+#fos_user_register_admin:
+#    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+#    prefix: /register/user

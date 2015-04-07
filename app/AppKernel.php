@@ -17,20 +17,14 @@ class AppKernel extends Kernel {
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new HappyR\Google\ApiBundle\HappyRGoogleApiBundle(),
+            new BladeTester\CalendarBundle\BladeTesterCalendarBundle(),
             new Cdlr\codeBundle\CdlrcodeBundle(),
             new Cdlr\UserBundle\CdlrUserBundle(),
             new Cdlr\CalendarBundle\CdlrCalendarBundle(),
-            new HappyR\Google\ApiBundle\HappyRGoogleApiBundle(),
             new Cdlr\mailBundle\CdlrmailBundle(),
-            new BladeTester\CalendarBundle\BladeTesterCalendarBundle(),
-//            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-//            new FOS\FacebookBundle\FOSFacebookBundle(),
         );
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            [...]
-            $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
-        }
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();

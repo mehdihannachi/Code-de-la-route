@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <!-- parameter for  user bundle class -->
+        <parameter key="yit_notification.note_user">%note_user_classname%</parameter>
+        <!--parameter for pagination-->
+        <parameter key="yit_notification.item_notes_page">%note_item_notes_page%</parameter>
+        <!--parameter for pagination-->
+        <parameter key="yit_notification.item_notes_dropdown">%note_item_notes_dropdown%</parameter>
+        <!--parameter for user group-->
+        <parameter key="yit_notification.user_group">%note_user_group%</parameter>
+        <parameter key="yit_notification.note_grid">%note_grid%</parameter>
+        <!--parameter for admin class-->
+        <parameter key="yit_notification.admin.note_type"> </parameter>
+        <parameter key="yit_notification.admin.prepared_note"> </parameter>
+    </parameters>
+
+    <services>
+
+        <service id="yit.note.prepared.notification" class="%yit_notification.admin.prepared_note%">
+            <tag name="sonata.admin" manager_type="orm" group="Notification" label="Prepared Notification"/>
+            <argument/>
+            <argument>Yit\NotificationBundle\Entity\PreparedNotification</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <!-- Admin page for Notification type  -->
+        <service id="yit.note.notification.type_note" class="%yit_notification.admin.note_type%">
+            <tag name="sonata.admin" manager_type="orm" group="Notification" label="Notification type"/>
+            <argument/>
+            <argument>Yit\NotificationBundle\Entity\NotificationType</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+
+        <service id="yitnote" class="Yit\NotificationBundle\Services\YitNote">
+            <argument type="service" id="service_container" > </argument>
+        </service>
+
+        <service id="notification.form.type.file" class="Yit\NotificationBundle\Form\Type\FileFieldType">
+            <tag name="form.type" alias="fileField" />
+        </service>
+
+    </services>
+
+</container>

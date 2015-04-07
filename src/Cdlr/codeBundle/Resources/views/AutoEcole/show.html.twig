@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Region</th>
-                <td>{{ entity.region }}</td>
+                <td>{{ reg }}</td>
             </tr>
             <tr>
                 <th>Adresse</th>
@@ -30,7 +30,7 @@
 <div align="center">
                 <ul>
                     <li>
-                        <a href="{{ path('autoecole') }}" class="button color">retour</a>&nbsp;
+                        <a href="{{ path('autoecole') }}" class="button color">Retour</a>&nbsp;
                         <a href="{{ path('autoecole_edit', { 'id': entity.autoecoleId }) }}" class="button color">Modifier</a>&nbsp;
                         <a>{{ form(delete_form) }} </a> 
                     </li>

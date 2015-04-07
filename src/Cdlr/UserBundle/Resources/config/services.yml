@@ -7,6 +7,14 @@ services:
         class: Cdlr\UserBundle\Form\Type\RegistrationFormType
         tags:
             - { name: form.type, alias: cdlr_user_registration }
+    cdlr_admin_user.registration.form.type:
+        class: Cdlr\UserBundle\Form\Type\AdminCreationFormType
+        tags:
+            - { name: form.type.admin, alias: cdlr_admin_user_registration }
+    cdlr_gerant_user.registration.form.type:
+        class: Cdlr\UserBundle\Form\Type\gerantmoniteurCreationFormType
+        tags:
+            - { name: form.type.gerant, alias: cdlr_gerant_user_registration }
     redirect.after.login:
         class: Cdlr\UserBundle\Redirection\AfterLoginRedirection
         arguments: [@router]

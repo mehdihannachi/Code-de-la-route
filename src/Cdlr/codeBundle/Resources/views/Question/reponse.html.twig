@@ -1,0 +1,57 @@
+{%extends "CdlrcodeBundle::layoutfarid.html.twig" %}
+
+{% block content %}
+    <div class="page-content">
+
+
+        <!-- 960 Container -->
+        <div class="container">
+            <div class="eight columns" style="margin-left: 50px; margin-top: 50px">
+
+
+                <h3 class="margin-reset">Votre résultat</h3><br />
+
+
+                <ul class="tabs-nav">
+                    <li class="active"><a href="#tab1">Résultat</a></li>
+                    <li><a href="#tab2">Solution</a></li>
+
+                </ul>
+
+                <!-- Tabs Content -->
+                <div class="tabs-container">
+                    <div class="tab-content" id="tab1">
+                        <h4> <u> Vous avez obtenu: </u> </h4> <br>
+                        <h1> <b> <font color='red'> {{rep}} /5 </font> </b> </h1> <br>
+                        <h2> <b> Dommage...  </b> </h2> <br>
+                        <p>  <b> Vous voulez bien refaire le test peut-être? </b> </p> <br>    
+                    </div>
+                    <div class="tab-content" id="tab2">
+                        <ul id="accordion">
+                            {% for q in quest %}
+                                <h3> Question {{q.questionId}}</h3>
+                                <div>
+                                    {{q.contenu}} <br>
+                                    {{q.bonneReponse}}<br>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div style="margin-left: 50px; margin-bottom: 50px" >      
+            <a class="button medium color" href="{{ path('question_show',{'id':1,'note':0}) }}" >
+                Refaire le test
+            </a> 
+
+            <a class="button medium color" href="{{ path('cdlrcode_accueil') }}">
+                Quitter
+            </a>
+        </div>
+
+
+    </div>
+
+{% endblock %}

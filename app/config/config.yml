@@ -72,6 +72,9 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
     
+
+        
+    
 imports:
     - { resource: @CdlrUserBundle/Resources/config/services.yml }
         
@@ -84,7 +87,7 @@ fos_user:
             type: cdlr_user_registration
         confirmation:
             from_email:
-                address:        noreply@Cdlr.com
+                address:        page.jim2@gmail.com
                 sender_name:    noreply
             enabled:    true
             
@@ -95,9 +98,10 @@ swiftmailer:
    auth_mode: login 
    port: 465
    host: smtp.gmail.com 
-   username: page.jim2@gmail.com 
+   username: page.jim2@gmail.com
    password: azerty15987 
    spool:     { type: memory }
+
    #blade_tester_calendar
 blade_tester_calendar:
     driver: doctrine/orm
@@ -116,3 +120,4 @@ happy_r_google_api:
   oauth2_redirect_uri: https://cdlr.site90.com/oauth2callback
   developer_key: AI39si5nSy34uW56P57eknfcwjdj1_pCmTpUvi0mh5xwa461ami0nFMp_W5Qd4QS8RKNql17AV_Kov6F5210o53vc9NC41H-Lg
   site_name: cdlr.site90.com
+  

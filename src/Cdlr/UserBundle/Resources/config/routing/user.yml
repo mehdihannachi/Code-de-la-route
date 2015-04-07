@@ -13,7 +13,17 @@ user_new:
 user_create:
     path:     /create
     defaults: { _controller: "CdlrUserBundle:User:create" }
-    methods:  POST
+    methods:  GET
+    
+gerant_user_create:
+    path:     /gerant_create
+    defaults: { _controller: "CdlrUserBundle:AdminSide:gerantcreate" }
+    methods:  GET
+    
+admin_user_create:
+    path:     /admin_create
+    defaults: { _controller: "CdlrUserBundle:AdminSide:admincreate" }
+    methods:  GET
 
 user_edit:
     path:     /{id}/edit

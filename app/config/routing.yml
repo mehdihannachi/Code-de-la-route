@@ -16,7 +16,7 @@ cdlrcode:
     
 BladeTesterCalendarBundle:
     resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
-    prefix:   / /
+    prefix:   / 
     
 index:
     resource: "@CdlrcodeBundle/Resources/config/routing.yml"
