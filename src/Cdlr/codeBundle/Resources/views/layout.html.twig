@@ -84,14 +84,6 @@
                         {% endblock %}
                         <br>
 
-                        <!-- Social Icons 
-                        <ul class="social-icons">
-                            <li class="twitter"><a href="#">Twitter</a></li>
-                            <li class="facebook"><a href="#">Facebook</a></li>
-                            <li class="dribbble"><a href="#">Dribbble</a></li>
-                            <li class="linkedin"><a href="#">LinkedIn</a></li>
-                            <li class="rss"><a href="#">RSS</a></li>
-                        </ul>-->
                         <div class="clearfix"></div>
 
                         <div class="clearfix"></div>
@@ -108,19 +100,19 @@
                                         <p class="fieldset">
                                             <label class="image-replace cd-email" for="signin-email">E-mail</label>
                                             <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-                                            <span class="cd-error-message">Error message here!</span>
+                                            <span class="cd-error-message">Vérifiez votre e-mail!</span>
                                         </p>
 
                                         <p class="fieldset">
-                                            <label class="image-replace cd-password" for="signin-password">Password</label>
+                                            <label class="image-replace cd-password" for="signin-password">Mot de passe</label>
                                             <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
                                             <a href="#0" class="hide-password">Hide</a>
-                                            <span class="cd-error-message">Error message here!</span>
+                                            <span class="cd-error-message">Vérifiez votre mot de passe!</span>
                                         </p>
 
                                         <p class="fieldset">
                                             <input type="checkbox" id="remember-me" checked>
-                                            <label for="remember-me">Remember me</label>
+                                            <label for="remember-me">Se souvenir de moi</label>
                                         </p>
 
                                         <p class="fieldset">
@@ -128,8 +120,8 @@
                                         </p>
                                     </form>
 
-                                    <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
-                                    <!-- <a href="#0" class="cd-close-form">Close</a> -->
+                                    <p class="cd-form-bottom-message"><a href="#0">Mot de passe oublié?</a></p>
+                                    <a href="#0" class="cd-close-form">Close</a>
                                 </div> <!-- cd-login -->
 
                                 <div id="cd-signup"> <!-- sign up form -->
@@ -233,11 +225,11 @@
 
                 <ul class="menu" id="responsive">
 
-                    <li><a href="" id="current"><i class="halflings white home"></i> Accueil</a></li>
+                    <li><a href="{{ path('cdlr_user_homepage') }}" id="current"><i class="halflings white home"></i> Accueil</a></li>
                         {% block navigation %}
-                        <li><a href="#"><i class="halflings white book"></i> Cours gratuits</a>
+                        <li><a href="{{ path('cours') }}"><i class="halflings white book"></i> Cours gratuits</a>
                             <!-- Mega Menu / Start -->
-                            <ul class="cols2">
+                            <ul class="cols3">
                                 <li class="col1">
                                     <h5>Cours gratuits</h5>
                                     <ol>
@@ -270,7 +262,7 @@
                             <!-- Second Level / End -->
                         </li>
 
-                        <li><a href="#"><i class="halflings white pushpin"></i> Annonces</a>
+                        <li><a><i class="halflings white pushpin"></i> Annonces</a>
                             <!-- Second Level / Start -->
                             <ul>
                                 <li><a href="">Offres d'emploi</a></li>
@@ -279,11 +271,11 @@
                             <!-- Second Level / End -->
                         </li>
                         <li>
-                            <a href="#"><i class="halflings white briefcase"></i> Assurances</a>
+                            <a href=""><i class="halflings white briefcase"></i> Assurances</a>
                         </li>
 
                     {% endblock %}
-                    <li><a href="#"><i class="halflings white search"></i> Auto-écoles</a></li>
+                    <li><a href=""><i class="halflings white search"></i> Auto-écoles</a></li>
                 </ul>
             </nav>
 
@@ -353,7 +345,7 @@
                 <!-- Copyrights -->
                 <div class="eight columns">
                     <div class="copyright">
-                        © Copyright 2015 by <a href="#">Four and a half man</a>. All Rights Reserved.
+                        © Copyright 2015 by <a href="#">Five and a half man</a>. All Rights Reserved.
                     </div>
                 </div>
 
@@ -363,7 +355,7 @@
                         <ul>
                             <li><a href="#">FAQ's</a></li>
                             <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ path('my_app_mail_form') }}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -392,4 +384,4 @@
                 </aside>
             </div>
         </section>
-        Style Switcher / End -->
+        <!--Style Switcher / End -->

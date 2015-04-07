@@ -127,10 +127,10 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
 
             <!-- 960 Container -->
             <div class=\"container\">
-                
+
                 <!-- Header -->
                 <header id=\"header\">
-                    
+
                     <!-- Logo -->
                     <div class=\"ten columns\">
                         <div id=\"logo\">
@@ -142,7 +142,7 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                             <div class=\"clearfix\"></div>
                         </div>
                     </div>
-                            
+
                     <!-- Social / Contact -->
                     <div class=\"six columns\">
                         ";
@@ -151,14 +151,6 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
         // line 85
         echo "                        <br>
 
-                        <!-- Social Icons 
-                        <ul class=\"social-icons\">
-                            <li class=\"twitter\"><a href=\"#\">Twitter</a></li>
-                            <li class=\"facebook\"><a href=\"#\">Facebook</a></li>
-                            <li class=\"dribbble\"><a href=\"#\">Dribbble</a></li>
-                            <li class=\"linkedin\"><a href=\"#\">LinkedIn</a></li>
-                            <li class=\"rss\"><a href=\"#\">RSS</a></li>
-                        </ul>-->
                         <div class=\"clearfix\"></div>
 
                         <div class=\"clearfix\"></div>
@@ -175,19 +167,19 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                                         <p class=\"fieldset\">
                                             <label class=\"image-replace cd-email\" for=\"signin-email\">E-mail</label>
                                             <input class=\"full-width has-padding has-border\" id=\"signin-email\" type=\"email\" placeholder=\"E-mail\">
-                                            <span class=\"cd-error-message\">Error message here!</span>
+                                            <span class=\"cd-error-message\">Vérifiez votre e-mail!</span>
                                         </p>
 
                                         <p class=\"fieldset\">
-                                            <label class=\"image-replace cd-password\" for=\"signin-password\">Password</label>
+                                            <label class=\"image-replace cd-password\" for=\"signin-password\">Mot de passe</label>
                                             <input class=\"full-width has-padding has-border\" id=\"signin-password\" type=\"text\"  placeholder=\"Password\">
                                             <a href=\"#0\" class=\"hide-password\">Hide</a>
-                                            <span class=\"cd-error-message\">Error message here!</span>
+                                            <span class=\"cd-error-message\">Vérifiez votre mot de passe!</span>
                                         </p>
 
                                         <p class=\"fieldset\">
                                             <input type=\"checkbox\" id=\"remember-me\" checked>
-                                            <label for=\"remember-me\">Remember me</label>
+                                            <label for=\"remember-me\">Se souvenir de moi</label>
                                         </p>
 
                                         <p class=\"fieldset\">
@@ -195,8 +187,8 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                                         </p>
                                     </form>
 
-                                    <p class=\"cd-form-bottom-message\"><a href=\"#0\">Forgot your password?</a></p>
-                                    <!-- <a href=\"#0\" class=\"cd-close-form\">Close</a> -->
+                                    <p class=\"cd-form-bottom-message\"><a href=\"#0\">Mot de passe oublié?</a></p>
+                                    <a href=\"#0\" class=\"cd-close-form\">Close</a>
                                 </div> <!-- cd-login -->
 
                                 <div id=\"cd-signup\"> <!-- sign up form -->
@@ -254,11 +246,11 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                             </div> <!-- cd-user-modal-container -->
                         </div> <!-- cd-user-modal -->
                         <script src=\"";
-        // line 189
+        // line 181
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("scripts/jquery.min.js"), "html", null, true);
         echo "\"></script>
                         <script src=\"";
-        // line 190
+        // line 182
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/main.js"), "html", null, true);
         echo "\"></script> <!-- Gem jQuery -->
 
@@ -266,7 +258,7 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                         <!--<div class=\"contact-details\">Contact e-mail: +48 880 440 110</div>-->
 
                         <div class=\"clearfix\"></div>
-                        
+
                         <!-- Search -->
                         <nav class=\"top-search\">
                             <form action=\"\" method=\"get\">
@@ -276,7 +268,20 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                                                         this.value = '';\" value=\"Search\" />
                             </form>
                         </nav>
-
+                        <br>
+                        <nav>
+                            <br>
+                            <div align=\"right\">";
+        // line 201
+        echo $this->env->getExtension('nomaya_social_bar')->getFacebookLikeButton();
+        echo "
+                                <br>
+                                ";
+        // line 203
+        echo $this->env->getExtension('nomaya_social_bar')->getTwitterButton();
+        echo "
+                            </div>
+                        </nav>
                     </div>
                 </header>
                 <!-- Header / End -->
@@ -291,29 +296,32 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
 
             <!-- Navigation
             ================================================== -->
-            
-                <nav id=\"navigation\" class=\"style-1\">
 
-                    <div class=\"left-corner\"></div>
-                    <div class=\"right-corner\"></div>
+            <nav id=\"navigation\" class=\"style-1\">
 
-                    <ul class=\"menu\" id=\"responsive\">
+                <div class=\"left-corner\"></div>
+                <div class=\"right-corner\"></div>
 
-                        <li><a href=\"\" id=\"current\"><i class=\"halflings white home\"></i> Accueil</a></li>
+                <ul class=\"menu\" id=\"responsive\">
+
+                    <li><a href=\"";
+        // line 228
+        echo $this->env->getExtension('routing')->getPath("cdlr_user_homepage");
+        echo "\" id=\"current\"><i class=\"halflings white home\"></i> Accueil</a></li>
                         ";
-        // line 230
+        // line 229
         $this->displayBlock('navigation', $context, $blocks);
-        // line 279
-        echo "                        <li><a href=\"#\"><i class=\"halflings white search\"></i> Auto-écoles</a></li>
+        // line 278
+        echo "                    <li><a href=\"\"><i class=\"halflings white search\"></i> Auto-écoles</a></li>
                 </ul>
             </nav>
 
             <div class=\"clearfix\"></div>
 
             ";
-        // line 285
+        // line 284
         $this->displayBlock('content', $context, $blocks);
-        // line 288
+        // line 287
         echo "
 
 
@@ -331,7 +339,7 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                 <div class=\"one-third column\">
                     <h4>A propos de nous</h4>
 <!--                    <img id=\"logo-footer\" src=\"";
-        // line 304
+        // line 303
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-footer.png"), "html", null, true);
         echo "\" alt=\"\" />-->
                     <p class=\"one-third column\">Morbi gravida imperdiet rutrum fusce mattis, lectus consequat vestibulum, duinibh fermentum ligula.</p>
@@ -378,7 +386,7 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                 <!-- Copyrights -->
                 <div class=\"eight columns\">
                     <div class=\"copyright\">
-                        © Copyright 2015 by <a href=\"#\">Four and a half man</a>. All Rights Reserved.
+                        © Copyright 2015 by <a href=\"#\">Five and a half man</a>. All Rights Reserved.
                     </div>
                 </div>
 
@@ -388,7 +396,10 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                         <ul>
                             <li><a href=\"#\">FAQ's</a></li>
                             <li><a href=\"#\">Sitemap</a></li>
-                            <li><a href=\"#\">Contact</a></li>
+                            <li><a href=\"";
+        // line 358
+        echo $this->env->getExtension('routing')->getPath("my_app_mail_form");
+        echo "\">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -404,11 +415,11 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
         <!-- Style Switcher
         ==================================================-->
         <link rel=\"stylesheet\" href=\"";
-        // line 374
+        // line 373
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/switcher.css"), "html", null, true);
         echo "\">
         <script src=\"";
-        // line 375
+        // line 374
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("scripts/switcher.js"), "html", null, true);
         echo "\"></script>
 
@@ -423,7 +434,7 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                 </aside>
             </div>
         </section>
-        Style Switcher / End -->
+        <!--Style Switcher / End -->
 ";
     }
 
@@ -431,7 +442,7 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
     public function block_sign($context, array $blocks = array())
     {
         // line 74
-        echo "                    <div>
+        echo "                            <div>
                                 <nav class=\"main-nav\">
                                     <ul>
                                         <!-- inser more links here -->
@@ -439,18 +450,20 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                                         <li><a class=\"cd-signup\" style=\"margin-top: -40px\" href=\"#0\">Sign up</a></li>
                                     </ul>
                                 </nav>
-                    </div> 
-                            
+                            </div> 
+
                         ";
     }
 
-    // line 230
+    // line 229
     public function block_navigation($context, array $blocks = array())
     {
-        // line 231
-        echo "                        <li><a href=\"#\"><i class=\"halflings white book\"></i> Cours gratuits</a>
+        // line 230
+        echo "                        <li><a href=\"";
+        echo $this->env->getExtension('routing')->getPath("cours");
+        echo "\"><i class=\"halflings white book\"></i> Cours gratuits</a>
                             <!-- Mega Menu / Start -->
-                            <ul class=\"cols2\">
+                            <ul class=\"cols3\">
                                 <li class=\"col1\">
                                     <h5>Cours gratuits</h5>
                                     <ol>
@@ -482,8 +495,8 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                             </ul>
                             <!-- Second Level / End -->
                         </li>
-                        
-                        <li><a href=\"#\"><i class=\"halflings white pushpin\"></i> Annonces</a>
+
+                        <li><a><i class=\"halflings white pushpin\"></i> Annonces</a>
                             <!-- Second Level / Start -->
                             <ul>
                                 <li><a href=\"\">Offres d'emploi</a></li>
@@ -492,16 +505,16 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
                             <!-- Second Level / End -->
                         </li>
                         <li>
-                            <a href=\"#\"><i class=\"halflings white briefcase\"></i> Assurances</a>
+                            <a href=\"\"><i class=\"halflings white briefcase\"></i> Assurances</a>
                         </li>
 
-                        ";
+                    ";
     }
 
-    // line 285
+    // line 284
     public function block_content($context, array $blocks = array())
     {
-        // line 286
+        // line 285
         echo "
             ";
     }
@@ -518,6 +531,6 @@ class __TwigTemplate_7d10cfbe78a6295e4506394455a53cff0a1650360a80863ae2566943ff5
 
     public function getDebugInfo()
     {
-        return array (  505 => 286,  502 => 285,  451 => 231,  448 => 230,  434 => 74,  431 => 73,  412 => 375,  408 => 374,  335 => 304,  317 => 288,  315 => 285,  307 => 279,  305 => 230,  262 => 190,  258 => 189,  152 => 85,  150 => 73,  139 => 65,  116 => 45,  112 => 44,  108 => 43,  104 => 42,  100 => 41,  96 => 40,  92 => 39,  88 => 38,  84 => 37,  80 => 36,  76 => 35,  72 => 34,  68 => 33,  56 => 24,  52 => 23,  47 => 21,  43 => 20,  22 => 1,);
+        return array (  518 => 285,  515 => 284,  462 => 230,  459 => 229,  445 => 74,  442 => 73,  423 => 374,  419 => 373,  401 => 358,  343 => 303,  325 => 287,  323 => 284,  315 => 278,  313 => 229,  309 => 228,  281 => 203,  276 => 201,  254 => 182,  250 => 181,  152 => 85,  150 => 73,  139 => 65,  116 => 45,  112 => 44,  108 => 43,  104 => 42,  100 => 41,  96 => 40,  92 => 39,  88 => 38,  84 => 37,  80 => 36,  76 => 35,  72 => 34,  68 => 33,  56 => 24,  52 => 23,  47 => 21,  43 => 20,  22 => 1,);
     }
 }

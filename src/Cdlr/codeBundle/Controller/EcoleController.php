@@ -16,4 +16,10 @@ class EcoleController extends Controller
     {
         return $this->render('CdlrcodeBundle:Default:sign-in.html.twig');
     }
+    
+    public function coursAction()
+    {
+        return $this->render('CdlrcodeBundle:Cours:index.html.twig');
+    }
+    
 }
