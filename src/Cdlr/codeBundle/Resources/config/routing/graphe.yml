@@ -1,0 +1,4 @@
+graphe:
+    path:     /show
+    defaults: { _controller: "CdlrcodeBundle:Graphe:ChartPie" }
+
