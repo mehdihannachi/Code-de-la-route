@@ -55,10 +55,10 @@
 
             <!-- 960 Container -->
             <div class="container">
-                
+
                 <!-- Header -->
                 <header id="header">
-                    
+
                     <!-- Logo -->
                     <div class="ten columns">
                         <div id="logo">
@@ -67,11 +67,11 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                            
+
                     <!-- Social / Contact -->
                     <div class="six columns">
                         {% block sign %}
-                    <div>
+                            <div>
                                 <nav class="main-nav">
                                     <ul>
                                         <!-- inser more links here -->
@@ -79,8 +79,8 @@
                                         <li><a class="cd-signup" style="margin-top: -40px" href="#0">Sign up</a></li>
                                     </ul>
                                 </nav>
-                    </div> 
-                            
+                            </div> 
+
                         {% endblock %}
                         <br>
 
@@ -193,7 +193,7 @@
                         <!--<div class="contact-details">Contact e-mail: +48 880 440 110</div>-->
 
                         <div class="clearfix"></div>
-                        
+
                         <!-- Search -->
                         <nav class="top-search">
                             <form action="" method="get">
@@ -203,7 +203,14 @@
                                                         this.value = '';" value="Search" />
                             </form>
                         </nav>
-
+                        <br>
+                        <nav>
+                            <br>
+                            <div align="right">{{ facebookButton() }}
+                                <br>
+                                {{ twitterButton() }}
+                            </div>
+                        </nav>
                     </div>
                 </header>
                 <!-- Header / End -->
@@ -218,15 +225,15 @@
 
             <!-- Navigation
             ================================================== -->
-            
-                <nav id="navigation" class="style-1">
 
-                    <div class="left-corner"></div>
-                    <div class="right-corner"></div>
+            <nav id="navigation" class="style-1">
 
-                    <ul class="menu" id="responsive">
+                <div class="left-corner"></div>
+                <div class="right-corner"></div>
 
-                        <li><a href="" id="current"><i class="halflings white home"></i> Accueil</a></li>
+                <ul class="menu" id="responsive">
+
+                    <li><a href="" id="current"><i class="halflings white home"></i> Accueil</a></li>
                         {% block navigation %}
                         <li><a href="#"><i class="halflings white book"></i> Cours gratuits</a>
                             <!-- Mega Menu / Start -->
@@ -262,7 +269,7 @@
                             </ul>
                             <!-- Second Level / End -->
                         </li>
-                        
+
                         <li><a href="#"><i class="halflings white pushpin"></i> Annonces</a>
                             <!-- Second Level / Start -->
                             <ul>
@@ -275,8 +282,8 @@
                             <a href="#"><i class="halflings white briefcase"></i> Assurances</a>
                         </li>
 
-                        {% endblock %}
-                        <li><a href="#"><i class="halflings white search"></i> Auto-écoles</a></li>
+                    {% endblock %}
+                    <li><a href="#"><i class="halflings white search"></i> Auto-écoles</a></li>
                 </ul>
             </nav>
 

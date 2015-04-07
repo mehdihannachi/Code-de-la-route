@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new HappyR\Google\ApiBundle\HappyRGoogleApiBundle(),
             new Cdlr\mailBundle\CdlrmailBundle(),
             new BladeTester\CalendarBundle\BladeTesterCalendarBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
 //            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
 //            new FOS\FacebookBundle\FOSFacebookBundle(),
         );

@@ -1,3 +1,6 @@
+cdlrcode_graphe:
+    resource: "@CdlrcodeBundle/Resources/config/routing/graphe.yml"
+    prefix:   /graphe
 
 cdlrcode_review:
     resource: "@CdlrcodeBundle/Resources/config/routing/review.yml"

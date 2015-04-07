@@ -2265,5 +2265,233 @@
         "keywords": [
             "User management"
         ]
+    },
+    {
+        "name": "zendframework/zend-stdlib",
+        "version": "2.4.0",
+        "version_normalized": "2.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/Component_ZendStdlib.git",
+            "reference": "eab586f4c18af3fa63c977611939f1f4a3cf1030"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/eab586f4c18af3fa63c977611939f1f4a3cf1030",
+            "reference": "eab586f4c18af3fa63c977611939f1f4a3cf1030",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.23"
+        },
+        "require-dev": {
+            "zendframework/zend-eventmanager": "self.version",
+            "zendframework/zend-filter": "self.version",
+            "zendframework/zend-serializer": "self.version",
+            "zendframework/zend-servicemanager": "self.version"
+        },
+        "suggest": {
+            "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
+            "zendframework/zend-filter": "To support naming strategy hydrator usage",
+            "zendframework/zend-serializer": "Zend\\Serializer component",
+            "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
+        },
+        "time": "2015-04-01 18:09:29",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3-dev",
+                "dev-develop": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Zend\\Stdlib\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "homepage": "https://github.com/zendframework/zf2",
+        "keywords": [
+            "stdlib",
+            "zf2"
+        ]
+    },
+    {
+        "name": "zendframework/zend-json",
+        "version": "2.4.0",
+        "version_normalized": "2.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/Component_ZendJson.git",
+            "reference": "76aeb27e4baf39799e5ca3cf6f2fdd6748ee930c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/Component_ZendJson/zipball/76aeb27e4baf39799e5ca3cf6f2fdd6748ee930c",
+            "reference": "76aeb27e4baf39799e5ca3cf6f2fdd6748ee930c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.23",
+            "zendframework/zend-stdlib": "self.version"
+        },
+        "require-dev": {
+            "zendframework/zend-http": "self.version",
+            "zendframework/zend-server": "self.version"
+        },
+        "suggest": {
+            "zendframework/zend-http": "Zend\\Http component",
+            "zendframework/zend-server": "Zend\\Server component",
+            "zendframework/zendxml": "To support Zend\\Json\\Json::fromXml() usage"
+        },
+        "time": "2015-04-01 18:09:26",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3-dev",
+                "dev-develop": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Zend\\Json\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "provides convenience methods for serializing native PHP to JSON and decoding JSON to native PHP",
+        "homepage": "https://github.com/zendframework/zf2",
+        "keywords": [
+            "json",
+            "zf2"
+        ]
+    },
+    {
+        "name": "ob/highcharts-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/marcaube/ObHighchartsBundle.git",
+            "reference": "0c70c1da642d632cfd1086878a8644743797c442"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/marcaube/ObHighchartsBundle/zipball/0c70c1da642d632cfd1086878a8644743797c442",
+            "reference": "0c70c1da642d632cfd1086878a8644743797c442",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3",
+            "symfony/symfony": "~2.3",
+            "zendframework/zend-json": "~2.3"
+        },
+        "time": "2015-03-07 14:38:18",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Ob\\HighchartsBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Marc Aubé"
+            }
+        ],
+        "description": "Symfony2 Bundle that ease the use of highcharts to display rich graph and charts in your app",
+        "homepage": "https://github.com/marcaube/ObHighchartsBundle",
+        "keywords": [
+            "Symfony2",
+            "chart",
+            "charting",
+            "charts",
+            "graph",
+            "graphs",
+            "highcharts",
+            "marcaube",
+            "ob"
+        ]
+    },
+    {
+        "name": "nomaya/social-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Nomaya/SocialBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nomayann/NomayaSocialButtonsBundle.git",
+            "reference": "4a3d28aceebed00bed8ab3f4c680d0372b499273"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nomayann/NomayaSocialButtonsBundle/zipball/4a3d28aceebed00bed8ab3f4c680d0372b499273",
+            "reference": "4a3d28aceebed00bed8ab3f4c680d0372b499273",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "twig/twig": "*"
+        },
+        "require-dev": {
+            "matthiasnoback/symfony-config-test": "0.*",
+            "symfony/framework-bundle": ">=2.1"
+        },
+        "time": "2014-09-18 15:13:20",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Nomaya\\SocialBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Yann Chauvel",
+                "email": "yann@nomaya.net",
+                "homepage": "http://www.nomaya.net/"
+            }
+        ],
+        "description": "A bundle to easily add facebook, twitter, G+, Linkedin buttons to your templates",
+        "homepage": "http://github.com/nomayann/NomayaSocialButtonsBundle",
+        "keywords": [
+            "Symfony2",
+            "bundle",
+            "buttons",
+            "facebook",
+            "google plus",
+            "like",
+            "linkedin",
+            "share",
+            "social",
+            "symfony",
+            "symfony2bundle",
+            "twitter"
+        ]
     }
 ]
