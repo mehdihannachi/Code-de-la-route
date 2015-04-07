@@ -195,7 +195,6 @@
   'CdlrUserBundle:User:show.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Cdlr\\UserBundle/Resources/views/User/show.html.twig',
   'CdlrCalendarBundle::base.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Cdlr\\CalendarBundle/Resources/views/base.html.twig',
   'CdlrCalendarBundle:Default:index.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Cdlr\\CalendarBundle/Resources/views/Default/index.html.twig',
-  'CdlrmailBundle::contact.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Cdlr\\mailBundle/Resources/views/contact.html.twig',
   'CdlrmailBundle:Default:index.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Cdlr\\mailBundle/Resources/views/Default/index.html.twig',
   'CdlrmailBundle:Default:mail.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Cdlr\\mailBundle/Resources/views/Default/mail.html.twig',
   'BladeTesterCalendarBundle:Base:base.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/views/Base/base.html.twig',
@@ -272,6 +271,10 @@
   'SensioDistributionBundle:Configurator/Step:doctrine.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views/Configurator/Step/doctrine.html.twig',
   'SensioDistributionBundle:Configurator/Step:secret.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views/Configurator/Step/secret.html.twig',
   'SensioDistributionBundle:Configurator:steps.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views/Configurator/steps.html.twig',
+  'WebProfilerExtraBundle:Collector:assetic.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Elao\\WebProfilerExtraBundle/Resources/views/Collector/assetic.html.twig',
+  'WebProfilerExtraBundle:Collector:container.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Elao\\WebProfilerExtraBundle/Resources/views/Collector/container.html.twig',
+  'WebProfilerExtraBundle:Collector:routing.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Elao\\WebProfilerExtraBundle/Resources/views/Collector/routing.html.twig',
+  'WebProfilerExtraBundle:Collector:twig.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\src\\Elao\\WebProfilerExtraBundle/Resources/views/Collector/twig.html.twig',
   '::base.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\app/Resources\\views/base.html.twig',
   ':default:index.html.twig' => 'C:\\wamp\\www\\Code_de_la_route\\app/Resources\\views/default/index.html.twig',
 );
