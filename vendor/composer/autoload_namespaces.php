@@ -15,6 +15,7 @@ return array(
     'Sensio\\Bundle\\DistributionBundle' => array($vendorDir . '/sensio/distribution-bundle'),
     'SensioLabs\\Security' => array($vendorDir . '/sensiolabs/security-checker'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
+    'Nomaya\\SocialBundle\\' => array($vendorDir . '/nomaya/social-bundle'),
     'Incenteev\\ParameterHandler' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'HappyR\\Google\\ApiBundle' => array($vendorDir . '/happyr/google-api-bundle'),
     'HWI\\Bundle\\OAuthBundle\\' => array($vendorDir . '/hwi/oauth-bundle'),

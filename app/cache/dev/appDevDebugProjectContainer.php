@@ -25,7 +25,7 @@ class appDevDebugProjectContainer extends Container
     public function __construct()
     {
         $dir = __DIR__;
-        for ($i = 1; $i <= 4; ++$i) {
+        for ($i = 1; $i <= 5; ++$i) {
             $this->targetDirs[$i] = $dir = dirname($dir);
         }
         $this->parameters = $this->getDefaultParameters();
@@ -174,6 +174,9 @@ class appDevDebugProjectContainer extends Container
             'monolog.logger.security' => 'getMonolog_Logger_SecurityService',
             'monolog.logger.templating' => 'getMonolog_Logger_TemplatingService',
             'monolog.logger.translation' => 'getMonolog_Logger_TranslationService',
+            'nomaya.socialbarhelper' => 'getNomaya_SocialbarhelperService',
+            'nomaya.sociallinkshelper' => 'getNomaya_SociallinkshelperService',
+            'ob_highcharts.twig.highcharts_extension' => 'getObHighcharts_Twig_HighchartsExtensionService',
             'profiler' => 'getProfilerService',
             'profiler_listener' => 'getProfilerListenerService',
             'property_accessor' => 'getPropertyAccessorService',
@@ -283,6 +286,8 @@ class appDevDebugProjectContainer extends Container
             'twig.controller.preview_error' => 'getTwig_Controller_PreviewErrorService',
             'twig.exception_listener' => 'getTwig_ExceptionListenerService',
             'twig.extension.acme.demo' => 'getTwig_Extension_Acme_DemoService',
+            'twig.extension.nomaya_social_bar' => 'getTwig_Extension_NomayaSocialBarService',
+            'twig.extension.nomaya_social_links' => 'getTwig_Extension_NomayaSocialLinksService',
             'twig.loader' => 'getTwig_LoaderService',
             'twig.translation.extractor' => 'getTwig_Translation_ExtractorService',
             'uri_signer' => 'getUriSignerService',
@@ -704,7 +709,7 @@ class appDevDebugProjectContainer extends Container
         $this->services['debug.templating.engine.php'] = $instance = new \Symfony\Bundle\FrameworkBundle\Templating\TimedPhpEngine($this->get('templating.name_parser'), $this, $this->get('templating.loader'), $this->get('debug.stopwatch'), $this->get('templating.globals'));
 
         $instance->setCharset('UTF-8');
-        $instance->setHelpers(array('slots' => 'templating.helper.slots', 'assets' => 'templating.helper.assets', 'request' => 'templating.helper.request', 'session' => 'templating.helper.session', 'router' => 'templating.helper.router', 'actions' => 'templating.helper.actions', 'code' => 'templating.helper.code', 'translator' => 'templating.helper.translator', 'form' => 'templating.helper.form', 'stopwatch' => 'templating.helper.stopwatch', 'logout_url' => 'templating.helper.logout_url', 'security' => 'templating.helper.security', 'assetic' => 'assetic.helper.dynamic'));
+        $instance->setHelpers(array('slots' => 'templating.helper.slots', 'assets' => 'templating.helper.assets', 'request' => 'templating.helper.request', 'session' => 'templating.helper.session', 'router' => 'templating.helper.router', 'actions' => 'templating.helper.actions', 'code' => 'templating.helper.code', 'translator' => 'templating.helper.translator', 'form' => 'templating.helper.form', 'stopwatch' => 'templating.helper.stopwatch', 'logout_url' => 'templating.helper.logout_url', 'security' => 'templating.helper.security', 'assetic' => 'assetic.helper.dynamic', 'social-buttons' => 'nomaya.socialbarhelper', 'social-links' => 'nomaya.sociallinkshelper'));
 
         return $instance;
     }
@@ -2205,6 +2210,45 @@ class appDevDebugProjectContainer extends Container
         $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'nomaya.socialbarhelper' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Helpers\SocialBarHelper A Nomaya\SocialBundle\Helpers\SocialBarHelper instance.
+     */
+    protected function getNomaya_SocialbarhelperService()
+    {
+        return $this->services['nomaya.socialbarhelper'] = new \Nomaya\SocialBundle\Helpers\SocialBarHelper($this->get('templating'));
+    }
+
+    /**
+     * Gets the 'nomaya.sociallinkshelper' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Helpers\SocialLinksHelper A Nomaya\SocialBundle\Helpers\SocialLinksHelper instance.
+     */
+    protected function getNomaya_SociallinkshelperService()
+    {
+        return $this->services['nomaya.sociallinkshelper'] = new \Nomaya\SocialBundle\Helpers\SocialLinksHelper($this->get('templating'));
+    }
+
+    /**
+     * Gets the 'ob_highcharts.twig.highcharts_extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Ob\HighchartsBundle\Twig\HighchartsExtension A Ob\HighchartsBundle\Twig\HighchartsExtension instance.
+     */
+    protected function getObHighcharts_Twig_HighchartsExtensionService()
+    {
+        return $this->services['ob_highcharts.twig.highcharts_extension'] = new \Ob\HighchartsBundle\Twig\HighchartsExtension();
     }
 
     /**
@@ -3835,6 +3879,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Twig_Extension_Debug());
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), true, array(), array(), new \Symfony\Bundle\AsseticBundle\DefaultValueSupplier($this)));
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
+        $instance->addExtension($this->get('ob_highcharts.twig.highcharts_extension'));
+        $instance->addExtension($this->get('twig.extension.nomaya_social_bar'));
+        $instance->addExtension($this->get('twig.extension.nomaya_social_links'));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\DumpExtension($this->get('var_dumper.cloner')));
         $instance->addExtension($this->get('twig.extension.acme.demo'));
         $instance->addExtension(new \Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension());
@@ -3883,6 +3930,32 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'twig.extension.nomaya_social_bar' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar A Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar instance.
+     */
+    protected function getTwig_Extension_NomayaSocialBarService()
+    {
+        return $this->services['twig.extension.nomaya_social_bar'] = new \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar($this);
+    }
+
+    /**
+     * Gets the 'twig.extension.nomaya_social_links' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks A Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks instance.
+     */
+    protected function getTwig_Extension_NomayaSocialLinksService()
+    {
+        return $this->services['twig.extension.nomaya_social_links'] = new \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks($this);
+    }
+
+    /**
      * Gets the 'twig.loader' service.
      *
      * This service is shared.
@@ -3905,6 +3978,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\CalendarBundle/Resources/views'), 'CdlrCalendar');
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\mailBundle/Resources/views'), 'Cdlrmail');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\carlescliment\\calendar-bundle\\src\\BladeTester\\CalendarBundle/Resources/views'), 'BladeTesterCalendar');
+        $instance->addPath(($this->targetDirs[3].'\\vendor\\nomaya\\social-bundle\\Nomaya\\SocialBundle/Resources/views'), 'NomayaSocial');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\src\\Acme\\DemoBundle/Resources/views'), 'AcmeDemo');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
@@ -4434,6 +4508,8 @@ class appDevDebugProjectContainer extends Container
                 'HappyRGoogleApiBundle' => 'HappyR\\Google\\ApiBundle\\HappyRGoogleApiBundle',
                 'CdlrmailBundle' => 'Cdlr\\mailBundle\\CdlrmailBundle',
                 'BladeTesterCalendarBundle' => 'BladeTester\\CalendarBundle\\BladeTesterCalendarBundle',
+                'ObHighchartsBundle' => 'Ob\\HighchartsBundle\\ObHighchartsBundle',
+                'NomayaSocialBundle' => 'Nomaya\\SocialBundle\\NomayaSocialBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
@@ -4445,7 +4521,7 @@ class appDevDebugProjectContainer extends Container
             'database_driver' => 'pdo_mysql',
             'database_host' => '127.0.0.1',
             'database_port' => NULL,
-            'database_name' => 'halfman_code_de_la_route',
+            'database_name' => 'base_finale',
             'database_user' => 'root',
             'database_password' => NULL,
             'mailer_transport' => 'smtp',
@@ -5075,6 +5151,53 @@ class appDevDebugProjectContainer extends Container
             'blade_tester_calendar.classes.event.entity' => 'Cdlr\\CalendarBundle\\Entity\\Event',
             'blade_tester_calendar.classes.category.entity' => 'BladeTester\\CalendarBundle\\Entity\\EventCategory',
             'blade_tester_calendar.form.type.category.class' => 'BladeTester\\CalendarBundle\\Form\\Type\\EventCategoryFormType',
+            'ob_highcharts.twig_extension.class' => 'Ob\\HighchartsBundle\\Twig\\HighchartsExtension',
+            'buttons.facebook' => array(
+                'url' => 'https://www.facebook.com/halfmancdlr',
+                'locale' => 'fr_FR',
+                'send' => false,
+                'width' => 300,
+                'showFaces' => false,
+                'layout' => 'button_count',
+                'share' => true,
+            ),
+            'buttons.twitter' => array(
+                'url' => 'https://twitter.com/halfmancdlr',
+                'locale' => 'fr',
+                'message' => 'Je veux partager ça avec vous',
+                'text' => 'Tweet',
+                'via' => 'Code De La Route',
+                'tag' => 'cdlr',
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'buttons.googleplus' => array(
+                'url' => NULL,
+                'locale' => 'fr',
+                'size' => 'medium',
+                'annotation' => 'bubble',
+                'width' => 300,
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'buttons.linkedin' => array(
+                'url' => NULL,
+                'locale' => 'fr_FR',
+                'counter' => 'right',
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'buttons.pinterest' => array(
+                'url' => NULL,
+                'locale' => 'fr',
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'social.theme' => 'default',
             'web_profiler.controller.profiler.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController',
             'web_profiler.controller.router.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\RouterController',
             'web_profiler.controller.exception.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ExceptionController',
