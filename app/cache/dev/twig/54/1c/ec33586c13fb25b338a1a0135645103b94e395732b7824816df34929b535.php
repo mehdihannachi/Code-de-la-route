@@ -42,24 +42,24 @@ class __TwigTemplate_541cec33586c13fb25b338a1a0135645103b94e395732b7824816df3492
     <table class=\"record_properties\" border=\"1\">
         <tbody>
             <tr>
-                <th>Nom : </th>
+                <th>Nom</th>
                 <td>";
         // line 10
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "nom", array()), "html", null, true);
         echo "</td>
             </tr>
             <tr>
-                <th>Categorie : </th>
+                <th>Categorie</th>
                 <td>";
         // line 14
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "categorie", array()), "html", null, true);
         echo "</td>
             </tr>
             <tr>
-                <th>Url : </th>
+                <th>Url</th>
                 <td>";
         // line 18
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "path", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "url", array()), "html", null, true);
         echo "</td>
             </tr>
            
@@ -67,32 +67,26 @@ class __TwigTemplate_541cec33586c13fb25b338a1a0135645103b94e395732b7824816df3492
     </table>
 
         <ul class=\"record_actions\">
- 
     <li>
-       
-        <iframe id=\"viewer\" src=\"";
-        // line 28
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("ViewerJs/index.html"), "html", null, true);
-        echo "#";
-        echo twig_escape_filter($this->env, ($this->env->getExtension('assets')->getAssetUrl("uploads/documents/") . $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "path", array())), "html", null, true);
-        echo "\" seamless width='400' height='300' allowfullscreen webkitallowfullscreen></iframe>
         <a href=\"";
-        // line 29
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cours_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "coursid", array()))), "html", null, true);
+        // line 26
+        echo $this->env->getExtension('routing')->getPath("cours");
+        echo "\">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href=\"";
+        // line 31
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cours_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "coursId", array()))), "html", null, true);
         echo "\">
             Edit
         </a>
     </li>
     <li>";
-        // line 33
+        // line 35
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form');
         echo "</li>
-    <li><a href=\"";
-        // line 34
-        echo $this->env->getExtension('routing')->getPath("cours");
-        echo "\">
-            Back to the list
-        </a></li>
 </ul>
     </div>
 ";
@@ -110,6 +104,6 @@ class __TwigTemplate_541cec33586c13fb25b338a1a0135645103b94e395732b7824816df3492
 
     public function getDebugInfo()
     {
-        return array (  92 => 34,  88 => 33,  81 => 29,  75 => 28,  62 => 18,  55 => 14,  48 => 10,  39 => 3,  36 => 2,  11 => 1,);
+        return array (  88 => 35,  81 => 31,  73 => 26,  62 => 18,  55 => 14,  48 => 10,  39 => 3,  36 => 2,  11 => 1,);
     }
 }

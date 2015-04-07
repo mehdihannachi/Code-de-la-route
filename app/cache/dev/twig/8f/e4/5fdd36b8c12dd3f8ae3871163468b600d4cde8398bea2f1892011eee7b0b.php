@@ -63,7 +63,7 @@ class __TwigTemplate_8fe45fdd36b8c12dd3f8ae3871163468b600d4cde8398bea2f1892011ee
             echo "</a></td>
                 <td>";
             // line 18
-            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "path", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "url", array()), "html", null, true);
             echo "</td>
                 <td>
                 <ul>

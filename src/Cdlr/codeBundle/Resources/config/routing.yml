@@ -50,6 +50,8 @@ cdlrcode_cours:
     resource: "@CdlrcodeBundle/Resources/config/routing/cours.yml"
     prefix:   /cours
 
+    
+
 cdlrcode_admin:
     resource: "@CdlrcodeBundle/Resources/config/routing/admin.yml"
     prefix:   /admin
