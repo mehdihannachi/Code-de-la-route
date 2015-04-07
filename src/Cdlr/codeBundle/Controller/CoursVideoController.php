@@ -35,22 +35,25 @@ class CoursVideoController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new CoursVideo();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+         $entity = new CoursVideo();
+            $form = $this->createForm(new CoursVideoType(), $entity);
+            $form->add('submit', 'submit', array('label' => 'Upload'));
+            $form->bind($request);
+            $entity->upload();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
 
-            return $this->redirect($this->generateUrl('coursvideo_show', array('id' => $entity->getId())));
-        }
+                return $this->redirect($this->generateUrl('coursvideo', ['id' => $entity->getId()]));
+            }
 
-        return $this->render('CdlrcodeBundle:CoursVideo:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+            return $this->render('CdlrcodeBundle:coursVideo:new.html.twig', array(
+                        'entity' => $entity,
+                        'form' => $form->createView(),
+            ));
+        
     }
 
     /**

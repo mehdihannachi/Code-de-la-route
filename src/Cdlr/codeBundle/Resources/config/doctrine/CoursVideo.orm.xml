@@ -5,6 +5,6 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="nom" type="string" column="nom" length="20" nullable="false"/>
-    <field name="url" type="string" column="URL" length="500" nullable="false"/>
+    <field name="path" type="string" column="path" length="500" nullable="false"/>
   </entity>
 </doctrine-mapping>
