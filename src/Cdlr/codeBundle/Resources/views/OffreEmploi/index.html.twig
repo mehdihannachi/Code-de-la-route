@@ -1,42 +1,28 @@
 {%extends "CdlrcodeBundle::layout.html.twig" %}
 {% block content %}
-    <div align="center">
-    <h1>OffreEmploi list</h1>
+    <div align="center" style="padding-right:40px;padding-left:50px">
+        <h1>Offres d'emploi</h1>
 
-    <table class="records_list" border="1">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('offreemploi_show', { 'id': entity.annonceId }) }}">{{ entity.titre }}</a></td>
-                <td>{{ entity.description }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('offreemploi_show', { 'id': entity.annonceId }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('offreemploi_edit', { 'id': entity.annonceId }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <article  style="padding-left:1" > 
+                <a href="{{ path('offreemploi_show', { 'id': entity.idOwner }) }}">{{ entity.titre }}</a><br>
+                <H2> {{entity.titre}}</h2><br>
+                <p>{{ entity.description }}</p>
+            </article>
+            <br><p align="right">
+                <a href="{{ path('offreemploi_show', { 'id': entity.annonceId }) }}">show</a><br>
+                <a href="{{ path('offreemploi_edit', { 'id': entity.annonceId }) }}">edit</a>
+            </p>
+            {% endfor %}
+
 
         <ul>
-        <li>
-            <a href="{{ path('offreemploi_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+            <li>
+                <a href="{{ path('offreemploi_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
     </div>
-    {% endblock %}
+{% endblock %}
