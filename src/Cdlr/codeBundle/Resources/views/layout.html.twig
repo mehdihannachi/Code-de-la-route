@@ -71,289 +71,290 @@
                     <div class="six columns">
                         {% block sign %}
                             <div>
-                                <nav class="main-nav">
-                                    <ul>
-                                        <!-- inser more links here -->
-                                        <li><a class="cd-signin" style="margin-top: -40px" href="#0">Sign in</a></li>
-                                        <li><a class="cd-signup" style="margin-top: -40px" href="#0">Sign up</a></li>
-                                    </ul>
-                                </nav>
-                            </div> 
+
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <ul>
+                                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                            <a href="{{ path('fos_user_security_logout') }}">
+                                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                            </a>
+                                        </ul>
+
+                                {% else %}
+                                    <div>
+                                        <nav class="main-nav">
+                                            <ul>
+                                                <!-- inser more links here -->
+                                                <li><a class="cd-signin" style="margin-top: -40px" href="#0">Se connecter/s'enregistrer</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>                                 
+                                {% endif %}
+                            </div>
+
 
                         {% endblock %}
-                        <br>
 
-                        <div class="clearfix"></div>
+                    <br>
 
-                        <div class="clearfix"></div>
-                        <!-- SIGNUP -->
-                        <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-                            <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-                                <ul class="cd-switcher">
-                                    <li><a href="#0">Sign in</a></li>
-                                    <li><a href="#0">New account</a></li>
-                                </ul>
-
-                                <div id="cd-login"> <!-- log in form -->
-                                    <form class="cd-form" action="{{ path("fos_user_security_check") }}" method="post">
-                                        <input type="hidden" name="_csrf_token" value="{{ fos_csrf_provider.generateCsrfToken('authenticate') }}" />
-                                        <p class="fieldset">
-
-                                        <label class="image-replace cd-email" for="username">{{ 'security.login.username'|trans }}</label>
-                                        <input class="full-width has-padding has-border" type="text" id="username" name="_username" value="{% if last_username is defined %} {{ last_username }} {% endif %}" placeholder="E-mail" required="required" />
-                                        <span class="cd-error-message">Error message here!</span>
-                                        </p>
-                                        <p class="fieldset">
-
-                                        <label class="image-replace cd-password" for="password">{{ 'security.login.password'|trans }}</label>
-                                        <input class="full-width has-padding has-border" type="password" id="password" name="_password" required="required" />
-                                        <a href="#0" class="hide-password">Hide</a>
-                                        </p>
-                                        <p class="fieldset">
-
-                                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                                        </p>
-                                        <p class="fieldset">
-
-                                        <input class="full-width has-padding" type="submit"  name="_submit" value="{{ 'security.login.submit'|trans }}" />
-                                        </p>
-                                    </form>
-
-                                </div> <!-- cd-login -->
-
-                                <div id="cd-signup"> <!-- sign up form -->
-                                    <form class="cd-form">
-                                    </form>
-
-                                    <!-- <a href="#0" class="cd-close-form">Close</a> -->
-                                </div> <!-- cd-signup -->
-
-                                <div id="cd-reset-password"> <!-- reset password form -->
-                                    <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
-                                    <form class="cd-form">
-                                        <p class="fieldset">
-                                            <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                                            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-                                            <span class="cd-error-message">Error message here!</span>
-                                        </p>
-
-                                        <p class="fieldset">
-                                            <input class="full-width has-padding" type="submit" value="Reset password">
-                                        </p>
-                                    </form>
-
-                                    <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-                                </div> <!-- cd-reset-password -->
-                                <a href="#0" class="cd-close-form">Close</a>
-                            </div> <!-- cd-user-modal-container -->
-                        </div> <!-- cd-user-modal -->
-                        <script src="{{ asset( 'scripts/jquery.min.js' ) }}"></script>
-                        <script src="{{asset('js/main.js')}}"></script> <!-- Gem jQuery -->
-
-                        <!-- Contact Details -->
-                        <!--<div class="contact-details">Contact e-mail: +48 880 440 110</div>-->
-
-                        <div class="clearfix"></div>
-
-                        <!-- Search -->
-                        <nav class="top-search">
-                            <form action="" method="get">
-                                <button class="search-btn"></button>
-                                <input class="search-field" type="text" onblur="if (this.value == '')
-                                                this.value = 'Search';" onfocus="if (this.value == 'Search')
-                                                            this.value = '';" value="Search" />
-                            </form>
-                        </nav>
-                        <br>
-                        <nav>
-                            <br>
-                            <div align="right">{{ facebookButton() }}
-                                <br>
-                                {{ twitterButton() }}
-                            </div>
-                        </nav>
-                    </div>
-                </header>
-                <!-- Header / End -->
-
-
-
-                <div class="clearfix"></div>
-
-            </div>
-            <!-- 960 Container / End -->
-
-
-            <!-- Navigation
-            ================================================== -->
-
-            <nav id="navigation" class="style-1">
-
-                <div class="left-corner"></div>
-                <div class="right-corner"></div>
-
-                <ul class="menu" id="responsive">
-
-                    <li><a href="{{ path('cdlr_user_homepage') }}" id="current"><i class="halflings white home"></i> Accueil</a></li>
-                        {% block navigation %}
-                        <li><a href="{{ path('cours') }}"><i class="halflings white book"></i> Cours gratuits</a>
-                            <!-- Mega Menu / Start -->
-                            <ul class="cols3">
-                                <li class="col1">
-                                    <h5>Cours gratuits</h5>
-                                    <ol>
-                                        <li><a href="">Les catégories de permis</a></li>
-                                        <li><a href="">Les panneaux routiers</a></li>
-                                        <li><a href="">Les feux routiers</a></li>
-                                    </ol>
-                                </li>
-                                <li class="col1">
-                                    <h5>Cours vidéos gratuits</h5>
-                                    <ol>
-                                        <li><a href="">Cours 1</a></li>
-                                        <li><a href="">Cours 2</a></li>
-                                        <li><a href="">Cours 3</a></li>
-                                        <li><a href="">Cours 4</a></li>
-                                    </ol>
-                                </li>
-                            </ul>
-                            <!-- Mega Menu / End -->
-                        </li>
-
-                        <li><a href="#"><i class="halflings white file"></i> Tests gratuits</a>
-                            <!-- Second Level / Start -->
-                            <ul>
-                                <li><a href="">Test 1</a></li>
-                                <li><a href="">Test 2</a></li>
-                                <li><a href="">Test 3</a></li>
-                                <li><a href="">Test 4</a></li>
-                            </ul>
-                            <!-- Second Level / End -->
-                        </li>
-
-                        <li><a><i class="halflings white pushpin"></i> Annonces</a>
-                            <!-- Second Level / Start -->
-                            <ul>
-                                <li><a href="">Offres d'emploi</a></li>
-                                <li><a href="">Vente de voitures</a></li>
-                            </ul>
-                            <!-- Second Level / End -->
-                        </li>
-                        <li>
-                            <a href=""><i class="halflings white briefcase"></i> Assurances</a>
-                        </li>
-
-                    {% endblock %}
-                    <li><a href=""><i class="halflings white search"></i> Auto-écoles</a></li>
-                </ul>
-            </nav>
-
-            <div class="clearfix"></div>
-
-            {% block content %}
-
-            {% endblock %}
-
-
-
-
-        </div>
-        <!-- Wrapper / End -->
-        <!-- Footer
-        ================================================== -->
-
-        <!-- Footer / Start -->
-        <footer id="footer">
-            <!-- 960 Container -->
-            <div class="container">
-
-                <!-- About -->
-                <div class="one-third column">
-                    <h4>A propos de nous</h4>
-<!--                    <img id="logo-footer" src="{{ asset ('images/logo-footer.png') }}" alt="" />-->
-                    <p class="one-third column">Morbi gravida imperdiet rutrum fusce mattis, lectus consequat vestibulum, duinibh fermentum ligula.</p>
-
-                </div>
-
-                <!-- Contact Details -->
-                <div class="one-third column">
-                    <h4>Contactez nous</h4>
-                    <ul class="contact-details-alt">
-                        <li><i class="halflings white map-marker"></i> <p><strong>Adresse:</strong> Esprit - Ghazela, Ariana</p></li>
-                        <li><i class="halflings white user"></i> <p><strong>Téléphone:</strong> +216 000 000</p></li>
-                        <li><i class="halflings white envelope"></i> <p><strong>Email:</strong> <a href="#">codedelaroute.fahm@gmail.com</a></p></li>
-                    </ul>
-                </div>
-
-                <!-- Photo Stream -->
-                <div class="one-third column">
-                    <h4>Rejoignez nous sur:</h4>
-                    <div class="set-1">
-                        <ul>
-                            <li><a href="https://www.facebook.com" class="facebook-small">Facebook</a></li>
-                            <li><a href="https://www.twitter.com" class="twitter-small">Twitter</a></li>
-                            <li><a href="https://plus.google.com" class="gplus-small">GPlus</a></li>
-                        </ul>
-                    </div>
                     <div class="clearfix"></div>
 
-                </div>
+                    <div class="clearfix"></div>
+                    <!-- SIGNUP -->
+                    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+                        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+                            <ul class="cd-switcher">
+                                <li><a href="#0">Se connecter/s'enregistrer</a></li>
+                            </ul>
 
-            </div>
-            <!-- 960 Container / End -->
+                            <div id="cd-login"> <!-- log in form -->
+                                <form class="cd-form"  method="post">
+                                    <p class="fieldset">
+                                    <li> <a href="{{ path('auth/log') }}">Se connecter</a> </li>
 
-        </footer>
-        <!-- Footer / End -->
 
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p class="fieldset">
+                                    <li> <a href="{{ path('auth/log') }}">S'enregistrer</a> </li>
+                                    </p>
+                                </form>
 
-        <!-- Footer Bottom / Start  -->
-        <footer id="footer-bottom">
+                            </div> <!-- cd-login -->
 
-            <!-- 960 Container -->
-            <div class="container">
+                            <div id="cd-signup"> <!-- sign up form -->
+                                <form class="cd-form">
+                                </form>
 
-                <!-- Copyrights -->
-                <div class="eight columns">
-                    <div class="copyright">
-                        © Copyright 2015 by <a href="#">Five and a half man</a>. All Rights Reserved.
-                    </div>
-                </div>
+                                <!-- <a href="#0" class="cd-close-form">Close</a> -->
+                            </div> <!-- cd-signup -->
 
-                <!-- Menu -->
-                <div class="eight columns">
-                    <nav id="sub-menu">
-                        <ul>
-                            <li><a href="#">FAQ's</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="{{ path('my_app_mail_form') }}">Contact</a></li>
-                        </ul>
+                            <div id="cd-reset-password"> <!-- reset password form -->
+                                <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+                                <form class="cd-form">
+                                    <p class="fieldset">
+                                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+                                        <span class="cd-error-message">Error message here!</span>
+                                    </p>
+
+                                    <p class="fieldset">
+                                        <input class="full-width has-padding" type="submit" value="Reset password">
+                                    </p>
+                                </form>
+
+                                <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+                            </div> <!-- cd-reset-password -->
+                            <a href="#0" class="cd-close-form">Close</a>
+                        </div> <!-- cd-user-modal-container -->
+                    </div> <!-- cd-user-modal -->
+                    <script src="{{ asset( 'scripts/jquery.min.js' ) }}"></script>
+                    <script src="{{asset('js/main.js')}}"></script> <!-- Gem jQuery -->
+
+                    <!-- Contact Details -->
+                    <!--<div class="contact-details">Contact e-mail: +48 880 440 110</div>-->
+
+                    <div class="clearfix"></div>
+
+                    <!-- Search -->
+                    <nav class="top-search">
+                        <form action="" method="get">
+                            <button class="search-btn"></button>
+                            <input class="search-field" type="text" onblur="if (this.value == '')
+                                        this.value = 'Search';" onfocus="if (this.value == 'Search')
+                                                    this.value = '';" value="Search" />
+                        </form>
                     </nav>
-                </div>
-
+                    <br>
+                    <nav>
+                        <br>
+                        <div align="right">{{ facebookButton() }}
+                            <br>
+                            {{ twitterButton() }}
+                        </div>
+                    </nav>
             </div>
-            <!-- 960 Container / End -->
-
-        </footer>
-        <!-- Footer Bottom / End -->
+        </header>
+        <!-- Header / End -->
 
 
 
-        <!-- Style Switcher
-        ==================================================-->
-        <link rel="stylesheet" href="{{ asset( 'css/switcher.css' ) }}">
-        <script src="{{ asset( 'scripts/switcher.js' ) }}"></script>
+        <div class="clearfix"></div>
 
-        <section id="style-switcher">
-            <h2>Style Switcher <a href="#"></a></h2>
-            <div class="sidebar left">
-                <aside class="sidebar">
-                    <ul>
-                        <li>a</li>
-                        <li>b</li>
+    </div>
+    <!-- 960 Container / End -->
+
+
+    <!-- Navigation
+    ================================================== -->
+
+    <nav id="navigation" class="style-1">
+
+        <div class="left-corner"></div>
+        <div class="right-corner"></div>
+
+        <ul class="menu" id="responsive">
+
+            <li><a href="{{ path('cdlr_user_homepage') }}" id="current"><i class="halflings white home"></i> Accueil</a></li>
+                {% block navigation %}
+                <li><a href="{{ path('cours') }}"><i class="halflings white book"></i> Cours gratuits</a>
+                    <!-- Mega Menu / Start -->
+                    <ul class="cols3">
+                        <li class="col1">
+                            <h5>Cours gratuits</h5>
+                            <ol>
+                                <li><a href="">Les catégories de permis</a></li>
+                                <li><a href="">Les panneaux routiers</a></li>
+                                <li><a href="">Les feux routiers</a></li>
+                            </ol>
+                        </li>
+                        <li class="col1">
+                            <h5>Cours vidéos gratuits</h5>
+                            <ol>
+                                <li><a href="">Cours 1</a></li>
+                                <li><a href="">Cours 2</a></li>
+                                <li><a href="">Cours 3</a></li>
+                                <li><a href="">Cours 4</a></li>
+                            </ol>
+                        </li>
                     </ul>
-                </aside>
+                    <!-- Mega Menu / End -->
+                </li>
+
+                <li><a href="#"><i class="halflings white file"></i> Tests gratuits</a>
+                    <!-- Second Level / Start -->
+                    <ul>
+                        <li><a href="">Test 1</a></li>
+                        <li><a href="">Test 2</a></li>
+                        <li><a href="">Test 3</a></li>
+                        <li><a href="">Test 4</a></li>
+                    </ul>
+                    <!-- Second Level / End -->
+                </li>
+
+                <li><a><i class="halflings white pushpin"></i> Annonces</a>
+                    <!-- Second Level / Start -->
+                    <ul>
+                        <li><a href="">Offres d'emploi</a></li>
+                        <li><a href="">Vente de voitures</a></li>
+                    </ul>
+                    <!-- Second Level / End -->
+                </li>
+                <li>
+                    <a href=""><i class="halflings white briefcase"></i> Assurances</a>
+                </li>
+
+            {% endblock %}
+            <li><a href=""><i class="halflings white search"></i> Auto-écoles</a></li>
+        </ul>
+    </nav>
+
+    <div class="clearfix"></div>
+
+    {% block content %}
+
+    {% endblock %}
+
+
+
+
+</div>
+<!-- Wrapper / End -->
+<!-- Footer
+================================================== -->
+
+<!-- Footer / Start -->
+<footer id="footer">
+    <!-- 960 Container -->
+    <div class="container">
+
+        <!-- About -->
+        <div class="one-third column">
+            <h4>A propos de nous</h4>
+<!--                    <img id="logo-footer" src="{{ asset ('images/logo-footer.png') }}" alt="" />-->
+            <p class="one-third column">Morbi gravida imperdiet rutrum fusce mattis, lectus consequat vestibulum, duinibh fermentum ligula.</p>
+
+        </div>
+
+        <!-- Contact Details -->
+        <div class="one-third column">
+            <h4>Contactez nous</h4>
+            <ul class="contact-details-alt">
+                <li><i class="halflings white map-marker"></i> <p><strong>Adresse:</strong> Esprit - Ghazela, Ariana</p></li>
+                <li><i class="halflings white user"></i> <p><strong>Téléphone:</strong> +216 000 000</p></li>
+                <li><i class="halflings white envelope"></i> <p><strong>Email:</strong> <a href="#">codedelaroute.fahm@gmail.com</a></p></li>
+            </ul>
+        </div>
+
+        <!-- Photo Stream -->
+        <div class="one-third column">
+            <h4>Rejoignez nous sur:</h4>
+            <div class="set-1">
+                <ul>
+                    <li><a href="https://www.facebook.com" class="facebook-small">Facebook</a></li>
+                    <li><a href="https://www.twitter.com" class="twitter-small">Twitter</a></li>
+                    <li><a href="https://plus.google.com" class="gplus-small">GPlus</a></li>
+                </ul>
             </div>
-        </section>
-        <!--Style Switcher / End -->
+            <div class="clearfix"></div>
+
+        </div>
+
+    </div>
+    <!-- 960 Container / End -->
+
+</footer>
+<!-- Footer / End -->
+
+
+<!-- Footer Bottom / Start  -->
+<footer id="footer-bottom">
+
+    <!-- 960 Container -->
+    <div class="container">
+
+        <!-- Copyrights -->
+        <div class="eight columns">
+            <div class="copyright">
+                © Copyright 2015 by <a href="#">Five and a half man</a>. All Rights Reserved.
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="eight columns">
+            <nav id="sub-menu">
+                <ul>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="{{ path('my_app_mail_form') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    <!-- 960 Container / End -->
+
+</footer>
+<!-- Footer Bottom / End -->
+
+
+
+<!-- Style Switcher
+==================================================-->
+<link rel="stylesheet" href="{{ asset( 'css/switcher.css' ) }}">
+<script src="{{ asset( 'scripts/switcher.js' ) }}"></script>
+
+<section id="style-switcher">
+    <h2>Style Switcher <a href="#"></a></h2>
+    <div class="sidebar left">
+        <aside class="sidebar">
+            <ul>
+                <li>a</li>
+                <li>b</li>
+            </ul>
+        </aside>
+    </div>
+</section>
+<!--Style Switcher / End -->

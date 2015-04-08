@@ -13,9 +13,10 @@
         <!-- Buttons
         ================================================== -->
             <div class="eight columns">
+                                {% trans_default_domain 'FOSUserBundle' %}
 
                 <!-- Headline -->
-                <h3 class="margin-reset">Login</h3><br />
+                <h3 class="margin-reset">se connecter</h3><br />
                 <form class="cd-form" action="{{ path("fos_user_security_check") }}" method="post">
                     <input type="hidden" name="_csrf_token" value="{{ fos_csrf_provider.generateCsrfToken('authenticate') }}" />
                     <p class="fieldset">
@@ -28,7 +29,6 @@
 
                         <label class="image-replace cd-password" for="password">{{ 'security.login.password'|trans }}</label>
                         <input class="full-width has-padding has-border" type="password" id="password" name="_password" required="required" />
-                        <a href="#0" class="hide-password">Hide</a>
                     </p>
                     <p class="fieldset">
 
@@ -42,7 +42,7 @@
                 </form>
             </div>
                                 <div class="eight columns">
-                <h3 class="margin-reset">Login</h3><br />
+                <h3 class="margin-reset">s'enregistrer</h3><br />
 
                                                                     {{ render(controller('CdlrUserBundle:Registration:regForm')) }}
 

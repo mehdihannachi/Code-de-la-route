@@ -45,25 +45,27 @@ class __TwigTemplate_038f7de7465f25b550902c21f0d459304a25a125641e05b163704378add
         <!-- Buttons
         ================================================== -->
             <div class=\"eight columns\">
-
+                                ";
+        // line 17
+        echo "
                 <!-- Headline -->
-                <h3 class=\"margin-reset\">Login</h3><br />
+                <h3 class=\"margin-reset\">se connecter</h3><br />
                 <form class=\"cd-form\" action=\"";
-        // line 19
+        // line 20
         echo $this->env->getExtension('routing')->getPath("fos_user_security_check");
         echo "\" method=\"post\">
                     <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 20
+        // line 21
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["fos_csrf_provider"]) ? $context["fos_csrf_provider"] : $this->getContext($context, "fos_csrf_provider")), "generateCsrfToken", array(0 => "authenticate"), "method"), "html", null, true);
         echo "\" />
                     <p class=\"fieldset\">
 
                         <label class=\"image-replace cd-email\" for=\"username\">";
-        // line 23
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username"), "html", null, true);
+        // line 24
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
                         <input class=\"full-width has-padding has-border\" type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 24
+        // line 25
         if (array_key_exists("last_username", $context)) {
             echo " ";
             echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
@@ -75,31 +77,30 @@ class __TwigTemplate_038f7de7465f25b550902c21f0d459304a25a125641e05b163704378add
                     <p class=\"fieldset\">
 
                         <label class=\"image-replace cd-password\" for=\"password\">";
-        // line 29
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.password"), "html", null, true);
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
                         <input class=\"full-width has-padding has-border\" type=\"password\" id=\"password\" name=\"_password\" required=\"required\" />
-                        <a href=\"#0\" class=\"hide-password\">Hide</a>
                     </p>
                     <p class=\"fieldset\">
 
                         <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
                         <label for=\"remember_me\">";
         // line 36
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
                     </p>
                     <p class=\"fieldset\">
 
                         <input type=\"submit\"  name=\"_submit\" value=\"";
         // line 40
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" />
                     </p>
                 </form>
             </div>
                                 <div class=\"eight columns\">
-                <h3 class=\"margin-reset\">Login</h3><br />
+                <h3 class=\"margin-reset\">s'enregistrer</h3><br />
 
                                                                     ";
         // line 47
@@ -124,6 +125,6 @@ class __TwigTemplate_038f7de7465f25b550902c21f0d459304a25a125641e05b163704378add
 
     public function getDebugInfo()
     {
-        return array (  106 => 47,  96 => 40,  89 => 36,  79 => 29,  67 => 24,  63 => 23,  57 => 20,  53 => 19,  39 => 7,  36 => 6,  11 => 1,);
+        return array (  107 => 47,  97 => 40,  90 => 36,  81 => 30,  69 => 25,  65 => 24,  59 => 21,  55 => 20,  50 => 17,  39 => 7,  36 => 6,  11 => 1,);
     }
 }

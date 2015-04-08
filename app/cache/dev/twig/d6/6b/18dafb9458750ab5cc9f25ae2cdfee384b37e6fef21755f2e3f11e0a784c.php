@@ -147,291 +147,260 @@ class __TwigTemplate_d66b18dafb9458750ab5cc9f25ae2cdfee384b37e6fef21755f2e3f11e0
                         ";
         // line 72
         $this->displayBlock('sign', $context, $blocks);
-        // line 84
-        echo "                        <br>
+        // line 97
+        echo "
+                    <br>
 
-                        <div class=\"clearfix\"></div>
+                    <div class=\"clearfix\"></div>
 
-                        <div class=\"clearfix\"></div>
-                        <!-- SIGNUP -->
-                        <div class=\"cd-user-modal\"> <!-- this is the entire modal form, including the background -->
-                            <div class=\"cd-user-modal-container\"> <!-- this is the container wrapper -->
-                                <ul class=\"cd-switcher\">
-                                    <li><a href=\"#0\">Sign in</a></li>
-                                    <li><a href=\"#0\">New account</a></li>
-                                </ul>
+                    <div class=\"clearfix\"></div>
+                    <!-- SIGNUP -->
+                    <div class=\"cd-user-modal\"> <!-- this is the entire modal form, including the background -->
+                        <div class=\"cd-user-modal-container\"> <!-- this is the container wrapper -->
+                            <ul class=\"cd-switcher\">
+                                <li><a href=\"#0\">Se connecter/s'enregistrer</a></li>
+                            </ul>
 
-                                <div id=\"cd-login\"> <!-- log in form -->
-                                    <form class=\"cd-form\" action=\"";
-        // line 98
-        echo $this->env->getExtension('routing')->getPath("fos_user_security_check");
-        echo "\" method=\"post\">
-                                        <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 99
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["fos_csrf_provider"]) ? $context["fos_csrf_provider"] : $this->getContext($context, "fos_csrf_provider")), "generateCsrfToken", array(0 => "authenticate"), "method"), "html", null, true);
-        echo "\" />
-                                        <p class=\"fieldset\">
+                            <div id=\"cd-login\"> <!-- log in form -->
+                                <form class=\"cd-form\"  method=\"post\">
+                                    <p class=\"fieldset\">
+                                    <li> <a href=\"";
+        // line 113
+        echo $this->env->getExtension('routing')->getPath("auth/log");
+        echo "\">Se connecter</a> </li>
 
-                                        <label class=\"image-replace cd-email\" for=\"username\">";
-        // line 102
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username"), "html", null, true);
-        echo "</label>
-                                        <input class=\"full-width has-padding has-border\" type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 103
-        if (array_key_exists("last_username", $context)) {
-            echo " ";
-            echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
-            echo " ";
-        }
-        echo "\" placeholder=\"E-mail\" required=\"required\" />
+
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p class=\"fieldset\">
+                                    <li> <a href=\"";
+        // line 120
+        echo $this->env->getExtension('routing')->getPath("auth/log");
+        echo "\">S'enregistrer</a> </li>
+                                    </p>
+                                </form>
+
+                            </div> <!-- cd-login -->
+
+                            <div id=\"cd-signup\"> <!-- sign up form -->
+                                <form class=\"cd-form\">
+                                </form>
+
+                                <!-- <a href=\"#0\" class=\"cd-close-form\">Close</a> -->
+                            </div> <!-- cd-signup -->
+
+                            <div id=\"cd-reset-password\"> <!-- reset password form -->
+                                <p class=\"cd-form-message\">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+                                <form class=\"cd-form\">
+                                    <p class=\"fieldset\">
+                                        <label class=\"image-replace cd-email\" for=\"reset-email\">E-mail</label>
+                                        <input class=\"full-width has-padding has-border\" id=\"reset-email\" type=\"email\" placeholder=\"E-mail\">
                                         <span class=\"cd-error-message\">Error message here!</span>
-                                        </p>
-                                        <p class=\"fieldset\">
+                                    </p>
 
-                                        <label class=\"image-replace cd-password\" for=\"password\">";
-        // line 108
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.password"), "html", null, true);
-        echo "</label>
-                                        <input class=\"full-width has-padding has-border\" type=\"password\" id=\"password\" name=\"_password\" required=\"required\" />
-                                        <a href=\"#0\" class=\"hide-password\">Hide</a>
-                                        </p>
-                                        <p class=\"fieldset\">
+                                    <p class=\"fieldset\">
+                                        <input class=\"full-width has-padding\" type=\"submit\" value=\"Reset password\">
+                                    </p>
+                                </form>
 
-                                        <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
-                                        <label for=\"remember_me\">";
-        // line 115
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me"), "html", null, true);
-        echo "</label>
-                                        </p>
-                                        <p class=\"fieldset\">
-
-                                        <input class=\"full-width has-padding\" type=\"submit\"  name=\"_submit\" value=\"";
-        // line 119
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit"), "html", null, true);
-        echo "\" />
-                                        </p>
-                                    </form>
-
-                                </div> <!-- cd-login -->
-
-                                <div id=\"cd-signup\"> <!-- sign up form -->
-                                    <form class=\"cd-form\">
-                                    </form>
-
-                                    <!-- <a href=\"#0\" class=\"cd-close-form\">Close</a> -->
-                                </div> <!-- cd-signup -->
-
-                                <div id=\"cd-reset-password\"> <!-- reset password form -->
-                                    <p class=\"cd-form-message\">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
-                                    <form class=\"cd-form\">
-                                        <p class=\"fieldset\">
-                                            <label class=\"image-replace cd-email\" for=\"reset-email\">E-mail</label>
-                                            <input class=\"full-width has-padding has-border\" id=\"reset-email\" type=\"email\" placeholder=\"E-mail\">
-                                            <span class=\"cd-error-message\">Error message here!</span>
-                                        </p>
-
-                                        <p class=\"fieldset\">
-                                            <input class=\"full-width has-padding\" type=\"submit\" value=\"Reset password\">
-                                        </p>
-                                    </form>
-
-                                    <p class=\"cd-form-bottom-message\"><a href=\"#0\">Back to log-in</a></p>
-                                </div> <!-- cd-reset-password -->
-                                <a href=\"#0\" class=\"cd-close-form\">Close</a>
-                            </div> <!-- cd-user-modal-container -->
-                        </div> <!-- cd-user-modal -->
-                        <script src=\"";
-        // line 152
+                                <p class=\"cd-form-bottom-message\"><a href=\"#0\">Back to log-in</a></p>
+                            </div> <!-- cd-reset-password -->
+                            <a href=\"#0\" class=\"cd-close-form\">Close</a>
+                        </div> <!-- cd-user-modal-container -->
+                    </div> <!-- cd-user-modal -->
+                    <script src=\"";
+        // line 153
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("scripts/jquery.min.js"), "html", null, true);
         echo "\"></script>
-                        <script src=\"";
-        // line 153
+                    <script src=\"";
+        // line 154
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/main.js"), "html", null, true);
         echo "\"></script> <!-- Gem jQuery -->
 
-                        <!-- Contact Details -->
-                        <!--<div class=\"contact-details\">Contact e-mail: +48 880 440 110</div>-->
+                    <!-- Contact Details -->
+                    <!--<div class=\"contact-details\">Contact e-mail: +48 880 440 110</div>-->
 
-                        <div class=\"clearfix\"></div>
-
-                        <!-- Search -->
-                        <nav class=\"top-search\">
-                            <form action=\"\" method=\"get\">
-                                <button class=\"search-btn\"></button>
-                                <input class=\"search-field\" type=\"text\" onblur=\"if (this.value == '')
-                                                this.value = 'Search';\" onfocus=\"if (this.value == 'Search')
-                                                            this.value = '';\" value=\"Search\" />
-                            </form>
-                        </nav>
-                        <br>
-                        <nav>
-                            <br>
-                            <div align=\"right\">";
-        // line 172
-        echo $this->env->getExtension('nomaya_social_bar')->getFacebookLikeButton();
-        echo "
-                                <br>
-                                ";
-        // line 174
-        echo $this->env->getExtension('nomaya_social_bar')->getTwitterButton();
-        echo "
-                            </div>
-                        </nav>
-                    </div>
-                </header>
-                <!-- Header / End -->
-
-
-
-                <div class=\"clearfix\"></div>
-
-            </div>
-            <!-- 960 Container / End -->
-
-
-            <!-- Navigation
-            ================================================== -->
-
-            <nav id=\"navigation\" class=\"style-1\">
-
-                <div class=\"left-corner\"></div>
-                <div class=\"right-corner\"></div>
-
-                <ul class=\"menu\" id=\"responsive\">
-
-                    <li><a href=\"";
-        // line 199
-        echo $this->env->getExtension('routing')->getPath("cdlr_user_homepage");
-        echo "\" id=\"current\"><i class=\"halflings white home\"></i> Accueil</a></li>
-                        ";
-        // line 200
-        $this->displayBlock('navigation', $context, $blocks);
-        // line 249
-        echo "                    <li><a href=\"\"><i class=\"halflings white search\"></i> Auto-écoles</a></li>
-                </ul>
-            </nav>
-
-            <div class=\"clearfix\"></div>
-
-            ";
-        // line 255
-        $this->displayBlock('content', $context, $blocks);
-        // line 258
-        echo "
-
-
-
-        </div>
-        <!-- Wrapper / End -->
-        <!-- Footer
-        ================================================== -->
-
-        <!-- Footer / Start -->
-        <footer id=\"footer\">
-            <!-- 960 Container -->
-            <div class=\"container\">
-
-                <!-- About -->
-                <div class=\"one-third column\">
-                    <h4>A propos de nous</h4>
-<!--                    <img id=\"logo-footer\" src=\"";
-        // line 275
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-footer.png"), "html", null, true);
-        echo "\" alt=\"\" />-->
-                    <p class=\"one-third column\">Morbi gravida imperdiet rutrum fusce mattis, lectus consequat vestibulum, duinibh fermentum ligula.</p>
-
-                </div>
-
-                <!-- Contact Details -->
-                <div class=\"one-third column\">
-                    <h4>Contactez nous</h4>
-                    <ul class=\"contact-details-alt\">
-                        <li><i class=\"halflings white map-marker\"></i> <p><strong>Adresse:</strong> Esprit - Ghazela, Ariana</p></li>
-                        <li><i class=\"halflings white user\"></i> <p><strong>Téléphone:</strong> +216 000 000</p></li>
-                        <li><i class=\"halflings white envelope\"></i> <p><strong>Email:</strong> <a href=\"#\">codedelaroute.fahm@gmail.com</a></p></li>
-                    </ul>
-                </div>
-
-                <!-- Photo Stream -->
-                <div class=\"one-third column\">
-                    <h4>Rejoignez nous sur:</h4>
-                    <div class=\"set-1\">
-                        <ul>
-                            <li><a href=\"https://www.facebook.com\" class=\"facebook-small\">Facebook</a></li>
-                            <li><a href=\"https://www.twitter.com\" class=\"twitter-small\">Twitter</a></li>
-                            <li><a href=\"https://plus.google.com\" class=\"gplus-small\">GPlus</a></li>
-                        </ul>
-                    </div>
                     <div class=\"clearfix\"></div>
 
-                </div>
-
+                    <!-- Search -->
+                    <nav class=\"top-search\">
+                        <form action=\"\" method=\"get\">
+                            <button class=\"search-btn\"></button>
+                            <input class=\"search-field\" type=\"text\" onblur=\"if (this.value == '')
+                                        this.value = 'Search';\" onfocus=\"if (this.value == 'Search')
+                                                    this.value = '';\" value=\"Search\" />
+                        </form>
+                    </nav>
+                    <br>
+                    <nav>
+                        <br>
+                        <div align=\"right\">";
+        // line 173
+        echo $this->env->getExtension('nomaya_social_bar')->getFacebookLikeButton();
+        echo "
+                            <br>
+                            ";
+        // line 175
+        echo $this->env->getExtension('nomaya_social_bar')->getTwitterButton();
+        echo "
+                        </div>
+                    </nav>
             </div>
-            <!-- 960 Container / End -->
-
-        </footer>
-        <!-- Footer / End -->
+        </header>
+        <!-- Header / End -->
 
 
-        <!-- Footer Bottom / Start  -->
-        <footer id=\"footer-bottom\">
 
-            <!-- 960 Container -->
-            <div class=\"container\">
+        <div class=\"clearfix\"></div>
 
-                <!-- Copyrights -->
-                <div class=\"eight columns\">
-                    <div class=\"copyright\">
-                        © Copyright 2015 by <a href=\"#\">Five and a half man</a>. All Rights Reserved.
-                    </div>
-                </div>
+    </div>
+    <!-- 960 Container / End -->
 
-                <!-- Menu -->
-                <div class=\"eight columns\">
-                    <nav id=\"sub-menu\">
-                        <ul>
-                            <li><a href=\"#\">FAQ's</a></li>
-                            <li><a href=\"#\">Sitemap</a></li>
-                            <li><a href=\"";
-        // line 330
+
+    <!-- Navigation
+    ================================================== -->
+
+    <nav id=\"navigation\" class=\"style-1\">
+
+        <div class=\"left-corner\"></div>
+        <div class=\"right-corner\"></div>
+
+        <ul class=\"menu\" id=\"responsive\">
+
+            <li><a href=\"";
+        // line 200
+        echo $this->env->getExtension('routing')->getPath("cdlr_user_homepage");
+        echo "\" id=\"current\"><i class=\"halflings white home\"></i> Accueil</a></li>
+                ";
+        // line 201
+        $this->displayBlock('navigation', $context, $blocks);
+        // line 250
+        echo "            <li><a href=\"\"><i class=\"halflings white search\"></i> Auto-écoles</a></li>
+        </ul>
+    </nav>
+
+    <div class=\"clearfix\"></div>
+
+    ";
+        // line 256
+        $this->displayBlock('content', $context, $blocks);
+        // line 259
+        echo "
+
+
+
+</div>
+<!-- Wrapper / End -->
+<!-- Footer
+================================================== -->
+
+<!-- Footer / Start -->
+<footer id=\"footer\">
+    <!-- 960 Container -->
+    <div class=\"container\">
+
+        <!-- About -->
+        <div class=\"one-third column\">
+            <h4>A propos de nous</h4>
+<!--                    <img id=\"logo-footer\" src=\"";
+        // line 276
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-footer.png"), "html", null, true);
+        echo "\" alt=\"\" />-->
+            <p class=\"one-third column\">Morbi gravida imperdiet rutrum fusce mattis, lectus consequat vestibulum, duinibh fermentum ligula.</p>
+
+        </div>
+
+        <!-- Contact Details -->
+        <div class=\"one-third column\">
+            <h4>Contactez nous</h4>
+            <ul class=\"contact-details-alt\">
+                <li><i class=\"halflings white map-marker\"></i> <p><strong>Adresse:</strong> Esprit - Ghazela, Ariana</p></li>
+                <li><i class=\"halflings white user\"></i> <p><strong>Téléphone:</strong> +216 000 000</p></li>
+                <li><i class=\"halflings white envelope\"></i> <p><strong>Email:</strong> <a href=\"#\">codedelaroute.fahm@gmail.com</a></p></li>
+            </ul>
+        </div>
+
+        <!-- Photo Stream -->
+        <div class=\"one-third column\">
+            <h4>Rejoignez nous sur:</h4>
+            <div class=\"set-1\">
+                <ul>
+                    <li><a href=\"https://www.facebook.com\" class=\"facebook-small\">Facebook</a></li>
+                    <li><a href=\"https://www.twitter.com\" class=\"twitter-small\">Twitter</a></li>
+                    <li><a href=\"https://plus.google.com\" class=\"gplus-small\">GPlus</a></li>
+                </ul>
+            </div>
+            <div class=\"clearfix\"></div>
+
+        </div>
+
+    </div>
+    <!-- 960 Container / End -->
+
+</footer>
+<!-- Footer / End -->
+
+
+<!-- Footer Bottom / Start  -->
+<footer id=\"footer-bottom\">
+
+    <!-- 960 Container -->
+    <div class=\"container\">
+
+        <!-- Copyrights -->
+        <div class=\"eight columns\">
+            <div class=\"copyright\">
+                © Copyright 2015 by <a href=\"#\">Five and a half man</a>. All Rights Reserved.
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class=\"eight columns\">
+            <nav id=\"sub-menu\">
+                <ul>
+                    <li><a href=\"#\">FAQ's</a></li>
+                    <li><a href=\"#\">Sitemap</a></li>
+                    <li><a href=\"";
+        // line 331
         echo $this->env->getExtension('routing')->getPath("my_app_mail_form");
         echo "\">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
+                </ul>
+            </nav>
+        </div>
 
-            </div>
-            <!-- 960 Container / End -->
+    </div>
+    <!-- 960 Container / End -->
 
-        </footer>
-        <!-- Footer Bottom / End -->
+</footer>
+<!-- Footer Bottom / End -->
 
 
 
-        <!-- Style Switcher
-        ==================================================-->
-        <link rel=\"stylesheet\" href=\"";
-        // line 345
+<!-- Style Switcher
+==================================================-->
+<link rel=\"stylesheet\" href=\"";
+        // line 346
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/switcher.css"), "html", null, true);
         echo "\">
-        <script src=\"";
-        // line 346
+<script src=\"";
+        // line 347
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("scripts/switcher.js"), "html", null, true);
         echo "\"></script>
 
-        <section id=\"style-switcher\">
-            <h2>Style Switcher <a href=\"#\"></a></h2>
-            <div class=\"sidebar left\">
-                <aside class=\"sidebar\">
-                    <ul>
-                        <li>a</li>
-                        <li>b</li>
-                    </ul>
-                </aside>
-            </div>
-        </section>
-        <!--Style Switcher / End -->
+<section id=\"style-switcher\">
+    <h2>Style Switcher <a href=\"#\"></a></h2>
+    <div class=\"sidebar left\">
+        <aside class=\"sidebar\">
+            <ul>
+                <li>a</li>
+                <li>b</li>
+            </ul>
+        </aside>
+    </div>
+</section>
+<!--Style Switcher / End -->
 ";
     }
 
@@ -440,80 +409,109 @@ class __TwigTemplate_d66b18dafb9458750ab5cc9f25ae2cdfee384b37e6fef21755f2e3f11e0
     {
         // line 73
         echo "                            <div>
-                                <nav class=\"main-nav\">
-                                    <ul>
-                                        <!-- inser more links here -->
-                                        <li><a class=\"cd-signin\" style=\"margin-top: -40px\" href=\"#0\">Sign in</a></li>
-                                        <li><a class=\"cd-signup\" style=\"margin-top: -40px\" href=\"#0\">Sign up</a></li>
-                                    </ul>
-                                </nav>
-                            </div> 
+
+                                ";
+        // line 75
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 76
+            echo "                                        <ul>
+                                            ";
+            // line 77
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
+            echo " |
+                                            <a href=\"";
+            // line 78
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
+            echo "\">
+                                                ";
+            // line 79
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
+            echo "
+                                            </a>
+                                        </ul>
+
+                                ";
+        } else {
+            // line 84
+            echo "                                    <div>
+                                        <nav class=\"main-nav\">
+                                            <ul>
+                                                <!-- inser more links here -->
+                                                <li><a class=\"cd-signin\" style=\"margin-top: -40px\" href=\"#0\">Se connecter/s'enregistrer</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>                                 
+                                ";
+        }
+        // line 93
+        echo "                            </div>
+
 
                         ";
     }
 
-    // line 200
+    // line 201
     public function block_navigation($context, array $blocks = array())
     {
-        // line 201
-        echo "                        <li><a href=\"";
+        // line 202
+        echo "                <li><a href=\"";
         echo $this->env->getExtension('routing')->getPath("cours");
         echo "\"><i class=\"halflings white book\"></i> Cours gratuits</a>
-                            <!-- Mega Menu / Start -->
-                            <ul class=\"cols3\">
-                                <li class=\"col1\">
-                                    <h5>Cours gratuits</h5>
-                                    <ol>
-                                        <li><a href=\"\">Les catégories de permis</a></li>
-                                        <li><a href=\"\">Les panneaux routiers</a></li>
-                                        <li><a href=\"\">Les feux routiers</a></li>
-                                    </ol>
-                                </li>
-                                <li class=\"col1\">
-                                    <h5>Cours vidéos gratuits</h5>
-                                    <ol>
-                                        <li><a href=\"\">Cours 1</a></li>
-                                        <li><a href=\"\">Cours 2</a></li>
-                                        <li><a href=\"\">Cours 3</a></li>
-                                        <li><a href=\"\">Cours 4</a></li>
-                                    </ol>
-                                </li>
-                            </ul>
-                            <!-- Mega Menu / End -->
+                    <!-- Mega Menu / Start -->
+                    <ul class=\"cols3\">
+                        <li class=\"col1\">
+                            <h5>Cours gratuits</h5>
+                            <ol>
+                                <li><a href=\"\">Les catégories de permis</a></li>
+                                <li><a href=\"\">Les panneaux routiers</a></li>
+                                <li><a href=\"\">Les feux routiers</a></li>
+                            </ol>
                         </li>
+                        <li class=\"col1\">
+                            <h5>Cours vidéos gratuits</h5>
+                            <ol>
+                                <li><a href=\"\">Cours 1</a></li>
+                                <li><a href=\"\">Cours 2</a></li>
+                                <li><a href=\"\">Cours 3</a></li>
+                                <li><a href=\"\">Cours 4</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                    <!-- Mega Menu / End -->
+                </li>
 
-                        <li><a href=\"#\"><i class=\"halflings white file\"></i> Tests gratuits</a>
-                            <!-- Second Level / Start -->
-                            <ul>
-                                <li><a href=\"\">Test 1</a></li>
-                                <li><a href=\"\">Test 2</a></li>
-                                <li><a href=\"\">Test 3</a></li>
-                                <li><a href=\"\">Test 4</a></li>
-                            </ul>
-                            <!-- Second Level / End -->
-                        </li>
+                <li><a href=\"#\"><i class=\"halflings white file\"></i> Tests gratuits</a>
+                    <!-- Second Level / Start -->
+                    <ul>
+                        <li><a href=\"\">Test 1</a></li>
+                        <li><a href=\"\">Test 2</a></li>
+                        <li><a href=\"\">Test 3</a></li>
+                        <li><a href=\"\">Test 4</a></li>
+                    </ul>
+                    <!-- Second Level / End -->
+                </li>
 
-                        <li><a><i class=\"halflings white pushpin\"></i> Annonces</a>
-                            <!-- Second Level / Start -->
-                            <ul>
-                                <li><a href=\"\">Offres d'emploi</a></li>
-                                <li><a href=\"\">Vente de voitures</a></li>
-                            </ul>
-                            <!-- Second Level / End -->
-                        </li>
-                        <li>
-                            <a href=\"\"><i class=\"halflings white briefcase\"></i> Assurances</a>
-                        </li>
+                <li><a><i class=\"halflings white pushpin\"></i> Annonces</a>
+                    <!-- Second Level / Start -->
+                    <ul>
+                        <li><a href=\"\">Offres d'emploi</a></li>
+                        <li><a href=\"\">Vente de voitures</a></li>
+                    </ul>
+                    <!-- Second Level / End -->
+                </li>
+                <li>
+                    <a href=\"\"><i class=\"halflings white briefcase\"></i> Assurances</a>
+                </li>
 
-                    ";
+            ";
     }
 
-    // line 255
+    // line 256
     public function block_content($context, array $blocks = array())
     {
-        // line 256
+        // line 257
         echo "
-            ";
+    ";
     }
 
     public function getTemplateName()
@@ -528,6 +526,6 @@ class __TwigTemplate_d66b18dafb9458750ab5cc9f25ae2cdfee384b37e6fef21755f2e3f11e0
 
     public function getDebugInfo()
     {
-        return array (  515 => 256,  512 => 255,  459 => 201,  456 => 200,  442 => 73,  439 => 72,  420 => 346,  416 => 345,  398 => 330,  340 => 275,  321 => 258,  319 => 255,  311 => 249,  309 => 200,  305 => 199,  277 => 174,  272 => 172,  250 => 153,  246 => 152,  210 => 119,  203 => 115,  193 => 108,  181 => 103,  177 => 102,  171 => 99,  167 => 98,  151 => 84,  149 => 72,  139 => 65,  116 => 45,  112 => 44,  108 => 43,  104 => 42,  100 => 41,  96 => 40,  92 => 39,  88 => 38,  84 => 37,  80 => 36,  76 => 35,  72 => 34,  68 => 33,  56 => 24,  52 => 23,  47 => 21,  43 => 20,  22 => 1,);
+        return array (  513 => 257,  510 => 256,  457 => 202,  454 => 201,  447 => 93,  436 => 84,  428 => 79,  424 => 78,  420 => 77,  417 => 76,  415 => 75,  411 => 73,  408 => 72,  389 => 347,  385 => 346,  367 => 331,  309 => 276,  290 => 259,  288 => 256,  280 => 250,  278 => 201,  274 => 200,  246 => 175,  241 => 173,  219 => 154,  215 => 153,  179 => 120,  169 => 113,  151 => 97,  149 => 72,  139 => 65,  116 => 45,  112 => 44,  108 => 43,  104 => 42,  100 => 41,  96 => 40,  92 => 39,  88 => 38,  84 => 37,  80 => 36,  76 => 35,  72 => 34,  68 => 33,  56 => 24,  52 => 23,  47 => 21,  43 => 20,  22 => 1,);
     }
 }

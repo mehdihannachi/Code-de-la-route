@@ -66,13 +66,7 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
-# Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+
   
    # Nomaya Configuration
 nomaya_social:
@@ -114,11 +108,11 @@ fos_user:
     registration:
         form:
             type: cdlr_user_registration
-#        confirmation:
-#            from_email:
-#                address:        page.jim2@gmail.com
-#                sender_name:    noreply
-#            enabled:    true
+        confirmation:
+            from_email:
+                address:        page.jim2@gmail.com
+                sender_name:    noreply
+            enabled:    true
             
 # Swiftmailer Configuration
 swiftmailer:
