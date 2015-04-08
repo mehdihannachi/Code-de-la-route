@@ -57,6 +57,6 @@ security:
         - { path: ^/home/moniteur/, role: ROLE_MONITEUR }
         
         # FOS facebook
-        - { path: ^/secured/.*, role: [IS_AUTHENTICATED_FULLY] }
+        - { path: ^/home, role: [IS_AUTHENTICATED_FULLY] }
         - { path: ^/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }

@@ -1,28 +1,18 @@
 {%extends "CdlrcodeBundle::layout.html.twig" %}
 {% block content %}
     <div align="center">
-    <h1>VenteVoiture list</h1>
+        <h1>Les voitures à vendre</h1>
 
-    <table class="records_list" border="1">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Kilometrage</th>
-                <th>Marque</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+
+
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('ventevoiture_show', { 'id': entity.annonceId }) }}">{{ entity.titre }}</a></td>
-                <td>{{ entity.description }}</td>
-                <td>{{ entity.prix }}</td>
-                <td>{{ entity.kilometrage }}</td>
-                <td>{{ entity.marque }}</td>
-                <td>
+            <article>
+                <h1><a href="{{ path('ventevoiture_show', { 'id': entity.annonceId }) }}">{{ entity.titre }}</a></h1>
+                <br>   {{ entity.description }} <br> 
+                {{ entity.prix }} <br> 
+                {{ entity.kilometrage }} <br> 
+                {{ entity.marque }} <br> 
+
                 <ul>
                     <li>
                         <a href="{{ path('ventevoiture_show', { 'id': entity.annonceId }) }}">show</a>
@@ -31,18 +21,17 @@
                         <a href="{{ path('ventevoiture_edit', { 'id': entity.annonceId }) }}">edit</a>
                     </li>
                 </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('ventevoiture_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+            {% endfor %}
+            </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('ventevoiture_new') }}">
+                        Create a new entry
+                    </a>
+                </li>
+            </ul>
     </div>
-    {% endblock %}
+{% endblock %}

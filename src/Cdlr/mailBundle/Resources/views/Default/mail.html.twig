@@ -1,14 +1,17 @@
-{%extends "CdlrmailBundle::contact.html.twig" %}
+{%extends "CdlrcodeBundle::layout.html.twig" %}
 
-{% block X %}
+{% block content %}
 
-<body>
-<h3><p> Contacter nous </p></h3>
-<p>{{form_errors(form)}}</p>
-<hr>
-<form role="form" id="fr" method="POST" action='{{path('my_app_mail_sendpage')}}' {{form_enctype(form)}}>
-{{form_widget(form)}}
-<input type="submit" />
-</form>
-</body>
+    <div class="page-content">
+        <div class="container">
+            <h3><p> Nous contacter </p></h3>
+            <p>{{form_errors(form)}}</p>
+            <hr>
+            <form role="form" id="fr" method="POST" action='{{path('my_app_mail_sendpage')}}' {{form_enctype(form)}}>
+                {{form_widget(form)}}
+                <br>
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
 {% endblock %}

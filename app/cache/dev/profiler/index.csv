@@ -212,3 +212,5 @@ fb0f8c,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/autoecole,14284501
 589163,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/home/question,1428450344,
 222be1,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/home/question/,1428450353,6db146
 6db146,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/home/question/,1428450353,
+d52d9b,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/home,1428455034,
+963035,127.0.0.1,GET,http://localhost/CDLRweb/web/app_dev.php/login/login,1428455039,

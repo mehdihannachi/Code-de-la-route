@@ -15,7 +15,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('coursvideo_show', { 'id': entity.id }) }}">{{ entity.nom }}</a></td>
-                <td>{{ entity.url }}</td>
+                <td>{{ entity.path }}</td>
                 <td>
                 <ul>
                     <li>

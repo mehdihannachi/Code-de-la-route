@@ -23,6 +23,11 @@ class AppKernel extends Kernel {
             new Cdlr\UserBundle\CdlrUserBundle(),
             new Cdlr\CalendarBundle\CdlrCalendarBundle(),
             new Cdlr\mailBundle\CdlrmailBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+//            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+//            new FOS\FacebookBundle\FOSFacebookBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -31,6 +36,7 @@ class AppKernel extends Kernel {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
         }
 
         return $bundles;

@@ -6,33 +6,34 @@
     <table class="record_properties" border="1">
         <tbody>
             <tr>
-                <th>Nom</th>
+                <th>Nom : </th>
                 <td>{{ entity.nom }}</td>
             </tr>
             <tr>
-                <th>Categorie</th>
+                <th>Categorie : </th>
                 <td>{{ entity.categorie }}</td>
             </tr>
             <tr>
-                <th>Url</th>
-                <td>{{ entity.url }}</td>
+                <th>Url : </th>
+                <td>{{ entity.path }}</td>
             </tr>
            
         </tbody>
     </table>
 
         <ul class="record_actions">
+ 
     <li>
-        <a href="{{ path('cours') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('cours_edit', { 'id': entity.coursId }) }}">
+       
+        <iframe id="viewer" src="{{ asset('ViewerJs/index.html') }}#{{asset('uploads/documents/')~entity.path }}" seamless width='400' height='300' allowfullscreen webkitallowfullscreen></iframe>
+        <a href="{{ path('cours_edit', { 'id': entity.coursid }) }}">
             Edit
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
+    <li><a href="{{ path('cours') }}">
+            Back to the list
+        </a></li>
 </ul>
     </div>
 {% endblock %}

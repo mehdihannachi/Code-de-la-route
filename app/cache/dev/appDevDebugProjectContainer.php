@@ -176,6 +176,9 @@ class appDevDebugProjectContainer extends Container
             'monolog.logger.security' => 'getMonolog_Logger_SecurityService',
             'monolog.logger.templating' => 'getMonolog_Logger_TemplatingService',
             'monolog.logger.translation' => 'getMonolog_Logger_TranslationService',
+            'nomaya.socialbarhelper' => 'getNomaya_SocialbarhelperService',
+            'nomaya.sociallinkshelper' => 'getNomaya_SociallinkshelperService',
+            'ob_highcharts.twig.highcharts_extension' => 'getObHighcharts_Twig_HighchartsExtensionService',
             'profiler' => 'getProfilerService',
             'profiler_listener' => 'getProfilerListenerService',
             'property_accessor' => 'getPropertyAccessorService',
@@ -233,8 +236,8 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.mailer.default.transport' => 'getSwiftmailer_Mailer_Default_TransportService',
             'swiftmailer.mailer.default.transport.eventdispatcher' => 'getSwiftmailer_Mailer_Default_Transport_EventdispatcherService',
             'swiftmailer.mailer.default.transport.real' => 'getSwiftmailer_Mailer_Default_Transport_RealService',
-            'templating' => 'getTemplatingService',
             'templating.asset.package_factory' => 'getTemplating_Asset_PackageFactoryService',
+            'templating.engine.twig' => 'getTemplating_Engine_TwigService',
             'templating.filename_parser' => 'getTemplating_FilenameParserService',
             'templating.globals' => 'getTemplating_GlobalsService',
             'templating.helper.actions' => 'getTemplating_Helper_ActionsService',
@@ -285,6 +288,8 @@ class appDevDebugProjectContainer extends Container
             'twig.controller.preview_error' => 'getTwig_Controller_PreviewErrorService',
             'twig.exception_listener' => 'getTwig_ExceptionListenerService',
             'twig.extension.acme.demo' => 'getTwig_Extension_Acme_DemoService',
+            'twig.extension.nomaya_social_bar' => 'getTwig_Extension_NomayaSocialBarService',
+            'twig.extension.nomaya_social_links' => 'getTwig_Extension_NomayaSocialLinksService',
             'twig.loader' => 'getTwig_LoaderService',
             'twig.translation.extractor' => 'getTwig_Translation_ExtractorService',
             'uri_signer' => 'getUriSignerService',
@@ -297,11 +302,12 @@ class appDevDebugProjectContainer extends Container
             'web_profiler.controller.profiler' => 'getWebProfiler_Controller_ProfilerService',
             'web_profiler.controller.router' => 'getWebProfiler_Controller_RouterService',
             'web_profiler.debug_toolbar' => 'getWebProfiler_DebugToolbarService',
+            'web_profiler_extra.data_collector.twig' => 'getWebProfilerExtra_DataCollector_TwigService',
         );
         $this->aliases = array(
             'console.command.sensiolabs_security_command_securitycheckercommand' => 'sensio_distribution.security_checker.command',
             'database_connection' => 'doctrine.dbal.default_connection',
-            'debug.templating.engine.twig' => 'templating',
+            'debug.templating.engine.twig' => 'templating.engine.twig',
             'doctrine.orm.default_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.default_metadata_cache',
             'doctrine.orm.default_query_cache' => 'doctrine_cache.providers.doctrine.orm.default_query_cache',
             'doctrine.orm.default_result_cache' => 'doctrine_cache.providers.doctrine.orm.default_result_cache',
@@ -316,6 +322,7 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.spool' => 'swiftmailer.mailer.default.spool',
             'swiftmailer.transport' => 'swiftmailer.mailer.default.transport',
             'swiftmailer.transport.real' => 'swiftmailer.mailer.default.transport.real',
+            'templating' => 'templating.engine.twig',
         );
     }
 
@@ -732,7 +739,7 @@ class appDevDebugProjectContainer extends Container
         $this->services['debug.templating.engine.php'] = $instance = new \Symfony\Bundle\FrameworkBundle\Templating\TimedPhpEngine($this->get('templating.name_parser'), $this, $this->get('templating.loader'), $this->get('debug.stopwatch'), $this->get('templating.globals'));
 
         $instance->setCharset('UTF-8');
-        $instance->setHelpers(array('slots' => 'templating.helper.slots', 'assets' => 'templating.helper.assets', 'request' => 'templating.helper.request', 'session' => 'templating.helper.session', 'router' => 'templating.helper.router', 'actions' => 'templating.helper.actions', 'code' => 'templating.helper.code', 'translator' => 'templating.helper.translator', 'form' => 'templating.helper.form', 'stopwatch' => 'templating.helper.stopwatch', 'logout_url' => 'templating.helper.logout_url', 'security' => 'templating.helper.security', 'assetic' => 'assetic.helper.dynamic'));
+        $instance->setHelpers(array('slots' => 'templating.helper.slots', 'assets' => 'templating.helper.assets', 'request' => 'templating.helper.request', 'session' => 'templating.helper.session', 'router' => 'templating.helper.router', 'actions' => 'templating.helper.actions', 'code' => 'templating.helper.code', 'translator' => 'templating.helper.translator', 'form' => 'templating.helper.form', 'stopwatch' => 'templating.helper.stopwatch', 'logout_url' => 'templating.helper.logout_url', 'security' => 'templating.helper.security', 'assetic' => 'assetic.helper.dynamic', 'social-buttons' => 'nomaya.socialbarhelper', 'social-links' => 'nomaya.sociallinkshelper'));
 
         return $instance;
     }
@@ -1621,7 +1628,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_MailerService()
     {
-        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer($this->get('swiftmailer.mailer.default'), $this->get('router'), $this->get('templating'), array('confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig', 'resetting.template' => 'FOSUserBundle:Resetting:email.txt.twig', 'from_email' => array('confirmation' => array('page.jim2@gmail.com' => 'noreply'), 'resetting' => array('webmaster@example.com' => 'webmaster'))));
+        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer($this->get('swiftmailer.mailer.default'), $this->get('router'), $this->get('templating.engine.twig'), array('confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig', 'resetting.template' => 'FOSUserBundle:Resetting:email.txt.twig', 'from_email' => array('confirmation' => array('page.jim2@gmail.com' => 'noreply'), 'resetting' => array('webmaster@example.com' => 'webmaster'))));
     }
 
     /**
@@ -2236,6 +2243,45 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'nomaya.socialbarhelper' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Helpers\SocialBarHelper A Nomaya\SocialBundle\Helpers\SocialBarHelper instance.
+     */
+    protected function getNomaya_SocialbarhelperService()
+    {
+        return $this->services['nomaya.socialbarhelper'] = new \Nomaya\SocialBundle\Helpers\SocialBarHelper($this->get('templating.engine.twig'));
+    }
+
+    /**
+     * Gets the 'nomaya.sociallinkshelper' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Helpers\SocialLinksHelper A Nomaya\SocialBundle\Helpers\SocialLinksHelper instance.
+     */
+    protected function getNomaya_SociallinkshelperService()
+    {
+        return $this->services['nomaya.sociallinkshelper'] = new \Nomaya\SocialBundle\Helpers\SocialLinksHelper($this->get('templating.engine.twig'));
+    }
+
+    /**
+     * Gets the 'ob_highcharts.twig.highcharts_extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Ob\HighchartsBundle\Twig\HighchartsExtension A Ob\HighchartsBundle\Twig\HighchartsExtension instance.
+     */
+    protected function getObHighcharts_Twig_HighchartsExtensionService()
+    {
+        return $this->services['ob_highcharts.twig.highcharts_extension'] = new \Ob\HighchartsBundle\Twig\HighchartsExtension();
+    }
+
+    /**
      * Gets the 'profiler' service.
      *
      * This service is shared.
@@ -2246,7 +2292,7 @@ class appDevDebugProjectContainer extends Container
     protected function getProfilerService()
     {
         $a = $this->get('monolog.logger.profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE);
-        $b = $this->get('kernel', ContainerInterface::NULL_ON_INVALID_REFERENCE);
+        $b = $this->get('kernel');
 
         $c = new \Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector();
         if ($this->has('kernel')) {
@@ -2272,6 +2318,10 @@ class appDevDebugProjectContainer extends Container
         $instance->add(new \Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector($this));
         $instance->add($d);
         $instance->add($this->get('data_collector.dump'));
+        $instance->add(new \Elao\WebProfilerExtraBundle\DataCollector\RoutingDataCollector($this->get('router'), true));
+        $instance->add(new \Elao\WebProfilerExtraBundle\DataCollector\ContainerDataCollector($b, true));
+        $instance->add(new \Elao\WebProfilerExtraBundle\DataCollector\AsseticDataCollector($this, true));
+        $instance->add($this->get('web_profiler_extra.data_collector.twig'));
 
         return $instance;
     }
@@ -2521,7 +2571,7 @@ class appDevDebugProjectContainer extends Container
 
         $m = new \Symfony\Component\HttpFoundation\RequestMatcher('^/home/moniteur/');
 
-        $n = new \Symfony\Component\HttpFoundation\RequestMatcher('^/secured/.*');
+        $n = new \Symfony\Component\HttpFoundation\RequestMatcher('^/home');
 
         $o = new \Symfony\Component\HttpFoundation\RequestMatcher('^/login_check');
 
@@ -2547,7 +2597,7 @@ class appDevDebugProjectContainer extends Container
         $t = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $r, array(), $a);
         $t->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $s, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $r, 'main', new \Symfony\Component\Security\Http\Authentication\CustomAuthenticationSuccessHandler($this->get('redirect.after.login'), array('login_path' => 'fos_user_security_login', 'default_target_path' => '/home', 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false), 'main'), $t, array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '55246b2b8bdf8', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $q, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $r, 'fos_user_security_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $s, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $r, 'main', new \Symfony\Component\Security\Http\Authentication\CustomAuthenticationSuccessHandler($this->get('redirect.after.login'), array('login_path' => 'fos_user_security_login', 'default_target_path' => '/home', 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false), 'main'), $t, array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '55247e661bf29', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $q, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $r, 'fos_user_security_login', false), NULL, NULL, $a));
     }
 
     /**
@@ -2981,19 +3031,6 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the 'templating' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return \Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine A Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine instance.
-     */
-    protected function getTemplatingService()
-    {
-        return $this->services['templating'] = new \Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine($this->get('twig'), $this->get('templating.name_parser'), $this->get('templating.locator'), $this->get('debug.stopwatch'));
-    }
-
-    /**
      * Gets the 'templating.asset.package_factory' service.
      *
      * This service is shared.
@@ -3004,6 +3041,21 @@ class appDevDebugProjectContainer extends Container
     protected function getTemplating_Asset_PackageFactoryService()
     {
         return $this->services['templating.asset.package_factory'] = new \Symfony\Bundle\FrameworkBundle\Templating\Asset\PackageFactory($this);
+    }
+
+    /**
+     * Gets the 'templating.engine.twig' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Elao\WebProfilerExtraBundle\TwigProfilerEngine A Elao\WebProfilerExtraBundle\TwigProfilerEngine instance.
+     */
+    protected function getTemplating_Engine_TwigService()
+    {
+        $a = $this->get('twig');
+
+        return $this->services['templating.engine.twig'] = new \Elao\WebProfilerExtraBundle\TwigProfilerEngine($a, new \Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine($a, $this->get('templating.name_parser'), $this->get('templating.locator'), $this->get('debug.stopwatch')), $this->get('web_profiler_extra.data_collector.twig'));
     }
 
     /**
@@ -3863,6 +3915,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Twig_Extension_Debug());
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), true, array(), array(), new \Symfony\Bundle\AsseticBundle\DefaultValueSupplier($this)));
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
+        $instance->addExtension($this->get('ob_highcharts.twig.highcharts_extension'));
+        $instance->addExtension($this->get('twig.extension.nomaya_social_bar'));
+        $instance->addExtension($this->get('twig.extension.nomaya_social_links'));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\DumpExtension($this->get('var_dumper.cloner')));
         $instance->addExtension($this->get('twig.extension.acme.demo'));
         $instance->addExtension(new \Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension());
@@ -3911,6 +3966,32 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'twig.extension.nomaya_social_bar' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar A Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar instance.
+     */
+    protected function getTwig_Extension_NomayaSocialBarService()
+    {
+        return $this->services['twig.extension.nomaya_social_bar'] = new \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar($this);
+    }
+
+    /**
+     * Gets the 'twig.extension.nomaya_social_links' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks A Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks instance.
+     */
+    protected function getTwig_Extension_NomayaSocialLinksService()
+    {
+        return $this->services['twig.extension.nomaya_social_links'] = new \Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks($this);
+    }
+
+    /**
      * Gets the 'twig.loader' service.
      *
      * This service is shared.
@@ -3933,10 +4014,12 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\UserBundle/Resources/views'), 'CdlrUser');
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\CalendarBundle/Resources/views'), 'CdlrCalendar');
         $instance->addPath(($this->targetDirs[3].'\\src\\Cdlr\\mailBundle/Resources/views'), 'Cdlrmail');
+        $instance->addPath(($this->targetDirs[3].'\\vendor\\nomaya\\social-bundle\\Nomaya\\SocialBundle/Resources/views'), 'NomayaSocial');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\src\\Acme\\DemoBundle/Resources/views'), 'AcmeDemo');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views'), 'SensioDistribution');
+        $instance->addPath(($this->targetDirs[3].'\\src\\Elao\\WebProfilerExtraBundle/Resources/views'), 'WebProfilerExtra');
         $instance->addPath(($this->targetDirs[2].'/Resources/views'));
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bridge\\Twig/Resources/views/Form'));
 
@@ -4075,7 +4158,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getWebProfiler_Controller_ProfilerService()
     {
-        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig'), 'data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.ajax' => array(0 => 'ajax', 1 => '@WebProfiler/Collector/ajax.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => '@Doctrine/Collector/db.html.twig'), 'data_collector.dump' => array(0 => 'dump', 1 => '@Debug/Profiler/dump.html.twig')), 'bottom');
+        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig'), 'data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.ajax' => array(0 => 'ajax', 1 => '@WebProfiler/Collector/ajax.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => '@Doctrine/Collector/db.html.twig'), 'data_collector.dump' => array(0 => 'dump', 1 => '@Debug/Profiler/dump.html.twig'), 'web_profiler_extra.data_collector.routing' => array(0 => 'elao_routing', 1 => 'WebProfilerExtraBundle:Collector:routing'), 'web_profiler_extra.data_collector.container' => array(0 => 'elao_container', 1 => 'WebProfilerExtraBundle:Collector:container'), 'web_profiler_extra.data_collector.assetic' => array(0 => 'elao_assetic', 1 => 'WebProfilerExtraBundle:Collector:assetic'), 'web_profiler_extra.data_collector.twig' => array(0 => 'elao_twig', 1 => 'WebProfilerExtraBundle:Collector:twig')), 'bottom');
     }
 
     /**
@@ -4244,7 +4327,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('55246b2b8bdf8')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('55247e661bf29')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4388,6 +4471,23 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'web_profiler_extra.data_collector.twig' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return \Elao\WebProfilerExtraBundle\DataCollector\TwigDataCollector A Elao\WebProfilerExtraBundle\DataCollector\TwigDataCollector instance.
+     */
+    protected function getWebProfilerExtra_DataCollector_TwigService()
+    {
+        return $this->services['web_profiler_extra.data_collector.twig'] = new \Elao\WebProfilerExtraBundle\DataCollector\TwigDataCollector($this, true);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getParameter($name)
@@ -4462,11 +4562,14 @@ class appDevDebugProjectContainer extends Container
                 'CdlrUserBundle' => 'Cdlr\\UserBundle\\CdlrUserBundle',
                 'CdlrCalendarBundle' => 'Cdlr\\CalendarBundle\\CdlrCalendarBundle',
                 'CdlrmailBundle' => 'Cdlr\\mailBundle\\CdlrmailBundle',
+                'ObHighchartsBundle' => 'Ob\\HighchartsBundle\\ObHighchartsBundle',
+                'NomayaSocialBundle' => 'Nomaya\\SocialBundle\\NomayaSocialBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
                 'SensioGeneratorBundle' => 'Sensio\\Bundle\\GeneratorBundle\\SensioGeneratorBundle',
+                'WebProfilerExtraBundle' => 'Elao\\WebProfilerExtraBundle\\WebProfilerExtraBundle',
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appDevDebugProjectContainer',
@@ -4927,7 +5030,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.variables' => array(
 
             ),
-            'assetic.java.bin' => 'C:\\Windows\\system32\\java.EXE',
+            'assetic.java.bin' => 'c:\\programdata\\oracle\\java\\javapath\\java.EXE',
             'assetic.node.bin' => '/usr/bin/node',
             'assetic.ruby.bin' => '/usr/bin/ruby',
             'assetic.sass.bin' => '/usr/bin/sass',
@@ -5103,6 +5206,53 @@ class appDevDebugProjectContainer extends Container
             'blade_tester_calendar.classes.event.entity' => 'Cdlr\\CalendarBundle\\Entity\\Event',
             'blade_tester_calendar.classes.category.entity' => 'BladeTester\\CalendarBundle\\Entity\\EventCategory',
             'blade_tester_calendar.form.type.category.class' => 'BladeTester\\CalendarBundle\\Form\\Type\\EventCategoryFormType',
+            'ob_highcharts.twig_extension.class' => 'Ob\\HighchartsBundle\\Twig\\HighchartsExtension',
+            'buttons.facebook' => array(
+                'url' => 'https://www.facebook.com/halfmancdlr',
+                'locale' => 'fr_FR',
+                'send' => false,
+                'width' => 300,
+                'showFaces' => false,
+                'layout' => 'button_count',
+                'share' => true,
+            ),
+            'buttons.twitter' => array(
+                'url' => 'https://twitter.com/halfmancdlr',
+                'locale' => 'fr',
+                'message' => 'Je veux partager ça avec vous',
+                'text' => 'Tweet',
+                'via' => 'Code De La Route',
+                'tag' => 'cdlr',
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'buttons.googleplus' => array(
+                'url' => NULL,
+                'locale' => 'fr',
+                'size' => 'medium',
+                'annotation' => 'bubble',
+                'width' => 300,
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'buttons.linkedin' => array(
+                'url' => NULL,
+                'locale' => 'fr_FR',
+                'counter' => 'right',
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'buttons.pinterest' => array(
+                'url' => NULL,
+                'locale' => 'fr',
+                'showFaces' => false,
+                'send' => true,
+                'share' => true,
+            ),
+            'social.theme' => 'default',
             'web_profiler.controller.profiler.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController',
             'web_profiler.controller.router.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\RouterController',
             'web_profiler.controller.exception.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ExceptionController',
@@ -5116,6 +5266,16 @@ class appDevDebugProjectContainer extends Container
             'sensio_distribution.webconfigurator.secret_step.class' => 'Sensio\\Bundle\\DistributionBundle\\Configurator\\Step\\SecretStep',
             'sensio_distribution.security_checker.class' => 'SensioLabs\\Security\\SecurityChecker',
             'sensio_distribution.security_checker.command.class' => 'SensioLabs\\Security\\Command\\SecurityCheckerCommand',
+            'web_profiler_extra.data_collector.routing.class' => 'Elao\\WebProfilerExtraBundle\\DataCollector\\RoutingDataCollector',
+            'web_profiler_extra.data_collector.routing.display_in_wdt' => true,
+            'web_profiler_extra.data_collector.container.class' => 'Elao\\WebProfilerExtraBundle\\DataCollector\\ContainerDataCollector',
+            'web_profiler_extra.data_collector.container.display_in_wdt' => true,
+            'web_profiler_extra.data_collector.assetic.class' => 'Elao\\WebProfilerExtraBundle\\DataCollector\\AsseticDataCollector',
+            'web_profiler_extra.data_collector.assetic.display_in_wdt' => true,
+            'web_profiler_extra.data_collector.twig.class' => 'Elao\\WebProfilerExtraBundle\\DataCollector\\TwigDataCollector',
+            'web_profiler_extra.templating.engine.twig.class' => 'Elao\\WebProfilerExtraBundle\\TwigProfilerEngine',
+            'web_profiler_extra.data_collector.twig.display_in_wdt' => true,
+            'web_profiler_extra.data_collector.twig.enabled' => true,
             'data_collector.templates' => array(
                 'data_collector.config' => array(
                     0 => 'config',
@@ -5172,6 +5332,22 @@ class appDevDebugProjectContainer extends Container
                 'data_collector.dump' => array(
                     0 => 'dump',
                     1 => '@Debug/Profiler/dump.html.twig',
+                ),
+                'web_profiler_extra.data_collector.routing' => array(
+                    0 => 'elao_routing',
+                    1 => 'WebProfilerExtraBundle:Collector:routing',
+                ),
+                'web_profiler_extra.data_collector.container' => array(
+                    0 => 'elao_container',
+                    1 => 'WebProfilerExtraBundle:Collector:container',
+                ),
+                'web_profiler_extra.data_collector.assetic' => array(
+                    0 => 'elao_assetic',
+                    1 => 'WebProfilerExtraBundle:Collector:assetic',
+                ),
+                'web_profiler_extra.data_collector.twig' => array(
+                    0 => 'elao_twig',
+                    1 => 'WebProfilerExtraBundle:Collector:twig',
                 ),
             ),
             'console.command.ids' => array(

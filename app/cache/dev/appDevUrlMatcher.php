@@ -548,6 +548,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/home')) {
+            // graphe
+            if ($pathinfo === '/home/graphe/show') {
+                return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\GrapheController::ChartPieAction',  '_route' => 'graphe',);
+            }
+
             if (0 === strpos($pathinfo, '/home/review')) {
                 // review
                 if (rtrim($pathinfo, '/') === '/home/review') {

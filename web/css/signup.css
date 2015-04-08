@@ -3,10 +3,10 @@
 Primary style
 
 -------------------------------- */
-/*html * {
+html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}*/
+}
 
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -14,19 +14,19 @@ Primary style
   box-sizing: border-box;
 }
 
-/*body {
+body {
   font-size: 100%;
   font-family: "PT Sans", sans-serif;
   color: #505260;
   background-color: white;
-}*/
+}
 
-/*a {
+a {
   color: #2f889a;
   text-decoration: none;
-}*/
+}
 
-/*img {
+img {
   max-width: 100%;
 }
 
@@ -37,7 +37,7 @@ input, textarea {
 }
 input::-ms-clear, textarea::-ms-clear {
   display: none;
-}*/
+}
 
 /* -------------------------------- 
 
@@ -160,11 +160,11 @@ header[role=banner]::after {
     background: transparent;
   }
   .main-nav a.cd-signin, .main-nav a.cd-signup {
-   /* padding: .6em 1em;
+   padding: .6em 1em;
     //border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 50em;
     background: #169fe6;
-    border: none;*/
+    border: none;
    padding: 5px 14px 7px 14px;
 	display: inline-block;
 	border: 0px;

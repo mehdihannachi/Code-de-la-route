@@ -71,10 +71,37 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-    
-
-        
-    
+  
+   # Nomaya Configuration
+nomaya_social:
+    buttons:
+        facebook:
+            url:            "https://www.facebook.com/halfmancdlr"
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            "https://twitter.com/halfmancdlr"
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "Code De La Route"
+            tag:            "cdlr"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:            
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+        pinterest:
+            url:            null
+    theme:                  'default' # optional
 imports:
     - { resource: @CdlrUserBundle/Resources/config/services.yml }
         

@@ -36,21 +36,23 @@ class CoursController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Cours();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+            $form = $this->createForm(new CoursType(), $entity);
+            $form->add('submit', 'submit', array('label' => 'Upload'));
+            $form->bind($request);
+            $entity->upload();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
 
-            return $this->redirect($this->generateUrl('cours_show', array('id' => $entity->getCoursId())));
-        }
+                return $this->redirect($this->generateUrl('cours', ['coursid' => $entity->getCoursId()]));
+            }
 
-        return $this->render('CdlrcodeBundle:Cours:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+            return $this->render('CdlrcodeBundle:cours:new.html.twig', array(
+                        'entity' => $entity,
+                        'form' => $form->createView(),
+            ));
     }
 
     /**

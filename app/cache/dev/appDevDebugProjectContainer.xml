@@ -24,11 +24,14 @@
       <parameter key="CdlrUserBundle">Cdlr\UserBundle\CdlrUserBundle</parameter>
       <parameter key="CdlrCalendarBundle">Cdlr\CalendarBundle\CdlrCalendarBundle</parameter>
       <parameter key="CdlrmailBundle">Cdlr\mailBundle\CdlrmailBundle</parameter>
+      <parameter key="ObHighchartsBundle">Ob\HighchartsBundle\ObHighchartsBundle</parameter>
+      <parameter key="NomayaSocialBundle">Nomaya\SocialBundle\NomayaSocialBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
+      <parameter key="WebProfilerExtraBundle">Elao\WebProfilerExtraBundle\WebProfilerExtraBundle</parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
@@ -475,7 +478,7 @@
     <parameter key="assetic.read_from">C:\wamp\www\CDLRweb\app/../web</parameter>
     <parameter key="assetic.write_to">C:\wamp\www\CDLRweb\app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
-    <parameter key="assetic.java.bin">C:\Windows\system32\java.EXE</parameter>
+    <parameter key="assetic.java.bin">c:\programdata\oracle\java\javapath\java.EXE</parameter>
     <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
@@ -647,6 +650,53 @@
     <parameter key="blade_tester_calendar.classes.event.entity">Cdlr\CalendarBundle\Entity\Event</parameter>
     <parameter key="blade_tester_calendar.classes.category.entity">BladeTester\CalendarBundle\Entity\EventCategory</parameter>
     <parameter key="blade_tester_calendar.form.type.category.class">BladeTester\CalendarBundle\Form\Type\EventCategoryFormType</parameter>
+    <parameter key="ob_highcharts.twig_extension.class">Ob\HighchartsBundle\Twig\HighchartsExtension</parameter>
+    <parameter key="buttons.facebook" type="collection">
+      <parameter key="url">https://www.facebook.com/halfmancdlr</parameter>
+      <parameter key="locale">fr_FR</parameter>
+      <parameter key="send">false</parameter>
+      <parameter key="width">300</parameter>
+      <parameter key="showFaces">false</parameter>
+      <parameter key="layout">button_count</parameter>
+      <parameter key="share">true</parameter>
+    </parameter>
+    <parameter key="buttons.twitter" type="collection">
+      <parameter key="url">https://twitter.com/halfmancdlr</parameter>
+      <parameter key="locale">fr</parameter>
+      <parameter key="message">Je veux partager ça avec vous</parameter>
+      <parameter key="text">Tweet</parameter>
+      <parameter key="via">Code De La Route</parameter>
+      <parameter key="tag">cdlr</parameter>
+      <parameter key="showFaces">false</parameter>
+      <parameter key="send">true</parameter>
+      <parameter key="share">true</parameter>
+    </parameter>
+    <parameter key="buttons.googleplus" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="locale">fr</parameter>
+      <parameter key="size">medium</parameter>
+      <parameter key="annotation">bubble</parameter>
+      <parameter key="width">300</parameter>
+      <parameter key="showFaces">false</parameter>
+      <parameter key="send">true</parameter>
+      <parameter key="share">true</parameter>
+    </parameter>
+    <parameter key="buttons.linkedin" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="locale">fr_FR</parameter>
+      <parameter key="counter">right</parameter>
+      <parameter key="showFaces">false</parameter>
+      <parameter key="send">true</parameter>
+      <parameter key="share">true</parameter>
+    </parameter>
+    <parameter key="buttons.pinterest" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="locale">fr</parameter>
+      <parameter key="showFaces">false</parameter>
+      <parameter key="send">true</parameter>
+      <parameter key="share">true</parameter>
+    </parameter>
+    <parameter key="social.theme">default</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -660,6 +710,16 @@
     <parameter key="sensio_distribution.webconfigurator.secret_step.class">Sensio\Bundle\DistributionBundle\Configurator\Step\SecretStep</parameter>
     <parameter key="sensio_distribution.security_checker.class">SensioLabs\Security\SecurityChecker</parameter>
     <parameter key="sensio_distribution.security_checker.command.class">SensioLabs\Security\Command\SecurityCheckerCommand</parameter>
+    <parameter key="web_profiler_extra.data_collector.routing.class">Elao\WebProfilerExtraBundle\DataCollector\RoutingDataCollector</parameter>
+    <parameter key="web_profiler_extra.data_collector.routing.display_in_wdt">true</parameter>
+    <parameter key="web_profiler_extra.data_collector.container.class">Elao\WebProfilerExtraBundle\DataCollector\ContainerDataCollector</parameter>
+    <parameter key="web_profiler_extra.data_collector.container.display_in_wdt">true</parameter>
+    <parameter key="web_profiler_extra.data_collector.assetic.class">Elao\WebProfilerExtraBundle\DataCollector\AsseticDataCollector</parameter>
+    <parameter key="web_profiler_extra.data_collector.assetic.display_in_wdt">true</parameter>
+    <parameter key="web_profiler_extra.data_collector.twig.class">Elao\WebProfilerExtraBundle\DataCollector\TwigDataCollector</parameter>
+    <parameter key="web_profiler_extra.templating.engine.twig.class">Elao\WebProfilerExtraBundle\TwigProfilerEngine</parameter>
+    <parameter key="web_profiler_extra.data_collector.twig.display_in_wdt">true</parameter>
+    <parameter key="web_profiler_extra.data_collector.twig.enabled">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.config" type="collection">
         <parameter>config</parameter>
@@ -716,6 +776,22 @@
       <parameter key="data_collector.dump" type="collection">
         <parameter>dump</parameter>
         <parameter>@Debug/Profiler/dump.html.twig</parameter>
+      </parameter>
+      <parameter key="web_profiler_extra.data_collector.routing" type="collection">
+        <parameter>elao_routing</parameter>
+        <parameter>WebProfilerExtraBundle:Collector:routing</parameter>
+      </parameter>
+      <parameter key="web_profiler_extra.data_collector.container" type="collection">
+        <parameter>elao_container</parameter>
+        <parameter>WebProfilerExtraBundle:Collector:container</parameter>
+      </parameter>
+      <parameter key="web_profiler_extra.data_collector.assetic" type="collection">
+        <parameter>elao_assetic</parameter>
+        <parameter>WebProfilerExtraBundle:Collector:assetic</parameter>
+      </parameter>
+      <parameter key="web_profiler_extra.data_collector.twig" type="collection">
+        <parameter>elao_twig</parameter>
+        <parameter>WebProfilerExtraBundle:Collector:twig</parameter>
       </parameter>
     </parameter>
     <parameter key="console.command.ids" type="collection">
@@ -2845,6 +2921,36 @@
       <call method="add">
         <argument type="service" id="data_collector.dump"/>
       </call>
+      <call method="add">
+        <argument type="service">
+          <service class="Elao\WebProfilerExtraBundle\DataCollector\RoutingDataCollector" public="false">
+            <tag name="data_collector" template="WebProfilerExtraBundle:Collector:routing" id="elao_routing"/>
+            <argument type="service" id="router"/>
+            <argument>true</argument>
+          </service>
+        </argument>
+      </call>
+      <call method="add">
+        <argument type="service">
+          <service class="Elao\WebProfilerExtraBundle\DataCollector\ContainerDataCollector" public="false">
+            <tag name="data_collector" template="WebProfilerExtraBundle:Collector:container" id="elao_container"/>
+            <argument type="service" id="kernel"/>
+            <argument>true</argument>
+          </service>
+        </argument>
+      </call>
+      <call method="add">
+        <argument type="service">
+          <service class="Elao\WebProfilerExtraBundle\DataCollector\AsseticDataCollector" public="false">
+            <tag name="data_collector" template="WebProfilerExtraBundle:Collector:assetic" id="elao_assetic"/>
+            <argument type="service" id="service_container"/>
+            <argument>true</argument>
+          </service>
+        </argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="web_profiler_extra.data_collector.twig"/>
+      </call>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
       <tag name="kernel.event_subscriber"/>
@@ -3161,7 +3267,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>55246b2b8bdf8</argument>
+            <argument>55247e661bf29</argument>
           </service>
         </argument>
       </argument>
@@ -3356,7 +3462,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/secured/.*</argument>
+                      <argument>^/home</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -3505,7 +3611,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>55246b2b8bdf8</argument>
+            <argument>55247e661bf29</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3597,7 +3703,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/secured/.*</argument>
+                      <argument>^/home</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -3822,6 +3928,15 @@
         </argument>
       </call>
       <call method="addExtension">
+        <argument type="service" id="ob_highcharts.twig.highcharts_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="twig.extension.nomaya_social_bar"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="twig.extension.nomaya_social_links"/>
+      </call>
+      <call method="addExtension">
         <argument type="service">
           <service class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
             <tag name="twig.extension"/>
@@ -3843,6 +3958,18 @@
         <argument>app</argument>
         <argument type="service" id="templating.globals"/>
       </call>
+    </service>
+    <service id="templating.engine.twig" class="Elao\WebProfilerExtraBundle\TwigProfilerEngine">
+      <argument type="service" id="twig"/>
+      <argument type="service">
+        <service class="Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine" public="false">
+          <argument type="service" id="twig"/>
+          <argument type="service" id="templating.name_parser"/>
+          <argument type="service" id="templating.locator"/>
+          <argument type="service" id="debug.stopwatch"/>
+        </service>
+      </argument>
+      <argument type="service" id="web_profiler_extra.data_collector.twig"/>
     </service>
     <service id="twig.translation.extractor" class="Symfony\Bridge\Twig\Translation\TwigExtractor">
       <tag name="translation.extractor" alias="twig"/>
@@ -4418,6 +4545,25 @@
     <service id="redirect.after.login" class="Cdlr\UserBundle\Redirection\AfterLoginRedirection">
       <argument type="service" id="router"/>
     </service>
+    <service id="ob_highcharts.twig.highcharts_extension" class="Ob\HighchartsBundle\Twig\HighchartsExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="nomaya.socialbarhelper" class="Nomaya\SocialBundle\Helpers\SocialBarHelper">
+      <tag name="templating.helper" alias="social-buttons"/>
+      <argument type="service" id="templating.engine.twig"/>
+    </service>
+    <service id="twig.extension.nomaya_social_bar" class="Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialBar">
+      <tag name="twig.extension"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="nomaya.sociallinkshelper" class="Nomaya\SocialBundle\Helpers\SocialLinksHelper">
+      <tag name="templating.helper" alias="social-links"/>
+      <argument type="service" id="templating.engine.twig"/>
+    </service>
+    <service id="twig.extension.nomaya_social_links" class="Nomaya\SocialBundle\Twig\Extension\NomayaTwigSocialLinks">
+      <tag name="twig.extension"/>
+      <argument type="service" id="service_container"/>
+    </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
@@ -4506,6 +4652,22 @@
           <argument>dump</argument>
           <argument>@Debug/Profiler/dump.html.twig</argument>
         </argument>
+        <argument key="web_profiler_extra.data_collector.routing" type="collection">
+          <argument>elao_routing</argument>
+          <argument>WebProfilerExtraBundle:Collector:routing</argument>
+        </argument>
+        <argument key="web_profiler_extra.data_collector.container" type="collection">
+          <argument>elao_container</argument>
+          <argument>WebProfilerExtraBundle:Collector:container</argument>
+        </argument>
+        <argument key="web_profiler_extra.data_collector.assetic" type="collection">
+          <argument>elao_assetic</argument>
+          <argument>WebProfilerExtraBundle:Collector:assetic</argument>
+        </argument>
+        <argument key="web_profiler_extra.data_collector.twig" type="collection">
+          <argument>elao_twig</argument>
+          <argument>WebProfilerExtraBundle:Collector:twig</argument>
+        </argument>
       </argument>
       <argument>bottom</argument>
     </service>
@@ -4551,6 +4713,11 @@
     <service id="sensio_distribution.security_checker.command" class="SensioLabs\Security\Command\SecurityCheckerCommand">
       <tag name="console.command"/>
       <argument type="service" id="sensio_distribution.security_checker"/>
+    </service>
+    <service id="web_profiler_extra.data_collector.twig" class="Elao\WebProfilerExtraBundle\DataCollector\TwigDataCollector" public="false">
+      <tag name="data_collector" template="WebProfilerExtraBundle:Collector:twig" id="elao_twig"/>
+      <argument type="service" id="service_container"/>
+      <argument>true</argument>
     </service>
     <service id="monolog.logger.request" class="Symfony\Bridge\Monolog\Logger">
       <argument>request</argument>
@@ -4708,14 +4875,10 @@
           <argument key="logout_url">templating.helper.logout_url</argument>
           <argument key="security">templating.helper.security</argument>
           <argument key="assetic">assetic.helper.dynamic</argument>
+          <argument key="social-buttons">nomaya.socialbarhelper</argument>
+          <argument key="social-links">nomaya.sociallinkshelper</argument>
         </argument>
       </call>
-    </service>
-    <service id="templating" class="Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine">
-      <argument type="service" id="twig"/>
-      <argument type="service" id="templating.name_parser"/>
-      <argument type="service" id="templating.locator"/>
-      <argument type="service" id="debug.stopwatch"/>
     </service>
     <service id="translator" class="Symfony\Component\Translation\LoggingTranslator">
       <tag name="monolog.logger" channel="translation"/>
@@ -4814,6 +4977,10 @@
         <argument>Cdlrmail</argument>
       </call>
       <call method="addPath">
+        <argument>C:\wamp\www\CDLRweb\vendor\nomaya\social-bundle\Nomaya\SocialBundle/Resources/views</argument>
+        <argument>NomayaSocial</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\wamp\www\CDLRweb\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -4828,6 +4995,10 @@
       <call method="addPath">
         <argument>C:\wamp\www\CDLRweb\vendor\sensio\distribution-bundle\Sensio\Bundle\DistributionBundle/Resources/views</argument>
         <argument>SensioDistribution</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp\www\CDLRweb\src\Elao\WebProfilerExtraBundle/Resources/views</argument>
+        <argument>WebProfilerExtra</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\CDLRweb\app/Resources/views</argument>
@@ -4910,7 +5081,7 @@
     <service id="fos_user.mailer" class="FOS\UserBundle\Mailer\Mailer">
       <argument type="service" id="swiftmailer.mailer.default"/>
       <argument type="service" id="router"/>
-      <argument type="service" id="templating"/>
+      <argument type="service" id="templating.engine.twig"/>
       <argument type="collection">
         <argument key="confirmation.template">FOSUserBundle:Registration:email.txt.twig</argument>
         <argument key="resetting.template">FOSUserBundle:Resetting:email.txt.twig</argument>
@@ -4940,8 +5111,9 @@
       <argument>Cdlr\UserBundle\Entity\User</argument>
     </service>
     <service id="session.storage" alias="session.storage.native"/>
+    <service id="templating" alias="templating.engine.twig"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
-    <service id="debug.templating.engine.twig" alias="templating"/>
+    <service id="debug.templating.engine.twig" alias="templating.engine.twig"/>
     <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool"/>
     <service id="swiftmailer.transport.real" alias="swiftmailer.mailer.default.transport.real"/>
     <service id="swiftmailer.plugin.messagelogger" alias="swiftmailer.mailer.default.plugin.messagelogger"/>
