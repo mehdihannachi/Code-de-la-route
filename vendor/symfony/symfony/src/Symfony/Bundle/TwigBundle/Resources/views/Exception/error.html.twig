@@ -1,16 +1,47 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="{{ _charset }}" />
-        <title>An Error Occurred: {{ status_text }}</title>
-    </head>
-    <body>
-        <h1>Oops! An Error Occurred</h1>
-        <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+{%extends "CdlrcodeBundle::layout.html.twig" %}
 
-        <div>
-            Something is broken. Please let us know what you were doing when this error occurred.
-            We will fix it as soon as possible. Sorry for any inconvenience caused.
-        </div>
-    </body>
-</html>
+{% block content %}
+<!-- Content
+================================================== -->
+<div id="content">
+
+
+<!-- 960 Container -->
+<div class="container floated">
+
+	<div class="sixteen floated page-title">
+
+		<h2>404 Page Not Found</h2>
+
+	</div>
+
+</div>
+<!-- 960 Container / End -->
+
+
+<!-- Page Content -->
+<div class="page-content">
+
+	<!-- 960 Container -->
+	<div class="container">
+
+		<!-- Sixteen Columns -->
+		<div class="sixteen columns">
+
+			<section id="not-found">
+				<h2>404 <i class="icon-file"></i></h2>
+				<p>We're sorry, but the page you were looking for doesn't exist.</p>
+			</section>
+
+		</div>
+
+	</div>
+	<!-- 960 Container / End -->
+
+</div>
+<!-- Page Content / End -->
+
+
+</div>
+<!-- Content / End -->
+{% endblock %}

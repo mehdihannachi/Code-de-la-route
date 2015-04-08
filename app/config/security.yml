@@ -23,7 +23,7 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 #        my_fos_facebook_provider:
 #            id: my.facebook.user
 
@@ -51,12 +51,7 @@ security:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/home/admin/, role: ROLE_ADMIN }
-        - { path: ^/home/candidat/, role: ROLE_CANDIDAT }
-        - { path: ^/home/gerant/, role: ROLE_GERANT }
-        - { path: ^/home/moniteur/, role: ROLE_MONITEUR }
-        
         # FOS facebook
-        - { path: ^/home, role: [IS_AUTHENTICATED_FULLY] }
+        - { path: ^/secured/.*, role: [IS_AUTHENTICATED_FULLY] }
         - { path: ^/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }

@@ -22,4 +22,8 @@ class DefaultController extends Controller
     {
         return $this->render('CdlrcodeBundle:Default:moniteur.html.twig');
     }
+    public function logregAction()
+    {
+        return $this->render('CdlrUserBundle:User:LoginRegister.html.twig');
+    }
 }

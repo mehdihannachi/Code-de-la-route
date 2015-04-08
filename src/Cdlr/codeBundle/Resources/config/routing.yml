@@ -80,6 +80,10 @@ cdlrcode_accueil:
     path:     /home
     defaults: { _controller: CdlrcodeBundle:Ecole:accueil }
     
+auth/log:
+    path:     /log_reg
+    defaults: { _controller: CdlrcodeBundle:Default:logreg }
+    
 cdlrcode_question:
     resource: "@CdlrcodeBundle/Resources/config/routing/question.yml"
     prefix:   /question

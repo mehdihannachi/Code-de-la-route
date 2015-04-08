@@ -67,7 +67,6 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-
                     <!-- Social / Contact -->
                     <div class="six columns">
                         {% block sign %}
@@ -96,63 +95,35 @@
                                 </ul>
 
                                 <div id="cd-login"> <!-- log in form -->
-                                    <form class="cd-form">
+                                    <form class="cd-form" action="{{ path("fos_user_security_check") }}" method="post">
+                                        <input type="hidden" name="_csrf_token" value="{{ fos_csrf_provider.generateCsrfToken('authenticate') }}" />
                                         <p class="fieldset">
-                                            <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                                            <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-                                            <span class="cd-error-message">Vérifiez votre e-mail!</span>
-                                        </p>
 
-                                        <p class="fieldset">
-                                            <label class="image-replace cd-password" for="signin-password">Mot de passe</label>
-                                            <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
-                                            <a href="#0" class="hide-password">Hide</a>
-                                            <span class="cd-error-message">Vérifiez votre mot de passe!</span>
+                                        <label class="image-replace cd-email" for="username">{{ 'security.login.username'|trans }}</label>
+                                        <input class="full-width has-padding has-border" type="text" id="username" name="_username" value="{% if last_username is defined %} {{ last_username }} {% endif %}" placeholder="E-mail" required="required" />
+                                        <span class="cd-error-message">Error message here!</span>
                                         </p>
-
                                         <p class="fieldset">
-                                            <input type="checkbox" id="remember-me" checked>
-                                            <label for="remember-me">Se souvenir de moi</label>
+
+                                        <label class="image-replace cd-password" for="password">{{ 'security.login.password'|trans }}</label>
+                                        <input class="full-width has-padding has-border" type="password" id="password" name="_password" required="required" />
+                                        <a href="#0" class="hide-password">Hide</a>
                                         </p>
-
                                         <p class="fieldset">
-                                            <input class="full-width" type="submit" value="Login">
+
+                                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                                        </p>
+                                        <p class="fieldset">
+
+                                        <input class="full-width has-padding" type="submit"  name="_submit" value="{{ 'security.login.submit'|trans }}" />
                                         </p>
                                     </form>
 
-                                    <p class="cd-form-bottom-message"><a href="#0">Mot de passe oublié?</a></p>
-                                    <a href="#0" class="cd-close-form">Close</a>
                                 </div> <!-- cd-login -->
 
                                 <div id="cd-signup"> <!-- sign up form -->
                                     <form class="cd-form">
-                                        <p class="fieldset">
-                                            <label class="image-replace cd-username" for="signup-username">Username</label>
-                                            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-                                            <span class="cd-error-message">Error message here!</span>
-                                        </p>
-
-                                        <p class="fieldset">
-                                            <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                                            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-                                            <span class="cd-error-message">Error message here!</span>
-                                        </p>
-
-                                        <p class="fieldset">
-                                            <label class="image-replace cd-password" for="signup-password">Password</label>
-                                            <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-                                            <a href="#0" class="hide-password">Hide</a>
-                                            <span class="cd-error-message">Error message here!</span>
-                                        </p>
-
-                                        <p class="fieldset">
-                                            <input type="checkbox" id="accept-terms">
-                                            <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-                                        </p>
-
-                                        <p class="fieldset">
-                                            <input class="full-width has-padding" type="submit" value="Create account">
-                                        </p>
                                     </form>
 
                                     <!-- <a href="#0" class="cd-close-form">Close</a> -->
@@ -191,8 +162,8 @@
                             <form action="" method="get">
                                 <button class="search-btn"></button>
                                 <input class="search-field" type="text" onblur="if (this.value == '')
-                                            this.value = 'Search';" onfocus="if (this.value == 'Search')
-                                                        this.value = '';" value="Search" />
+                                                this.value = 'Search';" onfocus="if (this.value == 'Search')
+                                                            this.value = '';" value="Search" />
                             </form>
                         </nav>
                         <br>
@@ -284,6 +255,7 @@
             {% block content %}
 
             {% endblock %}
+
 
 
 

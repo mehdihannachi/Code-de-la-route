@@ -149,8 +149,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // user_create
             if ($pathinfo === '/user/create') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
                     goto not_user_create;
                 }
 
@@ -1600,6 +1600,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\EcoleController::accueilAction',  '_route' => 'cdlrcode_accueil',);
                 }
 
+            }
+
+            // auth/log
+            if ($pathinfo === '/home/log_reg') {
+                return array (  '_controller' => 'Cdlr\\codeBundle\\Controller\\DefaultController::logregAction',  '_route' => 'auth/log',);
             }
 
             if (0 === strpos($pathinfo, '/home/question')) {

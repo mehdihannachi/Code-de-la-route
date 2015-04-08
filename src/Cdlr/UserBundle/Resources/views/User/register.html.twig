@@ -1,0 +1,16 @@
+<div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Register</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+
+                        {{ form_widget(form) }}
+
+                        <button type="Submit">{{ 'registration.submit'|trans }}</button>
+
+                    </form>
+                </div>
+            </div>

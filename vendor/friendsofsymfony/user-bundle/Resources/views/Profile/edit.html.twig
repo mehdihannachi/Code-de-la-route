@@ -1,5 +1,20 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "CdlrcodeBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
+
+
+
+        {% block content %}
+            <div class="page-content">
+
+
+    <!-- 960 Container -->
+    <div class="container">
+
+        <!-- Buttons
+        ================================================== -->
+            <div class="eight columns">
 {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-{% endblock fos_user_content %}
+         </div>
+    </div>
+            {% endblock %}
+            
